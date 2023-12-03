@@ -1,7 +1,12 @@
 import Input from './Input';
+import SubCategory from './SubCategory';
 
-function Category({ title, data, onChange }) {
-  const fields = getFields(data, onChange);
+export default function Category({ title, data, onChange }) {
+  const fields = !Array.isArray(data)
+    ? getFields(data, onChange)
+    : data.map((item, index) => (
+        <SubCategory id={index} data={item} onChange={onChange} />
+      ));
 
   return (
     <div className="category">
@@ -11,12 +16,10 @@ function Category({ title, data, onChange }) {
   );
 }
 
-export default Category;
-
-function getInput(key, value, handleChange) {
+function getInput(id, key, value, handleChange) {
   return (
     <Input
-      key={key}
+      key={id}
       label={key}
       name={key}
       type="text"
@@ -27,10 +30,11 @@ function getInput(key, value, handleChange) {
 }
 
 function getFields(data, handleChange) {
-  return Object.entries(data).map(([key, value]) => {
+  return Object.entries(data).map(([key, value], index) => {
     if (typeof value === 'object') {
       return getFields(value, handleChange);
     }
-    return getInput(key, value, handleChange);
+    const id = index + key;
+    return getInput(id, key, value, handleChange);
   });
 }

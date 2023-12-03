@@ -14,10 +14,18 @@ function CVEdit() {
 
   const [educationInfo, setEducationInfo] = useState([
     {
-      Name: '',
+      Name: 'School1',
       Degree: '',
-      Date: { Start: '', End: '' },
       Address: '',
+      'Start date': '',
+      'End date': '',
+    },
+    {
+      Name: 'School2',
+      Degree: '',
+      Address: '',
+      'Start date': '',
+      'End date': '',
     },
   ]);
 
@@ -25,9 +33,10 @@ function CVEdit() {
     {
       Name: '',
       Position: '',
-      Date: { Start: '', End: '' },
       Responsibility: '',
       Details: '',
+      'Start date': '',
+      'End date': '',
     },
   ]);
 
@@ -39,8 +48,11 @@ function CVEdit() {
 
   function handleEducationInfoChange(e) {
     const { name, value } = e.target;
-    const updatedInfo = { ...educationInfo, [name]: value };
-    setEducationInfo(updatedInfo);
+    console.log(e);
+    const copyArr = [...educationInfo];
+    copyArr[name] = value;
+    console.log(copyArr);
+    setEducationInfo(copyArr);
   }
 
   function handleExperienceInfoChange(e) {
