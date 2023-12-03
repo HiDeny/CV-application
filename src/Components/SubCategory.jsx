@@ -11,16 +11,11 @@ export default function SubCategory({ id, data, onChange }) {
     setSubData(updatedInfo);
   }
 
-  function handleSaveClick() {
-    const e = { target: { name: id, value: subData } };
-    onChange(e);
-  }
-
   return (
     <div className="subCategory">
       <h3 className="subCategory-title">{data.Name}</h3>
       {fields}
-      <button onClick={handleSaveClick}>SAVE</button>
+      <button onClick={() => onChange(id, subData)}>SAVE</button>
       <button>REMOVE</button>
     </div>
   );

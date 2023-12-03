@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import Category from './CategoryComponent';
-import GeneralInfo from './General-Info';
-import EducationInfo from './Education-Info';
-import ExperienceInfo from './Experience-Info';
 
 function CVEdit() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -46,19 +43,16 @@ function CVEdit() {
     setPersonalInfo(updatedInfo);
   }
 
-  function handleEducationInfoChange(e) {
-    const { name, value } = e.target;
-    console.log(e);
+  function handleEducationInfoChange(id, value) {
     const copyArr = [...educationInfo];
-    copyArr[name] = value;
-    console.log(copyArr);
+    copyArr[id] = value;
     setEducationInfo(copyArr);
   }
 
-  function handleExperienceInfoChange(e) {
-    const { name, value } = e.target;
-    const updatedInfo = { ...experienceInfo, [name]: value };
-    setExperienceInfo(updatedInfo);
+  function handleExperienceInfoChange(id, value) {
+    const copyArr = [...experienceInfo];
+    copyArr[id] = value;
+    setExperienceInfo(copyArr);
   }
 
   return (
@@ -78,9 +72,6 @@ function CVEdit() {
         data={experienceInfo}
         onChange={handleExperienceInfoChange}
       />
-      {/* <GeneralInfo /> */}
-      {/* <EducationInfo /> */}
-      {/* <ExperienceInfo /> */}
     </>
   );
 }
