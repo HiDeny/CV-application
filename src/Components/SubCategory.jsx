@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Input from './Input';
 
-export default function SubCategory({ id, data, onChange }) {
+export default function SubCategory({ data, onSave }) {
   const [subData, setSubData] = useState(data);
   const fields = getFields(subData, handleSubDataChange);
 
@@ -15,7 +15,7 @@ export default function SubCategory({ id, data, onChange }) {
     <div className="subCategory">
       <h3 className="subCategory-title">{data.Name}</h3>
       {fields}
-      <button onClick={() => onChange(id, subData)}>SAVE</button>
+      <button onClick={() => onSave(subData)}>SAVE</button>
       <button>REMOVE</button>
     </div>
   );

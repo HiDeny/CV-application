@@ -15,33 +15,33 @@ function CV() {
   // Skills
 
   const [educationInfo, setEducationInfo] = useState([
-    {
-      Name: 'School1',
-      Degree: '',
-      Address: '',
-      'Start date': '',
-      'End date': '',
-    },
-    {
-      Name: 'School2',
-      Degree: '',
-      Address: '',
-      'Start date': '',
-      'End date': '',
-    },
+    // {
+    //   Name: 'School1',
+    //   Degree: '',
+    //   Address: '',
+    //   'Start date': '',
+    //   'End date': '',
+    // },
+    // {
+    //   Name: 'School2',
+    //   Degree: '',
+    //   Address: '',
+    //   'Start date': '',
+    //   'End date': '',
+    // },
   ]);
 
   // About Me
 
   const [experienceInfo, setExperienceInfo] = useState([
-    {
-      Name: '',
-      Position: '',
-      Responsibility: '',
-      Details: '',
-      'Start date': '',
-      'End date': '',
-    },
+    // {
+    //   Name: '',
+    //   Position: '',
+    //   Responsibility: '',
+    //   Details: '',
+    //   'Start date': '',
+    //   'End date': '',
+    // },
   ]);
 
   function handlePersonalInfoChange(e) {
@@ -50,16 +50,12 @@ function CV() {
     setPersonalInfo(updatedInfo);
   }
 
-  function handleEducationInfoChange(id, value) {
-    const copyArr = [...educationInfo];
-    copyArr[id] = value;
-    setEducationInfo(copyArr);
+  function handleEducationInfoChange(newData) {
+    setEducationInfo(newData);
   }
 
-  function handleExperienceInfoChange(id, value) {
-    const copyArr = [...experienceInfo];
-    copyArr[id] = value;
-    setExperienceInfo(copyArr);
+  function handleExperienceInfoChange(newData) {
+    setExperienceInfo(newData);
   }
 
   return (
