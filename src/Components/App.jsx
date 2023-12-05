@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import Category from './CategoryComponent';
-import CVDisplay from './CV-Display';
+import DisplayMode from './DisplayMode';
 
-function CV() {
+function App() {
   // Profile picture
 
-  const [personalInfo, setPersonalInfo] = useState({
+  const [personal, setPersonal] = useState({
     'First Name': '',
     'Last Name': '',
     Email: '',
@@ -14,7 +14,7 @@ function CV() {
 
   // Skills
 
-  const [educationInfo, setEducationInfo] = useState([
+  const [education, setEducation] = useState([
     // {
     //   Name: 'School1',
     //   Degree: '',
@@ -33,7 +33,7 @@ function CV() {
 
   // About Me
 
-  const [experienceInfo, setExperienceInfo] = useState([
+  const [experience, setExperience] = useState([
     // {
     //   Name: '',
     //   Position: '',
@@ -44,47 +44,47 @@ function CV() {
     // },
   ]);
 
-  function handlePersonalInfoChange(e) {
+  function handlePersonalChange(e) {
     const { name, value } = e.target;
-    const updatedInfo = { ...personalInfo, [name]: value };
-    setPersonalInfo(updatedInfo);
+    const updated = { ...personal, [name]: value };
+    setPersonal(updated);
   }
 
-  function handleEducationInfoChange(newData) {
-    setEducationInfo(newData);
+  function handleEducationChange(newData) {
+    setEducation(newData);
   }
 
-  function handleExperienceInfoChange(newData) {
-    setExperienceInfo(newData);
+  function handleExperienceChange(newData) {
+    setExperience(newData);
   }
 
   return (
     <>
-      <CVDisplay
-        personalInfo={personalInfo}
-        educationInfo={educationInfo}
-        experienceInfo={experienceInfo}
-      />
+      {/* <DisplayMode
+        personal={personal}
+        education={education}
+        experience={experience}
+      /> */}
 
-      <div className="CV-edit">
+      <div className="EditMode">
         <Category
           title="Personal Information"
-          data={personalInfo}
-          onChange={handlePersonalInfoChange}
+          data={personal}
+          onChange={handlePersonalChange}
         />
         <Category
           title="Education"
-          data={educationInfo}
-          onChange={handleEducationInfoChange}
+          data={education}
+          onChange={handleEducationChange}
         />
         <Category
           title="Experience"
-          data={experienceInfo}
-          onChange={handleExperienceInfoChange}
+          data={experience}
+          onChange={handleExperienceChange}
         />
       </div>
     </>
   );
 }
 
-export default CV;
+export default App;

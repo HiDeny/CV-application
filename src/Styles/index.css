@@ -3,9 +3,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* color-scheme: light dark; */
+  color: black;
+  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,7 +29,9 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
+  margin: 2rem auto;
+  gap: 5rem;
 }
 
 h1 {
@@ -45,6 +47,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: white;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -56,7 +59,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -67,9 +70,49 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
 
-.CV-display {
+.DisplayMode {
   grid-column: 2;
   grid-row: 1/-1;
+
+  border: 1px solid brown;
+  border-radius: 2rem;
+  padding: 2rem;
+  min-width: 500px;
+}
+
+.EditMode {
+  max-width: 20rem;
+}
+
+.category {
+  display: grid;
+  grid-template-rows: 3rem auto 3rem;
+  gap: 1rem;
+  align-items: center;
+
+  padding: 1rem;
+}
+
+.category-title {
+  margin: 0;
+  text-align: center;
+}
+
+.addBtn {
+  justify-self: center;
+}
+
+.subCategory {
+  display: grid;
+  align-items: center;
+
+  border: 2px solid;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.removeBtn {
+  justify-self: center;
 }

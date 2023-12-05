@@ -3,11 +3,10 @@ import SubCategory from './SubCategory';
 
 const educationTemplate = (id) => ({
   id,
-  Name: 'School1',
   Degree: '',
+  Name: '',
   Address: '',
-  'Start date': '',
-  'End date': '',
+  Date: { Start: null, End: null },
 });
 
 const jobTemplate = (id) => ({
@@ -16,8 +15,7 @@ const jobTemplate = (id) => ({
   Position: '',
   Responsibility: '',
   Details: '',
-  'Start date': '',
-  'End date': '',
+  Date: { Start: null, End: null },
 });
 
 export default function Category({ title, data, onChange }) {
@@ -61,10 +59,10 @@ export default function Category({ title, data, onChange }) {
 
   return (
     <div className="category">
-      <h2 className={`category-${title}`}>{title}</h2>
-      {fields}
+      <h2 className="category-title">{title}</h2>
+      <div className="fields">{fields}</div>
       {Array.isArray(data) && (
-        <button type="button" onClick={handleAddSubCategory}>
+        <button className="addBtn" type="button" onClick={handleAddSubCategory}>
           Add
         </button>
       )}
@@ -87,9 +85,6 @@ function getInput(id, key, value, handleChange) {
 
 function getFields(data, handleChange) {
   return Object.entries(data).map(([key, value], index) => {
-    if (typeof value === 'object') {
-      return getFields(value, handleChange);
-    }
     const id = index + key;
     return getInput(id, key, value, handleChange);
   });
