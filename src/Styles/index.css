@@ -23,11 +23,13 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+  display: flex;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 h1 {
@@ -65,4 +67,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.CV-display {
+  grid-column: 2;
+  grid-row: 1/-1;
 }

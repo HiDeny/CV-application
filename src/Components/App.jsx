@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import Category from './CategoryComponent';
+import CVDisplay from './CV-Display';
 
-function CVEdit() {
+function CV() {
+  // Profile picture
+
   const [personalInfo, setPersonalInfo] = useState({
     'First Name': '',
     'Last Name': '',
     Email: '',
     'Phone Number': '',
   });
+
+  // Skills
 
   const [educationInfo, setEducationInfo] = useState([
     {
@@ -25,6 +30,8 @@ function CVEdit() {
       'End date': '',
     },
   ]);
+
+  // About Me
 
   const [experienceInfo, setExperienceInfo] = useState([
     {
@@ -57,23 +64,31 @@ function CVEdit() {
 
   return (
     <>
-      <Category
-        title="Personal Information"
-        data={personalInfo}
-        onChange={handlePersonalInfoChange}
+      <CVDisplay
+        personalInfo={personalInfo}
+        educationInfo={educationInfo}
+        experienceInfo={experienceInfo}
       />
-      <Category
-        title="Education"
-        data={educationInfo}
-        onChange={handleEducationInfoChange}
-      />
-      <Category
-        title="Experience"
-        data={experienceInfo}
-        onChange={handleExperienceInfoChange}
-      />
+
+      <div className="CV-edit">
+        <Category
+          title="Personal Information"
+          data={personalInfo}
+          onChange={handlePersonalInfoChange}
+        />
+        <Category
+          title="Education"
+          data={educationInfo}
+          onChange={handleEducationInfoChange}
+        />
+        <Category
+          title="Experience"
+          data={experienceInfo}
+          onChange={handleExperienceInfoChange}
+        />
+      </div>
     </>
   );
 }
 
-export default CVEdit;
+export default CV;

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import CVEdit from './Components/App';
-import './Styles/index.css';
+import CV from './Components/App';
 import './Styles/normalize.css';
+import './Styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <CVEdit />
+    <CV />
   </React.StrictMode>
 );
