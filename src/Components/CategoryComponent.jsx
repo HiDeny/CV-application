@@ -24,7 +24,12 @@ export default function Category({ title, data, onChange }) {
   const fields = !Array.isArray(data)
     ? getFields(data, onChange)
     : data.map((item) => (
-        <SubCategory key={item.id} data={item} onSave={handleSubDataSave} />
+        <SubCategory
+          key={item.id}
+          data={item}
+          onSave={handleSubDataSave}
+          onRemove={handleSubDataRemove}
+        />
       ));
 
   function handleSubDataSave(newData) {
@@ -34,6 +39,15 @@ export default function Category({ title, data, onChange }) {
     const updatedData = [...data];
     updatedData[oldDataIndex] = newData;
     onChange(updatedData);
+  }
+
+  function handleSubDataRemove(dataToRemove) {
+    const updatedArr = [...data];
+    const toRemove = data.find((item) => item.id === dataToRemove.id);
+    const indexToRemove = updatedArr.indexOf(toRemove);
+
+    updatedArr.splice(indexToRemove, 1);
+    onChange(updatedArr);
   }
 
   function handleAddSubCategory() {
