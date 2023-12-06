@@ -3,9 +3,8 @@ import { getFields } from './helper';
 
 const educationTemplate = (id) => ({
   id,
-  Degree: '',
   Name: '',
-  Address: '',
+  Degree: '',
   Date: { Start: null, End: null },
 });
 
@@ -14,8 +13,8 @@ const jobTemplate = (id) => ({
   Name: '',
   Position: '',
   Responsibility: '',
-  Details: '',
   Date: { Start: null, End: null },
+  Details: '',
 });
 
 export default function Category({ title, data, onChange }) {

@@ -6,9 +6,8 @@ export default function DisplayMode({ personal, education, experience }) {
       <h3>{school.Degree}</h3>
       <p>{school.Name}</p>
       <p>
-        {school['Start date']} - {school['End date']}
+        {school.Date.Start} - {school.Date.End}
       </p>
-      <p>Address: {school.Address}</p>
     </div>
   ));
 
@@ -18,10 +17,10 @@ export default function DisplayMode({ personal, education, experience }) {
         {job.Name} - {job.Position}
       </h3>
       <p>
-        {job['Start date']} - {job['End date']}
+        {job.Date.Start} - {job.Date.End}
       </p>
       <p>Responsibility: {job.Responsibility}</p>
-      <p>Details: {job.Address}</p>
+      <p>Details: {job.Details}</p>
     </div>
   ));
 

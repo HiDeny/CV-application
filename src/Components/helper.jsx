@@ -1,35 +1,17 @@
 function getFields(data, onChange) {
   return Object.entries(data).map(([key, value], index) => {
     // const id = index + key;
+    let inputType = 'text';
 
     if (key === 'id') return;
     if (key === 'Date') return DateInput(key, onChange);
-    if (key === 'Email') {
-      return (
-        <label>
-          Email
-          <input type="email" name="Email" value={value} onChange={onChange} />
-        </label>
-      );
-    }
-    if (key === 'Phone Number') {
-      return (
-        <label>
-          Phone Number
-          <input
-            type="tel"
-            name="Phone Number"
-            value={value}
-            onChange={onChange}
-          />
-        </label>
-      );
-    }
+    if (key === 'Email') inputType = 'email';
+    if (key === 'Phone Number') inputType = 'tel';
 
     return (
       <label>
         {key}
-        <input type="text" name={key} value={value} onChange={onChange} />
+        <input type={inputType} name={key} value={value} onChange={onChange} />
       </label>
     );
   });

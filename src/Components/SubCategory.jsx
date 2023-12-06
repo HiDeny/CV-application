@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { getFields } from './helper';
 
 export default function SubCategory({ data, subData, onChange }) {
-  const fields = getFields(subData, handleSubDataChange);
+  const [newSubData, setNewSubData] = useState(subData);
+  const fields = getFields(newSubData, handleSubDataChange);
 
   function handleSubDataChange(e) {
     const { value, name } = e.target;
@@ -10,26 +12,27 @@ export default function SubCategory({ data, subData, onChange }) {
 
     if (name === 'Start' || name === 'End') {
       key = ['Date'];
-      const oldDate = subData['Date'];
-      const newDate = { ...oldDate, [key]: value };
+      const oldDate = newSubData['Date'];
+      const newDate = { ...oldDate, [name]: value };
       updatedValue = newDate;
     }
 
-    handleSubDataSave({ ...subData, [key]: updatedValue });
+    setNewSubData({ ...newSubData, [key]: updatedValue });
   }
 
-  function handleSubDataSave(newData) {
-    const oldData = data.find((item) => item.id === newData.id);
+  function handleSubDataSave(e) {
+    e.preventDefault();
+    const oldData = data.find((item) => item.id === subData.id);
     const oldDataIndex = data.indexOf(oldData);
 
     const updatedData = [...data];
-    updatedData[oldDataIndex] = newData;
+    updatedData[oldDataIndex] = newSubData;
     onChange(updatedData);
   }
 
-  function handleSubDataRemove(dataToRemove) {
+  function handleSubDataRemove() {
     const updatedArr = [...data];
-    const toRemove = data.find((item) => item.id === dataToRemove.id);
+    const toRemove = data.find((item) => item.id === newSubData.id);
     const indexToRemove = updatedArr.indexOf(toRemove);
 
     updatedArr.splice(indexToRemove, 1);
@@ -37,15 +40,15 @@ export default function SubCategory({ data, subData, onChange }) {
   }
 
   return (
-    <div className="subCategory">
-      <h3 className="subCategory-title">{data.Name || 'Name'}</h3>
+    <form className="subCategory" onSubmit={handleSubDataSave}>
+      <h3 className="subCategory-title">{newSubData.Name || 'Name'}</h3>
       <div className="content">{fields}</div>
-      <button
-        className="removeBtn"
-        onClick={() => handleSubDataRemove(subData)}
-      >
+      <button type="button" className="removeBtn" onClick={handleSubDataRemove}>
         REMOVE
       </button>
-    </div>
+      <button type="submit" className="removeBtn">
+        SAVE
+      </button>
+    </form>
   );
 }
