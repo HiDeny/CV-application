@@ -1,4 +1,4 @@
-import Input from './Input';
+import { getFields } from './helper';
 
 export default function SubCategory({ data, subData, onChange }) {
   const fields = getFields(subData, handleSubDataChange);
@@ -39,7 +39,7 @@ export default function SubCategory({ data, subData, onChange }) {
   return (
     <div className="subCategory">
       <h3 className="subCategory-title">{data.Name || 'Name'}</h3>
-      <div className="fields">{fields}</div>
+      <div className="content">{fields}</div>
       <button
         className="removeBtn"
         onClick={() => handleSubDataRemove(subData)}
@@ -48,48 +48,4 @@ export default function SubCategory({ data, subData, onChange }) {
       </button>
     </div>
   );
-}
-
-function getInput(id, key, value, handleChange) {
-  return (
-    <Input
-      key={id}
-      label={key}
-      name={key}
-      type="text"
-      value={value}
-      handleChange={handleChange}
-    />
-  );
-}
-
-function getFields(data, handleChange) {
-  return Object.entries(data).map(([key, value], index) => {
-    if (key === 'id') return;
-    if (key === 'Date') {
-      return (
-        <label className="date">
-          Date
-          <Input
-            // key={id}
-            label={'Start'}
-            name={'Start'}
-            type="date"
-            value={key.Start}
-            handleChange={handleChange}
-          />
-          <Input
-            // key={id}
-            label={'End'}
-            name={'End'}
-            type="date"
-            value={key.End}
-            handleChange={handleChange}
-          />
-        </label>
-      );
-    }
-    const id = index + key;
-    return getInput(id, key, value, handleChange);
-  });
 }

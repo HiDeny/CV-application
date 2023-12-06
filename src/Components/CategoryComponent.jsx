@@ -1,5 +1,5 @@
-import Input from './Input';
 import SubCategory from './SubCategory';
+import { getFields } from './helper';
 
 const educationTemplate = (id) => ({
   id,
@@ -19,7 +19,20 @@ const jobTemplate = (id) => ({
 });
 
 export default function Category({ title, data, onChange }) {
-  const fields = getFields(data, onChange);
+  let fields;
+
+  if (Array.isArray(data)) {
+    fields = data.map((item) => (
+      <SubCategory
+        key={item.id}
+        data={data}
+        subData={item}
+        onChange={onChange}
+      />
+    ));
+  } else {
+    fields = getFields(data, onChange);
+  }
 
   function handleAddSubCategory() {
     const updatedData = [...data];
@@ -35,7 +48,7 @@ export default function Category({ title, data, onChange }) {
       <h2 className="category-title">{title}</h2>
       {Array.isArray(data) ? (
         <>
-          {fields}
+          <div className="cards">{fields}</div>
           <button
             className="addBtn"
             type="button"
@@ -49,31 +62,4 @@ export default function Category({ title, data, onChange }) {
       )}
     </div>
   );
-}
-
-function getFields(data, onChange) {
-  if (Array.isArray(data)) {
-    return data.map((item) => (
-      <SubCategory
-        key={item.id}
-        data={data}
-        subData={item}
-        onChange={onChange}
-      />
-    ));
-  }
-
-  return Object.entries(data).map(([key, value], index) => {
-    const id = index + key;
-    return (
-      <Input
-        key={id}
-        label={key}
-        name={key}
-        type="text"
-        value={value}
-        handleChange={onChange}
-      />
-    );
-  });
 }
