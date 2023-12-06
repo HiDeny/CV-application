@@ -1,21 +1,49 @@
-import Card from './Card';
+import DisplayCard from './CardDisplay';
+import CardEdit from './CardEdit';
+import { educationTemplate, jobTemplate } from './helper';
 
-export default function SubCategory({ data, onChange }) {
+export default function SubCategory({ title, data, onChange }) {
   const cards = data.map((item) => (
-    <form onSubmit={handleCardSubmit}>
-      <Card key={item.id} item={item} onChange={handleItemChange} />
-      <button
-        type="button"
-        className="removeBtn"
-        onClick={() => handleItemRemove(item)}
-      >
-        REMOVE
+    <>
+      <DisplayCard key={item.id} item={item} />
+      <button className="editButton" onClick={() => handleEditClick(item)}>
+        Edit
       </button>
-      <button type="submit" className="removeBtn">
-        SAVE
-      </button>
-    </form>
+      <form onSubmit={handleCardSubmit} className="CardEdit">
+        <CardEdit key={item.id} item={item} onChange={handleItemChange} />
+        <button
+          type="button"
+          className="removeBtn"
+          onClick={() => handleItemRemove(item)}
+        >
+          REMOVE
+        </button>
+        <button type="submit" className="removeBtn">
+          SAVE
+        </button>
+      </form>
+    </>
   ));
+
+  function handleEditClick(item) {
+    const element = document.querySelector(`[data-id="${item.id}"]`);
+    element.replaceWith(
+      <form onSubmit={handleCardSubmit} className="CardEdit">
+        <CardEdit key={item.id} item={item} onChange={handleItemChange} />
+        <button
+          type="button"
+          className="removeBtn"
+          onClick={() => handleItemRemove(item)}
+        >
+          REMOVE
+        </button>
+        <button type="submit" className="removeBtn">
+          SAVE
+        </button>
+      </form>
+    );
+    console.log(element);
+  }
 
   function handleItemChange(newItem) {
     const oldData = data.find((item) => item.id === newItem.id);
@@ -40,5 +68,21 @@ export default function SubCategory({ data, onChange }) {
     e.preventDefault();
   }
 
-  return cards;
+  function handleAddSubCategory() {
+    const updatedData = [...data];
+    const newId = Math.random() * 999;
+    const newItem =
+      title === 'Education' ? educationTemplate(newId) : jobTemplate(newId);
+    updatedData.push(newItem);
+    onChange(updatedData);
+  }
+
+  return (
+    <>
+      {cards}
+      <button className="addBtn" type="button" onClick={handleAddSubCategory}>
+        Add
+      </button>
+    </>
+  );
 }

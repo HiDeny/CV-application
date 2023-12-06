@@ -1,4 +1,4 @@
-export default function Card({ item, onChange }) {
+export default function CardEdit({ item, onChange }) {
   const fields = Object.entries(item).map(([key, value]) => (
     <FieldEdit item={key} value={value} onChange={handleFieldChange} />
   ));
@@ -46,10 +46,6 @@ function FieldEdit({ item, value, onChange }) {
       />
     </label>
   );
-}
-
-function FieldDisplay({ value }) {
-  return <p>{value}</p>;
 }
 
 function DateInput({ item, onChange }) {
