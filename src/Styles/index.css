@@ -83,7 +83,7 @@ button:focus-visible {
 }
 
 .EditMode {
-  max-width: 20rem;
+  /* max-width: 20rem; */
 }
 
 .category {
@@ -93,6 +93,11 @@ button:focus-visible {
   align-items: center;
 
   padding: 1rem;
+}
+
+.content {
+  display: flex;
+  gap: 1rem;
 }
 
 .category-title {

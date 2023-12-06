@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import Input from './Input';
 
-export default function SubCategory({ data, onSave, onRemove }) {
-  const [subData, setSubData] = useState(data);
+export default function SubCategory({ data, subData, onChange }) {
   const fields = getFields(subData, handleSubDataChange);
 
   function handleSubDataChange(e) {
@@ -17,16 +15,35 @@ export default function SubCategory({ data, onSave, onRemove }) {
       updatedValue = newDate;
     }
 
-    const updatedInfo = { ...subData, [key]: updatedValue };
-    setSubData(updatedInfo);
-    onSave(updatedInfo);
+    handleSubDataSave({ ...subData, [key]: updatedValue });
+  }
+
+  function handleSubDataSave(newData) {
+    const oldData = data.find((item) => item.id === newData.id);
+    const oldDataIndex = data.indexOf(oldData);
+
+    const updatedData = [...data];
+    updatedData[oldDataIndex] = newData;
+    onChange(updatedData);
+  }
+
+  function handleSubDataRemove(dataToRemove) {
+    const updatedArr = [...data];
+    const toRemove = data.find((item) => item.id === dataToRemove.id);
+    const indexToRemove = updatedArr.indexOf(toRemove);
+
+    updatedArr.splice(indexToRemove, 1);
+    onChange(updatedArr);
   }
 
   return (
-    <div className="category subCategory">
+    <div className="subCategory">
       <h3 className="subCategory-title">{data.Name || 'Name'}</h3>
       <div className="fields">{fields}</div>
-      <button className="removeBtn" onClick={() => onRemove(subData)}>
+      <button
+        className="removeBtn"
+        onClick={() => handleSubDataRemove(subData)}
+      >
         REMOVE
       </button>
     </div>
@@ -52,6 +69,7 @@ function getFields(data, handleChange) {
     if (key === 'Date') {
       return (
         <label className="date">
+          Date
           <Input
             // key={id}
             label={'Start'}

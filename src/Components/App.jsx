@@ -14,35 +14,11 @@ function App() {
 
   // Skills
 
-  const [education, setEducation] = useState([
-    // {
-    //   Name: 'School1',
-    //   Degree: '',
-    //   Address: '',
-    //   'Start date': '',
-    //   'End date': '',
-    // },
-    // {
-    //   Name: 'School2',
-    //   Degree: '',
-    //   Address: '',
-    //   'Start date': '',
-    //   'End date': '',
-    // },
-  ]);
+  const [education, setEducation] = useState([]);
 
   // About Me
 
-  const [experience, setExperience] = useState([
-    // {
-    //   Name: '',
-    //   Position: '',
-    //   Responsibility: '',
-    //   Details: '',
-    //   'Start date': '',
-    //   'End date': '',
-    // },
-  ]);
+  const [experience, setExperience] = useState([]);
 
   function handlePersonalChange(e) {
     const { name, value } = e.target;

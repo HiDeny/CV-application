@@ -19,34 +19,7 @@ const jobTemplate = (id) => ({
 });
 
 export default function Category({ title, data, onChange }) {
-  const fields = !Array.isArray(data)
-    ? getFields(data, onChange)
-    : data.map((item) => (
-        <SubCategory
-          key={item.id}
-          data={item}
-          onSave={handleSubDataSave}
-          onRemove={handleSubDataRemove}
-        />
-      ));
-
-  function handleSubDataSave(newData) {
-    const oldData = data.find((item) => item.id === newData.id);
-    const oldDataIndex = data.indexOf(oldData);
-
-    const updatedData = [...data];
-    updatedData[oldDataIndex] = newData;
-    onChange(updatedData);
-  }
-
-  function handleSubDataRemove(dataToRemove) {
-    const updatedArr = [...data];
-    const toRemove = data.find((item) => item.id === dataToRemove.id);
-    const indexToRemove = updatedArr.indexOf(toRemove);
-
-    updatedArr.splice(indexToRemove, 1);
-    onChange(updatedArr);
-  }
+  const fields = getFields(data, onChange);
 
   function handleAddSubCategory() {
     const updatedData = [...data];
@@ -60,32 +33,47 @@ export default function Category({ title, data, onChange }) {
   return (
     <div className="category">
       <h2 className="category-title">{title}</h2>
-      <div className="fields">{fields}</div>
-      {Array.isArray(data) && (
-        <button className="addBtn" type="button" onClick={handleAddSubCategory}>
-          Add
-        </button>
+      {Array.isArray(data) ? (
+        <>
+          {fields}
+          <button
+            className="addBtn"
+            type="button"
+            onClick={handleAddSubCategory}
+          >
+            Add
+          </button>
+        </>
+      ) : (
+        <div className="content">{fields}</div>
       )}
     </div>
   );
 }
 
-function getInput(id, key, value, handleChange) {
-  return (
-    <Input
-      key={id}
-      label={key}
-      name={key}
-      type="text"
-      value={value}
-      handleChange={handleChange}
-    />
-  );
-}
+function getFields(data, onChange) {
+  if (Array.isArray(data)) {
+    return data.map((item) => (
+      <SubCategory
+        key={item.id}
+        data={data}
+        subData={item}
+        onChange={onChange}
+      />
+    ));
+  }
 
-function getFields(data, handleChange) {
   return Object.entries(data).map(([key, value], index) => {
     const id = index + key;
-    return getInput(id, key, value, handleChange);
+    return (
+      <Input
+        key={id}
+        label={key}
+        name={key}
+        type="text"
+        value={value}
+        handleChange={onChange}
+      />
+    );
   });
 }
