@@ -95,7 +95,7 @@ button:focus-visible {
   padding: 1rem;
 }
 
-.cards {
+.subCategory {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -128,7 +128,7 @@ label {
   justify-self: center;
 }
 
-.subCategory {
+.card {
   min-width: 10rem;
   display: grid;
   align-items: center;
@@ -139,7 +139,7 @@ label {
   gap: 0.25rem;
 }
 
-.subCategory-title {
+.card-title {
   margin: 0;
 }
 

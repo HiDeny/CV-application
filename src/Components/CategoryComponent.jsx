@@ -1,36 +1,14 @@
 import SubCategory from './SubCategory';
-import { getFields } from './helper';
-
-const educationTemplate = (id) => ({
-  id,
-  Name: '',
-  Degree: '',
-  Date: { Start: null, End: null },
-});
-
-const jobTemplate = (id) => ({
-  id,
-  Name: '',
-  Position: '',
-  Responsibility: '',
-  Date: { Start: null, End: null },
-  Details: '',
-});
+import Card from './Card';
+import { educationTemplate, jobTemplate } from './helper';
 
 export default function Category({ title, data, onChange }) {
-  let fields;
+  let content;
 
   if (Array.isArray(data)) {
-    fields = data.map((item) => (
-      <SubCategory
-        key={item.id}
-        data={data}
-        subData={item}
-        onChange={onChange}
-      />
-    ));
+    content = <SubCategory data={data} onChange={onChange} />;
   } else {
-    fields = getFields(data, onChange);
+    content = <Card item={data} onChange={onChange} />;
   }
 
   function handleAddSubCategory() {
@@ -45,19 +23,11 @@ export default function Category({ title, data, onChange }) {
   return (
     <div className="category">
       <h2 className="category-title">{title}</h2>
-      {Array.isArray(data) ? (
-        <>
-          <div className="cards">{fields}</div>
-          <button
-            className="addBtn"
-            type="button"
-            onClick={handleAddSubCategory}
-          >
-            Add
-          </button>
-        </>
-      ) : (
-        <div className="content">{fields}</div>
+      {content}
+      {Array.isArray(data) && (
+        <button className="addBtn" type="button" onClick={handleAddSubCategory}>
+          Add
+        </button>
       )}
     </div>
   );

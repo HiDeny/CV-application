@@ -14,16 +14,21 @@ function App() {
 
   // Skills
 
-  const [education, setEducation] = useState([]);
+  const [education, setEducation] = useState([
+    {
+      id: 0,
+      Name: 'Test School',
+      Degree: 'Nest',
+      Date: { Start: null, End: null },
+    },
+  ]);
 
   // About Me
 
   const [experience, setExperience] = useState([]);
 
-  function handlePersonalChange(e) {
-    const { name, value } = e.target;
-    const updated = { ...personal, [name]: value };
-    setPersonal(updated);
+  function handlePersonalChange(newData) {
+    setPersonal(newData);
   }
 
   function handleEducationChange(newData) {

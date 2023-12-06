@@ -20,7 +20,7 @@ export default function DisplayMode({ personal, education, experience }) {
         {job.Date.Start} - {job.Date.End}
       </p>
       <p>Responsibility: {job.Responsibility}</p>
-      <p>Details: {job.Details}</p>
+      {job.Details && <p>Details: {job.Details}</p>}
     </div>
   ));
 
