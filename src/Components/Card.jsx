@@ -46,8 +46,7 @@ export default function Card({
   if (editMode) {
     return (
       <form onSubmit={handleCardSubmit} className="card">
-        <h3 className="card-title">{item.Name || 'Name'}</h3>
-        {fields}
+        <div className="card-fields">{fields}</div>
         {handleRemove && (
           <button
             type="button"
@@ -66,7 +65,7 @@ export default function Card({
 
   return (
     <div className="card">
-      <h3 className="card-title">{item.Name || 'Name'}</h3>
+      <h3 className="card-title">{item.Name}</h3>
       <div className="content">{fields}</div>
       <button className="editBtn" type="button" onClick={handleEditChange}>
         Edit

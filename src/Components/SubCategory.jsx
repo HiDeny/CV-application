@@ -47,11 +47,13 @@ export default function SubCategory({
   }
 
   return (
-    <>
+    <div className="subcategory">
       {cards}
-      <button className="addBtn" type="button" onClick={handleAddSubCategory}>
-        Add
-      </button>
-    </>
+      <div className="card">
+        <button className="addBtn" type="button" onClick={handleAddSubCategory}>
+          Add
+        </button>
+      </div>
+    </div>
   );
 }

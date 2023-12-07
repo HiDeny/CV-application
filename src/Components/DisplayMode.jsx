@@ -31,7 +31,7 @@ export default function DisplayMode({
   ));
 
   return (
-    <div className={`DisplayMode ${hidden && 'hidden'}`}>
+    <div className={`${hidden ? 'DisplayMode hidden' : 'DisplayMode'}`}>
       <h1>CV application</h1>
 
       <section className="personalDetails">

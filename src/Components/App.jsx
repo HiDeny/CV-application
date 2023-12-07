@@ -27,8 +27,6 @@ function App() {
     },
   ]);
 
-  // About Me
-
   const [experience, setExperience] = useState([]);
 
   function handlePersonalChange(newData) {
@@ -49,7 +47,7 @@ function App() {
 
   return (
     <>
-      <div className={`EditMode ${!editMode && 'hidden'}`}>
+      <div className={`${!editMode ? 'EditMode hidden' : 'EditMode'}`}>
         <div className="category">
           <h2 className="category-title">Personal Information</h2>
           <Card
@@ -79,14 +77,15 @@ function App() {
             setDisplayReady={setDisplayReady}
           />
         </div>
-
-        <button
-          type="button"
-          disabled={!displayReady}
-          onClick={() => setEditMode(false)}
-        >
-          Create
-        </button>
+        <div className="category create">
+          <button
+            type="button"
+            disabled={!displayReady}
+            onClick={() => setEditMode(false)}
+          >
+            Create
+          </button>
+        </div>
       </div>
 
       <DisplayMode
