@@ -1,49 +1,15 @@
-import DisplayCard from './CardDisplay';
-import CardEdit from './CardEdit';
+import Card from './Card';
 import { educationTemplate, jobTemplate } from './helper';
 
 export default function SubCategory({ title, data, onChange }) {
   const cards = data.map((item) => (
-    <>
-      <DisplayCard key={item.id} item={item} />
-      <button className="editButton" onClick={() => handleEditClick(item)}>
-        Edit
-      </button>
-      <form onSubmit={handleCardSubmit} className="CardEdit">
-        <CardEdit key={item.id} item={item} onChange={handleItemChange} />
-        <button
-          type="button"
-          className="removeBtn"
-          onClick={() => handleItemRemove(item)}
-        >
-          REMOVE
-        </button>
-        <button type="submit" className="removeBtn">
-          SAVE
-        </button>
-      </form>
-    </>
+    <Card
+      key={item.id}
+      item={item}
+      onChange={handleItemChange}
+      onRemove={handleItemRemove}
+    />
   ));
-
-  function handleEditClick(item) {
-    const element = document.querySelector(`[data-id="${item.id}"]`);
-    element.replaceWith(
-      <form onSubmit={handleCardSubmit} className="CardEdit">
-        <CardEdit key={item.id} item={item} onChange={handleItemChange} />
-        <button
-          type="button"
-          className="removeBtn"
-          onClick={() => handleItemRemove(item)}
-        >
-          REMOVE
-        </button>
-        <button type="submit" className="removeBtn">
-          SAVE
-        </button>
-      </form>
-    );
-    console.log(element);
-  }
 
   function handleItemChange(newItem) {
     const oldData = data.find((item) => item.id === newItem.id);
@@ -62,10 +28,6 @@ export default function SubCategory({ title, data, onChange }) {
     const updatedArr = [...data];
     updatedArr.splice(indexToRemove, 1);
     onChange(updatedArr);
-  }
-
-  function handleCardSubmit(e) {
-    e.preventDefault();
   }
 
   function handleAddSubCategory() {

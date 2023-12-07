@@ -72,6 +72,8 @@ button:focus-visible {
   }
 } */
 
+/** DISPLAY MODE */
+
 .DisplayMode {
   grid-column: 2;
   grid-row: 1/-1;
@@ -82,9 +84,7 @@ button:focus-visible {
   min-width: 500px;
 }
 
-.EditMode {
-  /* max-width: 20rem; */
-}
+/** CATEGORY */
 
 .category {
   display: flex;
@@ -95,6 +95,12 @@ button:focus-visible {
   padding: 1rem;
 }
 
+.category-title {
+  margin: 0;
+  text-align: center;
+}
+
+/** SUBCATEGORY */
 .subCategory {
   display: flex;
   flex-wrap: wrap;
@@ -102,15 +108,22 @@ button:focus-visible {
   justify-content: center;
 }
 
-label {
-  display: flex;
-  flex-direction: column;
+/** CARD */
+
+.card {
+  position: relative;
+  display: grid;
+  align-items: center;
+
+  min-width: 10rem;
+  border: 2px solid;
+  border-radius: 2rem;
+  padding: 0.75rem;
+  gap: 0.5rem;
 }
 
-.date {
-  display: flex;
-  flex-direction: row;
-  gap: 0.25rem;
+.card-title {
+  margin: 0;
 }
 
 .content {
@@ -119,30 +132,39 @@ label {
   gap: 0.5rem;
 }
 
-.category-title {
-  margin: 0;
-  text-align: center;
+/** FORM */
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.25rem;
+}
+
+.dateStart {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.dateEnd {
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .addBtn {
   justify-self: center;
 }
 
-.card {
-  min-width: 10rem;
-  display: grid;
-  align-items: center;
-
-  border: 2px solid;
-  border-radius: 2rem;
-  padding: 0.75rem;
-  gap: 0.25rem;
-}
-
-.card-title {
-  margin: 0;
-}
-
 .removeBtn {
-  justify-self: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: transparent;
+  color: black;
 }

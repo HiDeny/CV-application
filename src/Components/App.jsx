@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Category from './CategoryComponent';
+import Category from './Category';
 import DisplayMode from './DisplayMode';
 
 function App() {

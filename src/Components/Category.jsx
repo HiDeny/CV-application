@@ -1,5 +1,5 @@
 import SubCategory from './SubCategory';
-import CardEdit from './CardEdit';
+import Card from './Card';
 
 export default function Category({ title, data, onChange }) {
   let content;
@@ -7,7 +7,7 @@ export default function Category({ title, data, onChange }) {
   if (Array.isArray(data)) {
     content = <SubCategory title={title} data={data} onChange={onChange} />;
   } else {
-    content = <CardEdit item={data} onChange={onChange} />;
+    content = <Card item={data} onChange={onChange} />;
   }
 
   return (
