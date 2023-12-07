@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import { FieldEdit, FieldDisplay } from './Field';
 
-export default function Card({ item, handleChange, handleRemove }) {
+export default function Card({
+  item,
+  handleChange,
+  handleRemove,
+  setDisplayReady,
+}) {
   const [editMode, setEditMode] = useState(true);
+  if (editMode) setDisplayReady(false);
+
   const fields = Object.entries(item).map(([key, value]) =>
     editMode ? (
       <FieldEdit item={key} value={value} handleChange={handleFieldChange} />
@@ -25,14 +32,15 @@ export default function Card({ item, handleChange, handleRemove }) {
 
     handleChange({ ...item, [key]: updatedValue });
   }
-
   function handleEditChange() {
-    setEditMode(!editMode);
+    setEditMode(true);
   }
 
   function handleCardSubmit(e) {
     e.preventDefault();
-    handleEditChange();
+    setEditMode(false);
+    setDisplayReady(true);
+    // handleEditChange();
   }
 
   if (editMode) {
@@ -40,13 +48,15 @@ export default function Card({ item, handleChange, handleRemove }) {
       <form onSubmit={handleCardSubmit} className="card">
         <h3 className="card-title">{item.Name || 'Name'}</h3>
         {fields}
-        <button
-          type="button"
-          className="removeBtn"
-          onClick={() => handleRemove(item)}
-        >
-          X
-        </button>
+        {handleRemove && (
+          <button
+            type="button"
+            className="removeBtn"
+            onClick={() => handleRemove(item)}
+          >
+            X
+          </button>
+        )}
         <button type="submit" className="saveBtn">
           SAVE
         </button>

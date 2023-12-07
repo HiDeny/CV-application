@@ -1,9 +1,13 @@
 import { useState } from 'react';
-import Category from './Category';
+
 import DisplayMode from './DisplayMode';
+import SubCategory from './SubCategory';
+import Card from './Card';
 
 function App() {
   // Profile picture
+  const [editMode, setEditMode] = useState(true);
+  const [displayReady, setDisplayReady] = useState(false);
 
   const [personal, setPersonal] = useState({
     'First Name': '',
@@ -39,31 +43,59 @@ function App() {
     setExperience(newData);
   }
 
+  function toggleEditMode() {
+    setEditMode(!editMode);
+  }
+
   return (
     <>
-      {/* <DisplayMode
+      <div className={`EditMode ${!editMode && 'hidden'}`}>
+        <div className="category">
+          <h2 className="category-title">Personal Information</h2>
+          <Card
+            item={personal}
+            handleChange={handlePersonalChange}
+            handleRemove={false}
+            setDisplayReady={setDisplayReady}
+          />
+        </div>
+
+        <div className="category">
+          <h2 className="category-title">Education</h2>
+          <SubCategory
+            title="Education"
+            data={education}
+            handleChange={handleEducationChange}
+            setDisplayReady={setDisplayReady}
+          />
+        </div>
+
+        <div className="category">
+          <h2 className="category-title">Experience</h2>
+          <SubCategory
+            title="Experience"
+            data={experience}
+            handleChange={handleExperienceChange}
+            setDisplayReady={setDisplayReady}
+          />
+        </div>
+
+        <button
+          type="button"
+          disabled={!displayReady}
+          onClick={() => setEditMode(false)}
+        >
+          Create
+        </button>
+      </div>
+
+      <DisplayMode
         personal={personal}
         education={education}
         experience={experience}
-      /> */}
-
-      <div className="EditMode">
-        <Category
-          title="Personal Information"
-          data={personal}
-          handleChange={handlePersonalChange}
-        />
-        <Category
-          title="Education"
-          data={education}
-          handleChange={handleEducationChange}
-        />
-        <Category
-          title="Experience"
-          data={experience}
-          handleChange={handleExperienceChange}
-        />
-      </div>
+        hidden={editMode}
+        onClickEdit={() => setEditMode(true)}
+      />
     </>
   );
 }

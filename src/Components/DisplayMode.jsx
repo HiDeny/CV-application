@@ -1,4 +1,10 @@
-export default function DisplayMode({ personal, education, experience }) {
+export default function DisplayMode({
+  personal,
+  education,
+  experience,
+  hidden,
+  onClickEdit,
+}) {
   const fullName = `${personal['First Name']} ${personal['Last Name']}`;
 
   const schoolList = education.map((school) => (
@@ -25,7 +31,7 @@ export default function DisplayMode({ personal, education, experience }) {
   ));
 
   return (
-    <div className="DisplayMode">
+    <div className={`DisplayMode ${hidden && 'hidden'}`}>
       <h1>CV application</h1>
 
       <section className="personalDetails">
@@ -50,6 +56,9 @@ export default function DisplayMode({ personal, education, experience }) {
           {experiencesList}
         </section>
       )}
+      <button type="button" onClick={onClickEdit}>
+        Edit
+      </button>
     </div>
   );
 }
