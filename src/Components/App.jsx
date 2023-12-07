@@ -19,7 +19,7 @@ function App() {
       id: 0,
       Name: 'Test School',
       Degree: 'Nest',
-      Date: { Start: null, End: null },
+      Date: { Start: '', End: '' },
     },
   ]);
 
@@ -51,17 +51,17 @@ function App() {
         <Category
           title="Personal Information"
           data={personal}
-          onChange={handlePersonalChange}
+          handleChange={handlePersonalChange}
         />
         <Category
           title="Education"
           data={education}
-          onChange={handleEducationChange}
+          handleChange={handleEducationChange}
         />
         <Category
           title="Experience"
           data={experience}
-          onChange={handleExperienceChange}
+          handleChange={handleExperienceChange}
         />
       </div>
     </>

@@ -1,13 +1,13 @@
 import Card from './Card';
 import { educationTemplate, jobTemplate } from './helper';
 
-export default function SubCategory({ title, data, onChange }) {
+export default function SubCategory({ title, data, handleChange }) {
   const cards = data.map((item) => (
     <Card
       key={item.id}
       item={item}
-      onChange={handleItemChange}
-      onRemove={handleItemRemove}
+      handleChange={handleItemChange}
+      handleRemove={handleItemRemove}
     />
   ));
 
@@ -18,7 +18,7 @@ export default function SubCategory({ title, data, onChange }) {
     const newData = [...data];
     newData[oldDataIndex] = newItem;
 
-    onChange(newData);
+    handleChange(newData);
   }
 
   function handleItemRemove(itemToRemove) {
@@ -27,7 +27,7 @@ export default function SubCategory({ title, data, onChange }) {
 
     const updatedArr = [...data];
     updatedArr.splice(indexToRemove, 1);
-    onChange(updatedArr);
+    handleChange(updatedArr);
   }
 
   function handleAddSubCategory() {
@@ -36,7 +36,7 @@ export default function SubCategory({ title, data, onChange }) {
     const newItem =
       title === 'Education' ? educationTemplate(newId) : jobTemplate(newId);
     updatedData.push(newItem);
-    onChange(updatedData);
+    handleChange(updatedData);
   }
 
   return (

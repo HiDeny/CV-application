@@ -139,6 +139,10 @@ label {
   flex-direction: column;
 }
 
+.details {
+  resize: vertical;
+}
+
 .date {
   display: grid;
   grid-template-columns: 1fr 1fr;

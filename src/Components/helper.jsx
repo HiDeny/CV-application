@@ -2,7 +2,7 @@ export const educationTemplate = (id) => ({
   id,
   Name: '',
   Degree: '',
-  Date: { Start: null, End: null },
+  Date: { Start: '', End: '' },
 });
 
 export const jobTemplate = (id) => ({
@@ -10,6 +10,6 @@ export const jobTemplate = (id) => ({
   Name: '',
   Position: '',
   Responsibility: '',
-  Date: { Start: null, End: null },
   Details: '',
+  Date: { Start: '', End: '' },
 });

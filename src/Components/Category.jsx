@@ -1,14 +1,12 @@
 import SubCategory from './SubCategory';
 import Card from './Card';
 
-export default function Category({ title, data, onChange }) {
-  let content;
-
-  if (Array.isArray(data)) {
-    content = <SubCategory title={title} data={data} onChange={onChange} />;
-  } else {
-    content = <Card item={data} onChange={onChange} />;
-  }
+export default function Category({ title, data, handleChange }) {
+  const content = Array.isArray(data) ? (
+    <SubCategory title={title} data={data} handleChange={handleChange} />
+  ) : (
+    <Card item={data} handleChange={handleChange} />
+  );
 
   return (
     <div className="category">
