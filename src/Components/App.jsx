@@ -5,9 +5,7 @@ import SubCategory from './SubCategory';
 import Card from './Card';
 
 function App() {
-  // Profile picture
-  const [editMode, setEditMode] = useState(true);
-  const [displayReady, setDisplayReady] = useState(false);
+  // Profile picture\
 
   const [personal, setPersonal] = useState({
     'First Name': '',
@@ -29,6 +27,13 @@ function App() {
 
   const [experience, setExperience] = useState([]);
 
+  const [editMode, setEditMode] = useState(true);
+  const [displayMode, setDisplayMode] = useState({
+    personalReady: false,
+    educationReady: true,
+    experienceReady: true,
+  });
+
   function handlePersonalChange(newData) {
     setPersonal(newData);
   }
@@ -45,42 +50,109 @@ function App() {
     setEditMode(!editMode);
   }
 
+  function setReadyPersonal(value) {
+    const updatedReady = { ...displayMode, personalReady: value };
+
+    categoryCheck(updatedReady);
+    setDisplayMode(updatedReady);
+  }
+
+  function setReadyEducation(value) {
+    const updatedReady = { ...displayMode, educationReady: value };
+
+    categoryCheck(updatedReady);
+    setDisplayMode(updatedReady);
+  }
+
+  function setReadyExperience(value) {
+    const updatedReady = { ...displayMode, experienceReady: value };
+
+    categoryCheck(updatedReady);
+    setDisplayMode(updatedReady);
+  }
+
+  function handleScroll(e) {
+    console.log(e.target);
+    console.log(displayMode);
+
+    // if (!displayMode) {
+    //   e.target.scrollTo({
+    //     top: 0,
+    //     behavior: 'smooth',
+    //   });
+    // }
+  }
+
+  function categoryCheck(updatedDisplayMode) {
+    const { personalReady, educationReady, experienceReady } =
+      updatedDisplayMode;
+    const educationContainer = document.querySelector('.category.education');
+    const experienceContainer = document.querySelector('.category.experience');
+    const createContainer = document.querySelector('.category.create');
+
+    if (personalReady === true) {
+      educationContainer.classList.remove('hidden');
+    } else {
+      educationContainer.classList.add('hidden');
+      experienceContainer.classList.add('hidden');
+      createContainer.classList.add('hidden');
+    }
+
+    if (personalReady === true && educationReady === true) {
+      experienceContainer.classList.remove('hidden');
+    } else {
+      experienceContainer.classList.add('hidden');
+      createContainer.classList.add('hidden');
+    }
+
+    if (
+      personalReady === true &&
+      educationReady === true &&
+      experienceReady === true
+    ) {
+      createContainer.classList.remove('hidden');
+    } else {
+      createContainer.classList.add('hidden');
+    }
+  }
+
   return (
     <>
       <div className={`${!editMode ? 'EditMode hidden' : 'EditMode'}`}>
-        <div className="category">
+        <div className="category personal">
           <h2 className="category-title">Personal Information</h2>
           <Card
             item={personal}
             handleChange={handlePersonalChange}
             handleRemove={false}
-            setDisplayReady={setDisplayReady}
+            setReady={setReadyPersonal}
           />
         </div>
 
-        <div className="category">
+        <div className="category education hidden">
           <h2 className="category-title">Education</h2>
           <SubCategory
             title="Education"
             data={education}
             handleChange={handleEducationChange}
-            setDisplayReady={setDisplayReady}
+            setReady={setReadyEducation}
           />
         </div>
 
-        <div className="category">
+        <div className="category experience hidden">
           <h2 className="category-title">Experience</h2>
           <SubCategory
             title="Experience"
             data={experience}
             handleChange={handleExperienceChange}
-            setDisplayReady={setDisplayReady}
+            setReady={setReadyExperience}
           />
         </div>
-        <div className="category create">
+
+        <div className="category create hidden">
           <button
             type="button"
-            disabled={!displayReady}
+            disabled={!displayMode}
             onClick={() => setEditMode(false)}
           >
             Create

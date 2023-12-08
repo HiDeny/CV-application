@@ -1,14 +1,8 @@
 import { useState } from 'react';
 import { FieldEdit, FieldDisplay } from './Field';
 
-export default function Card({
-  item,
-  handleChange,
-  handleRemove,
-  setDisplayReady,
-}) {
+export default function Card({ item, handleChange, handleRemove, setReady }) {
   const [editMode, setEditMode] = useState(true);
-  if (editMode) setDisplayReady(false);
 
   const fields = Object.entries(item).map(([key, value]) =>
     editMode ? (
@@ -34,12 +28,14 @@ export default function Card({
   }
   function handleEditChange() {
     setEditMode(true);
+    setReady(false);
   }
 
   function handleCardSubmit(e) {
+    console.log(e.target.checkValidity());
     e.preventDefault();
     setEditMode(false);
-    setDisplayReady(true);
+    setReady(true);
     // handleEditChange();
   }
 
@@ -65,7 +61,6 @@ export default function Card({
 
   return (
     <div className="card">
-      <h3 className="card-title">{item.Name}</h3>
       <div className="content">{fields}</div>
       <button className="editBtn" type="button" onClick={handleEditChange}>
         Edit

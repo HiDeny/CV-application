@@ -90,11 +90,6 @@ button:disabled {
   transition: opacity 1s;
 }
 
-.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
 /** CATEGORY */
 
 .category {
@@ -149,10 +144,8 @@ button:disabled {
   position: relative;
 
   display: grid;
-  grid-template-rows: auto 5rem;
+  grid-template-rows: 70vh 20vh;
   align-items: center;
-
-  height: 90%;
 }
 
 .card-title {
@@ -208,4 +201,9 @@ label {
 
   background-color: transparent;
   color: black;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
 }
