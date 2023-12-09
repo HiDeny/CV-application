@@ -123,17 +123,19 @@ function Form({ item, handleSubmit, handleItemChange }) {
 function View({ item, handleEditClick }) {
   const { companyName, details, position, date } = item;
   return (
-    <>
-      <p>{companyName}</p>
-      <p>{details}</p>
-      <p>{position}</p>
-      <p>
-        {date.start} / {date.end ? date.end : 'Now'}
-      </p>
+    <div className="view">
+      <div>
+        <p>{companyName}</p>
+        <p>{details}</p>
+        <p>{position}</p>
+        <p>
+          {date.start} / {date.end ? date.end : 'Now'}
+        </p>
+      </div>
 
-      <button type="button" onClick={handleEditClick}>
+      <button type="button" onClick={handleEditClick} className="editBtn">
         EDIT
       </button>
-    </>
+    </div>
   );
 }

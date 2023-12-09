@@ -101,12 +101,14 @@ function View({ data, handleEditClick }) {
   const { firstName, lastName, email, phone } = data;
   return (
     <>
-      <div id="personalView">
-        <p>
-          {firstName} {lastName}
-        </p>
-        <p>{email}</p>
-        <p>{phone}</p>
+      <div className="view">
+        <div className="content">
+          <p>
+            👤 {firstName} {lastName}
+          </p>
+          <p>✉️ {email}</p>
+          <p>📞 {phone}</p>
+        </div>
       </div>
       <button type="button" onClick={handleEditClick}>
         EDIT

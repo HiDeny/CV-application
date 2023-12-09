@@ -112,16 +112,18 @@ function Form({ item, handleSubmit, handleChange }) {
 function View({ item, handleEditClick }) {
   const { schoolName, title, date } = item;
   return (
-    <>
-      <p>{schoolName}</p>
-      <p>{title}</p>
-      <p>
-        {date.start} / {date.end ? date.end : 'Now'}
-      </p>
+    <div className="view">
+      <div className="content">
+        <p>{schoolName}</p>
+        <p>{title}</p>
+        <p>
+          {date.start} / {date.end ? date.end : 'Now'}
+        </p>
+      </div>
 
       <button type="button" onClick={handleEditClick}>
         EDIT
       </button>
-    </>
+    </div>
   );
 }
