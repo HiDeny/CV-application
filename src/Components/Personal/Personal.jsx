@@ -11,8 +11,8 @@ export default function Personal({ data, updateData }) {
   }
 
   return (
-    <div className="category">
-      <h2>Personal Information</h2>
+    <div className="category personal">
+      <h2 className="category-title">Personal Information</h2>
       {editMode ? (
         <PersonalForm
           data={newData}

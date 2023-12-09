@@ -22,24 +22,32 @@ export default function Education({ data, updateData }) {
   }
 
   return (
-    <div className="category">
-      <h2>Education</h2>
-      {newData.map((school) =>
-        editMode ? (
-          <EducationForm
-            key={school.id}
-            data={school}
-            handleChange={handleSchoolUpdate}
-            handleSubmit={handleSubmit}
-          />
-        ) : (
-          <EducationView
-            key={school.id}
-            data={school}
-            handleEditClick={() => setEditMode(true)}
-          />
-        )
-      )}
+    <div className="category education">
+      <h2 className="category-title">Education</h2>
+      <div className="cards education">
+        {newData.map((school) => (
+          <div className="card education">
+            {editMode ? (
+              <EducationForm
+                key={school.id}
+                data={school}
+                handleChange={handleSchoolUpdate}
+                handleSubmit={handleSubmit}
+              />
+            ) : (
+              <EducationView
+                key={school.id}
+                data={school}
+                handleEditClick={() => setEditMode(true)}
+              />
+            )}
+          </div>
+        ))}
+
+        <div className="card education add">
+          <button type="button">+</button>
+        </div>
+      </div>
     </div>
   );
 }
@@ -68,6 +76,7 @@ function EducationForm({ data, handleSubmit, handleChange }) {
           name="schoolName"
           value={schoolName}
           onChange={handleOnChange}
+          required
         />
       </label>
 
@@ -79,6 +88,7 @@ function EducationForm({ data, handleSubmit, handleChange }) {
           name="title"
           value={title}
           onChange={handleOnChange}
+          required
         />
       </label>
 
@@ -94,6 +104,7 @@ function EducationForm({ data, handleSubmit, handleChange }) {
             value={date.start}
             max={date.end}
             onChange={handleOnChange}
+            required
           />
         </label>
 
@@ -118,7 +129,7 @@ function EducationForm({ data, handleSubmit, handleChange }) {
 function EducationView({ data, handleEditClick }) {
   const { schoolName, title, date } = data;
   return (
-    <div>
+    <>
       <p>{schoolName}</p>
       <p>{title}</p>
       <p>
@@ -128,6 +139,6 @@ function EducationView({ data, handleEditClick }) {
       <button type="button" onClick={handleEditClick}>
         EDIT
       </button>
-    </div>
+    </>
   );
 }

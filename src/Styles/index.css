@@ -90,6 +90,10 @@ button:disabled {
   align-items: center;
 }
 
+.category-title {
+  text-align: center;
+}
+
 /** FORM */
 
 form {
@@ -103,4 +107,39 @@ form {
 label {
   display: flex;
   flex-direction: column;
+}
+
+/** CARD */
+
+.cards.education {
+  display: flex;
+  gap: 1.5rem;
+
+  overflow: scroll;
+  scroll-snap-type: x mandatory;
+
+  height: 100%;
+}
+
+.card.education:first-child {
+  margin-left: 3rem;
+}
+
+.card.education:last-child {
+  margin-right: 3rem;
+}
+
+.card.education {
+  scroll-snap-align: center;
+
+  min-width: 65vw;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: wheat;
+}
+
+.card.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -17,6 +17,18 @@ function App() {
       title: 'Nest',
       date: { start: '', end: '' },
     },
+    {
+      id: 2,
+      schoolName: 'Test School',
+      title: 'Nest',
+      date: { start: '', end: '' },
+    },
+    // {
+    //   id: 3,
+    //   schoolName: 'Test School',
+    //   title: 'Nest',
+    //   date: { start: '', end: '' },
+    // },
   ]);
 
   const [experience, setExperience] = useState([
