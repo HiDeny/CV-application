@@ -1,69 +1,106 @@
 import { useState } from 'react';
+import { v4 as uuid } from 'uuid';
 
 export default function Education({ data, updateData }) {
-  const [editMode, setEditMode] = useState(true);
-  const [newData, setNewData] = useState(data);
+  function handleSchoolChange(updatedSchool, remove = false) {
+    let nextData;
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    updateData(newData);
-    setEditMode(false);
+    if (remove) {
+      nextData = data.filter((school) => school.id !== updatedSchool.id);
+    } else {
+      nextData = data.map((school) => {
+        if (school.id === updatedSchool.id) {
+          return updatedSchool;
+        }
+        return school;
+      });
+    }
+
+    updateData(nextData);
   }
 
-  function handleSchoolUpdate(updatedSchool) {
-    const nextData = newData.map((school) => {
-      if (school.id === updatedSchool.id) {
-        return updatedSchool;
-      }
-      return school;
-    });
+  function handleClickAdd() {
+    const container = document.querySelector('.cards.education');
+    console.log(container.scrollWidth); // 316
+    // container.scrollLeft = container.scrollWidth - 632;
+    container.scrollLeft = container.scrollWidth - 550;
 
-    setNewData(nextData);
+    const newSchool = {
+      id: uuid(),
+      schoolName: '',
+      title: '',
+      date: { start: '', end: '' },
+    };
+
+    updateData([...data, newSchool]);
   }
 
   return (
     <div className="category education">
       <h2 className="category-title">Education</h2>
       <div className="cards education">
-        {newData.map((school) => (
-          <div className="card education">
-            {editMode ? (
-              <EducationForm
-                key={school.id}
-                data={school}
-                handleChange={handleSchoolUpdate}
-                handleSubmit={handleSubmit}
-              />
-            ) : (
-              <EducationView
-                key={school.id}
-                data={school}
-                handleEditClick={() => setEditMode(true)}
-              />
-            )}
-          </div>
+        {data.map((school) => (
+          <Card
+            key={school.id}
+            school={school}
+            handleSchoolChange={handleSchoolChange}
+          />
         ))}
 
         <div className="card education add">
-          <button type="button">+</button>
+          <button type="button" onClick={handleClickAdd}>
+            +
+          </button>
         </div>
       </div>
     </div>
   );
 }
 
-function EducationForm({ data, handleSubmit, handleChange }) {
+function Card({ school, handleSchoolChange, handleSubmit }) {
+  const [editMode, setEditMode] = useState(true);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setEditMode(!editMode);
+  }
+
+  return (
+    <div className="card education">
+      {editMode ? (
+        <EducationForm
+          key={school.id}
+          data={school}
+          handleSchoolChange={handleSchoolChange}
+          handleSubmit={handleSubmit}
+        />
+      ) : (
+        <EducationView
+          key={school.id}
+          data={school}
+          handleEditClick={() => setEditMode(true)}
+        />
+      )}
+    </div>
+  );
+}
+
+function EducationForm({ data, handleSubmit, handleSchoolChange }) {
   const { schoolName, title, date } = data;
 
-  function handleOnChange(e) {
+  function handleChange(e) {
     const { value, name } = e.target;
 
     if (name === 'start' || name === 'end') {
-      handleChange({ ...data, date: { ...data.date, [name]: value } });
+      handleSchoolChange({ ...data, date: { ...data.date, [name]: value } });
       return;
     }
 
-    handleChange({ ...data, [name]: value });
+    handleSchoolChange({ ...data, [name]: value });
+  }
+
+  function handleClickRemove() {
+    handleSchoolChange(data, true);
   }
 
   return (
@@ -75,7 +112,7 @@ function EducationForm({ data, handleSubmit, handleChange }) {
           id="schoolName"
           name="schoolName"
           value={schoolName}
-          onChange={handleOnChange}
+          onChange={handleChange}
           required
         />
       </label>
@@ -87,7 +124,7 @@ function EducationForm({ data, handleSubmit, handleChange }) {
           id="title"
           name="title"
           value={title}
-          onChange={handleOnChange}
+          onChange={handleChange}
           required
         />
       </label>
@@ -103,7 +140,7 @@ function EducationForm({ data, handleSubmit, handleChange }) {
             name="start"
             value={date.start}
             max={date.end}
-            onChange={handleOnChange}
+            onChange={handleChange}
             required
           />
         </label>
@@ -116,12 +153,15 @@ function EducationForm({ data, handleSubmit, handleChange }) {
             name="end"
             value={date.end}
             min={date.start}
-            onChange={handleOnChange}
+            onChange={handleChange}
           />
         </label>
       </div>
 
       <button type="submit">SAVE</button>
+      <button type="button" className="removeBtn" onClick={handleClickRemove}>
+        x
+      </button>
     </form>
   );
 }

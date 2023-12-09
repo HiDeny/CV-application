@@ -130,6 +130,7 @@ label {
 }
 
 .card.education {
+  position: relative;
   scroll-snap-align: center;
 
   min-width: 65vw;
@@ -142,4 +143,13 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.removeBtn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+
+  background: transparent;
+  color: black;
 }

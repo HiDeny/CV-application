@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Personal from './Personal/Personal';
 import Education from './Education/Education';
+import { v4 as uuid } from 'uuid';
 
 function App() {
   const [personal, setPersonal] = useState({
@@ -12,28 +13,22 @@ function App() {
 
   const [education, setEducation] = useState([
     {
-      id: 0,
+      id: uuid(),
       schoolName: 'Test School',
       title: 'Nest',
       date: { start: '', end: '' },
     },
     {
-      id: 2,
+      id: uuid(),
       schoolName: 'Test School',
       title: 'Nest',
       date: { start: '', end: '' },
     },
-    // {
-    //   id: 3,
-    //   schoolName: 'Test School',
-    //   title: 'Nest',
-    //   date: { start: '', end: '' },
-    // },
   ]);
 
   const [experience, setExperience] = useState([
     {
-      id: 0,
+      id: uuid(),
       companyName: 'Test School',
       position: 'Nest',
       date: { start: '', end: '' },
