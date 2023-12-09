@@ -15,12 +15,17 @@ export default function Personal({ data, updateData }) {
       <h2 className="category-title">Personal Information</h2>
       {editMode ? (
         <Form
+          key={data.id}
           data={newData}
           handleChange={setNewData}
           handleSubmit={handleSubmit}
         />
       ) : (
-        <View data={data} handleEditClick={() => setEditMode(true)} />
+        <View
+          key={data.id}
+          data={data}
+          handleEditClick={() => setEditMode(true)}
+        />
       )}
     </div>
   );
@@ -35,73 +40,77 @@ function Form({ data, handleSubmit, handleChange }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="firstName">
-        First Name
-        <input
-          type="text"
-          id="firstName"
-          name="firstName"
-          value={firstName}
-          onChange={handleOnChange}
-          required
-        />
-      </label>
+    <>
+      <form onSubmit={handleSubmit} id="personalForm">
+        <label htmlFor="firstName">
+          First Name
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            value={firstName}
+            onChange={handleOnChange}
+            required
+          />
+        </label>
 
-      <label htmlFor="lastName">
-        Last Name
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          value={lastName}
-          onChange={handleOnChange}
-          required
-        />
-      </label>
+        <label htmlFor="lastName">
+          Last Name
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={lastName}
+            onChange={handleOnChange}
+            required
+          />
+        </label>
 
-      <label htmlFor="email">
-        E-mail
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={handleOnChange}
-          required
-        />
-      </label>
+        <label htmlFor="email">
+          E-mail
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={handleOnChange}
+            required
+          />
+        </label>
 
-      <label htmlFor="phone">
-        Phone
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          value={phone}
-          onChange={handleOnChange}
-          required
-        />
-      </label>
-
-      <button type="submit">SAVE</button>
-    </form>
+        <label htmlFor="phone">
+          Phone
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={phone}
+            onChange={handleOnChange}
+            required
+          />
+        </label>
+      </form>
+      <button type="submit" form="personalForm">
+        SAVE
+      </button>
+    </>
   );
 }
 
 function View({ data, handleEditClick }) {
   const { firstName, lastName, email, phone } = data;
   return (
-    <div>
-      <p>
-        {firstName} {lastName}
-      </p>
-      <p>{email}</p>
-      <p>{phone}</p>
-
+    <>
+      <div id="personalView">
+        <p>
+          {firstName} {lastName}
+        </p>
+        <p>{email}</p>
+        <p>{phone}</p>
+      </div>
       <button type="button" onClick={handleEditClick}>
         EDIT
       </button>
-    </div>
+    </>
   );
 }

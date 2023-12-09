@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { v4 as uuid } from 'uuid';
 import Personal from './Personal/Personal';
 import Education from './Education/Education';
-import { v4 as uuid } from 'uuid';
 import Experience from './Experience/Experience';
 
 function App() {
   const [personal, setPersonal] = useState({
+    id: uuid(),
     firstName: '',
     lastName: '',
     email: '',
