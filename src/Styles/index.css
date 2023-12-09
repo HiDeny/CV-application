@@ -59,7 +59,7 @@ button:disabled {
 
 /** EDIT MODE */
 
-.EditMode {
+/* .EditMode {
   height: 100vh;
   width: 100vw;
 
@@ -67,7 +67,7 @@ button:disabled {
   scroll-snap-type: y mandatory;
 
   transition: opacity 1s, visibility 1s;
-}
+} */
 
 /** DISPLAY MODE */
 
@@ -84,7 +84,7 @@ button:disabled {
   scroll-snap-align: start;
 
   display: grid;
-  grid-template-rows: 20vh 70vh 10vh;
+  grid-template-rows: 15vh 70vh 15vh;
 
   justify-content: center;
   align-items: center;
@@ -111,25 +111,31 @@ label {
 
 /** CARD */
 
-.cards.education {
+.cards {
   display: flex;
   gap: 1.5rem;
 
   overflow: scroll;
   scroll-snap-type: x mandatory;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 
   height: 100%;
 }
 
-.card.education:first-child {
+.cards::-webkit-scrollbar {
+  display: none;
+}
+
+.card:first-child {
   margin-left: 3rem;
 }
 
-.card.education:last-child {
+.card:last-child {
   margin-right: 3rem;
 }
 
-.card.education {
+.card {
   position: relative;
   scroll-snap-align: center;
 
@@ -139,10 +145,9 @@ label {
   background-color: wheat;
 }
 
-.card.add {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.addBtn {
+  width: 10rem;
+  justify-self: center;
 }
 
 .removeBtn {

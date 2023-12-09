@@ -14,19 +14,19 @@ export default function Personal({ data, updateData }) {
     <div className="category personal">
       <h2 className="category-title">Personal Information</h2>
       {editMode ? (
-        <PersonalForm
+        <Form
           data={newData}
           handleChange={setNewData}
           handleSubmit={handleSubmit}
         />
       ) : (
-        <PersonalView data={data} handleEditClick={() => setEditMode(true)} />
+        <View data={data} handleEditClick={() => setEditMode(true)} />
       )}
     </div>
   );
 }
 
-function PersonalForm({ data, handleSubmit, handleChange }) {
+function Form({ data, handleSubmit, handleChange }) {
   const { firstName, lastName, email, phone } = data;
 
   function handleOnChange(e) {
@@ -89,7 +89,7 @@ function PersonalForm({ data, handleSubmit, handleChange }) {
   );
 }
 
-function PersonalView({ data, handleEditClick }) {
+function View({ data, handleEditClick }) {
   const { firstName, lastName, email, phone } = data;
   return (
     <div>
