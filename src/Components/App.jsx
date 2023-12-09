@@ -54,7 +54,7 @@ function App() {
       <Personal data={personal} updateData={updatePersonal} />
       <Education data={education} updateData={updateEducation} />
       <Experience data={experience} updateData={updateExperience} />
-      <div className="category create hidden">
+      <div className="category create">
         <button type="button">Create</button>
       </div>
     </>
