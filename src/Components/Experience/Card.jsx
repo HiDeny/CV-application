@@ -42,8 +42,12 @@ function Form({ item, handleSubmit, handleItemChange }) {
     handleItemChange({ ...item, [name]: value });
   }
 
-  function handleClickRemove() {
-    handleItemChange(item, true);
+  function handleClickRemove(e) {
+    const container = e.target.parentElement.parentElement;
+    container.classList.add('cardRemove');
+    setTimeout(() => {
+      handleItemChange(item, true);
+    }, 500);
   }
 
   return (

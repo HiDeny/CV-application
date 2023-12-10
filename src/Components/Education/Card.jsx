@@ -42,8 +42,12 @@ function Form({ item, handleSubmit, handleChange }) {
     handleChange({ ...item, [name]: value });
   }
 
-  function handleClickRemove() {
-    handleChange(item, true);
+  function handleClickRemove(e) {
+    const container = e.target.parentElement.parentElement;
+    container.classList.add('cardRemove');
+    setTimeout(() => {
+      handleChange(item, true);
+    }, 500);
   }
 
   return (
@@ -56,7 +60,7 @@ function Form({ item, handleSubmit, handleChange }) {
             id="schoolName"
             name="name"
             value={name}
-            placeholder=''
+            placeholder=""
             onChange={handleFieldChange}
             required
           />
@@ -69,7 +73,7 @@ function Form({ item, handleSubmit, handleChange }) {
             id="title"
             name="title"
             value={title}
-            placeholder=''
+            placeholder=""
             onChange={handleFieldChange}
             required
           />

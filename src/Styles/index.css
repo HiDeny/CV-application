@@ -159,6 +159,11 @@ textarea:focus-visible {
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  animation: swipe-in 0.7s ease;
+}
+
+.cardRemove {
+  animation: swipe-out 500ms ease;
 }
 
 .date > label {
@@ -352,6 +357,21 @@ textarea:focus-visible {
   color: white;
 }
 
-.experience > form > .inputs > label {
-  /* height: 83%; */
+@keyframes swipe-in {
+  0% {
+    transform: translateY(-150%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes swipe-out {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-150%);
+    display: none;
+  }
 }
