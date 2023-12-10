@@ -9,7 +9,7 @@ export default function Card({ item, handleItemChange, handleSubmit }) {
   }
 
   return (
-    <div className="card education">
+    <div className="card experience">
       {editMode ? (
         <Form
           key={item.id}
@@ -29,7 +29,7 @@ export default function Card({ item, handleItemChange, handleSubmit }) {
 }
 
 function Form({ item, handleSubmit, handleItemChange }) {
-  const { companyName, position, details, date } = item;
+  const { name, position, responsibility, date } = item;
 
   function handleChange(e) {
     const { value, name } = e.target;
@@ -48,68 +48,69 @@ function Form({ item, handleSubmit, handleItemChange }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="companyName">
-        Company name
-        <input
-          type="text"
-          id="companyName"
-          name="companyName"
-          value={companyName}
-          onChange={handleChange}
-          required
-        />
-      </label>
-
-      <label htmlFor="position">
-        Position
-        <input
-          type="text"
-          id="position"
-          name="position"
-          value={position}
-          onChange={handleChange}
-          required
-        />
-      </label>
-
-      <label htmlFor="details">
-        Details
-        <textarea
-          type="text"
-          id="details"
-          name="details"
-          value={details}
-          onChange={handleChange}
-        />
-      </label>
-
-      <div>
-        <p>Date</p>
-
-        <label htmlFor="start">
-          Start
+      <div className="inputs">
+        <label htmlFor="companyName">
+          Company name
           <input
-            type="date"
-            id="start"
-            name="start"
-            value={date.start}
-            max={date.end}
+            type="text"
+            id="companyName"
+            name="name"
+            value={name}
             onChange={handleChange}
             required
           />
         </label>
 
-        <label htmlFor="end">
-          End
+        <label htmlFor="position">
+          Position
           <input
-            type="date"
-            id="end"
-            name="end"
-            value={date.end}
-            min={date.start}
+            type="text"
+            id="position"
+            name="position"
+            value={position}
+            onChange={handleChange}
+            required
+          />
+        </label>
+
+        <label htmlFor="responsibility">
+          Responsibility
+          <textarea
+            type="text"
+            id="responsibility"
+            name="responsibility"
+            value={responsibility}
             onChange={handleChange}
           />
         </label>
+
+        <div className="date">
+          <p>Date</p>
+          <label htmlFor="start">
+            Start
+            <input
+              type="date"
+              id="start"
+              name="start"
+              value={date.start}
+              max={date.end}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label htmlFor="end">
+            End
+            <input
+              type="date"
+              id="end"
+              name="end"
+              value={date.end}
+              min={date.start}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
       </div>
 
       <button type="submit">SAVE</button>
@@ -121,13 +122,13 @@ function Form({ item, handleSubmit, handleItemChange }) {
 }
 
 function View({ item, handleEditClick }) {
-  const { companyName, details, position, date } = item;
+  const { name, responsibility, position, date } = item;
   return (
     <div className="view">
       <div>
-        <p>{companyName}</p>
-        <p>{details}</p>
+        <p>{name}</p>
         <p>{position}</p>
+        <p>{responsibility}</p>
         <p>
           {date.start} / {date.end ? date.end : 'Now'}
         </p>

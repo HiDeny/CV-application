@@ -3,8 +3,11 @@ import { v4 as uuid } from 'uuid';
 import Personal from './Personal/Personal';
 import Education from './Education/Education';
 import Experience from './Experience/Experience';
+import DisplayMode from './DisplayMode';
 
 function App() {
+  const [editMode, setEditMode] = useState(true);
+
   const [personal, setPersonal] = useState({
     id: uuid(),
     firstName: '',
@@ -16,13 +19,13 @@ function App() {
   const [education, setEducation] = useState([
     // {
     //   id: uuid(),
-    //   schoolName: 'Test School',
+    //   name: 'Test School',
     //   title: 'Nest',
     //   date: { start: '', end: '' },
     // },
     // {
     //   id: uuid(),
-    //   schoolName: 'Test School',
+    //   name: 'Test School',
     //   title: 'Nest',
     //   date: { start: '', end: '' },
     // },
@@ -31,10 +34,10 @@ function App() {
   const [experience, setExperience] = useState([
     // {
     //   id: uuid(),
-    //   companyName: 'Company Name',
+    //   name: 'Company Name',
     //   position: 'Position',
+    //   responsibility: '',
     //   date: { start: '', end: '' },
-    //   details: '',
     // },
   ]);
 
@@ -50,13 +53,30 @@ function App() {
     setExperience(newData);
   }
 
+  function toggleEditMode() {
+    setEditMode((prev) => !prev);
+  }
+
   return (
     <>
-      <Personal data={personal} updateData={updatePersonal} />
-      <Education data={education} updateData={updateEducation} />
-      <Experience data={experience} updateData={updateExperience} />
+      {editMode ? (
+        <>
+          <Personal data={personal} updateData={updatePersonal} />
+          <Education data={education} updateData={updateEducation} />
+          <Experience data={experience} updateData={updateExperience} />
+        </>
+      ) : (
+        <DisplayMode
+          personal={personal}
+          education={education}
+          experience={experience}
+        />
+      )}
+
       <div className="category create">
-        <button type="button">Create</button>
+        <button type="button" onClick={toggleEditMode}>
+          {editMode ? 'Create' : 'Edit'}
+        </button>
       </div>
     </>
   );

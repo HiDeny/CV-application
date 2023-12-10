@@ -1,46 +1,35 @@
-export default function DisplayMode({
-  personal,
-  education,
-  experience,
-  hidden,
-  onClickEdit,
-}) {
-  const fullName = `${personal['First Name']} ${personal['Last Name']}`;
+export default function DisplayMode({ personal, education, experience }) {
+  const fullName = `${personal.firstName} ${personal.lastName}`;
 
-  const schoolList = education.map((school) => (
+  const schoolList = education.map((item) => (
     <div>
-      <h3>{school.Degree}</h3>
-      <p>{school.Name}</p>
+      <h3>{item.name}</h3>
+      <p>{item.title}</p>
       <p>
-        {school.Date.Start} - {school.Date.End}
+        {item.date.start} - {item.date.end ? item.date.end : 'Now'}
       </p>
     </div>
   ));
 
-  const experiencesList = experience.map((job) => (
+  const experiencesList = experience.map((item) => (
     <div>
       <h3>
-        {job.Name} - {job.Position}
+        {item.name} - {item.position}
       </h3>
+      {item.responsibility && <p>Responsibility: {item.responsibility}</p>}
       <p>
-        {job.Date.Start} - {job.Date.End}
+        {item.date.start} - {item.date.end ? item.date.end : 'Now'}
       </p>
-      <p>Responsibility: {job.Responsibility}</p>
-      {job.Details && <p>Details: {job.Details}</p>}
     </div>
   ));
 
   return (
-    <div className={`${hidden ? 'DisplayMode hidden' : 'DisplayMode'}`}>
-      <h1>CV application</h1>
+    <div className="displayMode">
+      <h1>{fullName}</h1>
 
-      <section className="personalDetails">
-        <h2>Personal Information</h2>
-        <p className="name">{fullName}</p>
-        <section className="contact">
-          <p>{personal.Email}</p>
-          <p>{personal['Phone Number']}</p>
-        </section>
+      <section className="contact">
+        <p>{personal.email}</p>
+        <p>{personal.phone}</p>
       </section>
 
       {education.length > 0 && (
@@ -56,9 +45,6 @@ export default function DisplayMode({
           {experiencesList}
         </section>
       )}
-      <button type="button" onClick={onClickEdit}>
-        Edit
-      </button>
     </div>
   );
 }

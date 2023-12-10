@@ -29,7 +29,7 @@ export default function Card({ item, handleChange, handleSubmit }) {
 }
 
 function Form({ item, handleSubmit, handleChange }) {
-  const { schoolName, title, date } = item;
+  const { name, title, date } = item;
 
   function handleFieldChange(e) {
     const { value, name } = e.target;
@@ -48,57 +48,58 @@ function Form({ item, handleSubmit, handleChange }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="schoolName">
-        School Name
-        <input
-          type="text"
-          id="schoolName"
-          name="schoolName"
-          value={schoolName}
-          onChange={handleFieldChange}
-          required
-        />
-      </label>
-
-      <label htmlFor="title">
-        Title of study
-        <input
-          type="text"
-          id="title"
-          name="title"
-          value={title}
-          onChange={handleFieldChange}
-          required
-        />
-      </label>
-
-      <div>
-        <p>Date</p>
-
-        <label htmlFor="start">
-          Start
+      <div className="inputs">
+        <label htmlFor="schoolName">
+          School Name
           <input
-            type="date"
-            id="start"
-            name="start"
-            value={date.start}
-            max={date.end}
+            type="text"
+            id="schoolName"
+            name="name"
+            value={name}
             onChange={handleFieldChange}
             required
           />
         </label>
 
-        <label htmlFor="end">
-          End
+        <label htmlFor="title">
+          Title of study
           <input
-            type="date"
-            id="end"
-            name="end"
-            value={date.end}
-            min={date.start}
+            type="text"
+            id="title"
+            name="title"
+            value={title}
             onChange={handleFieldChange}
+            required
           />
         </label>
+
+        <div className="date">
+          <p>Date</p>
+          <label htmlFor="start">
+            Start
+            <input
+              type="date"
+              id="start"
+              name="start"
+              value={date.start}
+              max={date.end}
+              onChange={handleFieldChange}
+              required
+            />
+          </label>
+
+          <label htmlFor="end">
+            End
+            <input
+              type="date"
+              id="end"
+              name="end"
+              value={date.end}
+              min={date.start}
+              onChange={handleFieldChange}
+            />
+          </label>
+        </div>
       </div>
 
       <button type="submit">SAVE</button>
@@ -110,11 +111,11 @@ function Form({ item, handleSubmit, handleChange }) {
 }
 
 function View({ item, handleEditClick }) {
-  const { schoolName, title, date } = item;
+  const { name, title, date } = item;
   return (
     <div className="view">
       <div className="content">
-        <p>{schoolName}</p>
+        <p>{name}</p>
         <p>{title}</p>
         <p>
           {date.start} / {date.end ? date.end : 'Now'}

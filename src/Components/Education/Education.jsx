@@ -26,7 +26,7 @@ export default function Education({ data, updateData }) {
   function handleClickAdd() {
     const newItem = {
       id: uuid(),
-      schoolName: '',
+      name: '',
       title: '',
       date: { start: '', end: '' },
     };
@@ -50,9 +50,12 @@ export default function Education({ data, updateData }) {
 function exampleCard() {
   return (
     <div className="card education example">
-      <p>SCHOOL NAME</p>
-      <p>TITLE</p>
-      <p>STARTED / ENDED</p>
+      <div className="content">
+        <p>SCHOOL NAME</p>
+        <p>TITLE</p>
+        <p>STARTED / ENDED</p>
+      </div>
+      <p className='hint'>(THIS IS AN EXAMPLE)</p>
     </div>
   );
 }

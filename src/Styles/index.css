@@ -59,7 +59,9 @@ button:disabled {
 
 /** DISPLAY MODE */
 
-.DisplayMode {
+.displayMode {
+  scroll-snap-align: start;
+
   height: 100vh;
   width: 100vw;
 
@@ -97,6 +99,15 @@ form {
 label {
   display: flex;
   flex-direction: column;
+  padding: 0px 3px;
+}
+
+input,
+optgroup,
+select,
+textarea {
+  border-radius: 0.2rem;
+  border: 1px solid #80808082;
 }
 
 /** CARD */
@@ -104,6 +115,9 @@ label {
 .cards {
   display: flex;
   gap: 1.5rem;
+
+  padding: 0.2rem;
+  box-sizing: border-box;
 
   overflow: scroll;
   scroll-snap-type: x mandatory;
@@ -118,11 +132,11 @@ label {
 }
 
 .card:first-child {
-  margin-left: 3rem;
+  margin-left: 10vw;
 }
 
 .card:last-child {
-  margin-right: 3rem;
+  margin-right: 10vw;
 }
 
 .card {
@@ -132,7 +146,12 @@ label {
   min-width: 65vw;
   padding: 1.5rem;
   border-radius: 1rem;
-  background-color: wheat;
+
+  background-color: #f9701e40;
+  backdrop-filter: blur(2rem);
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .view {
@@ -165,4 +184,82 @@ label {
 
 .category-title {
   margin: 0;
+}
+
+/* EXAMPLE */
+
+.card.example {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px gray dashed;
+  background-color: whitesmoke;
+  color: #6e6e6e;
+  text-align: center;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.6rem;
+}
+
+/** VIEW */
+
+.view {
+  display: grid;
+  grid-template-rows: calc(100% - 5rem) 5rem;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+}
+
+.content > p {
+  margin: 0.5rem 0;
+}
+
+/** EDUCATION */
+
+.education > form,
+.experience > form {
+  display: grid;
+  grid-template-rows: calc(100% - 4rem) 4rem;
+  justify-items: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.education > form > .inputs {
+  display: grid;
+  grid-template-rows: 1fr 1fr 2fr;
+  align-items: center;
+  justify-content: center;
+}
+
+/** EXPERIENCE */
+
+.experience > form > .inputs {
+  display: grid;
+  grid-template-rows: 1fr 1fr 2fr;
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+}
+
+#responsibility {
+  resize: vertical;
+  font-size: 0.9rem;
+}
+
+.education > form > button,
+.experience > form > button,
+.view > button {
+  align-self: flex-end;
+  justify-self: center;
 }

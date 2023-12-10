@@ -26,8 +26,9 @@ export default function Experience({ data, updateData }) {
   function handleClickAdd() {
     const newItem = {
       id: uuid(),
-      companyName: '',
+      name: '',
       position: '',
+      responsibility: '',
       date: { start: '', end: '' },
     };
 
@@ -50,10 +51,13 @@ export default function Experience({ data, updateData }) {
 function exampleCard() {
   return (
     <div className="card experience example">
-      <p>COMPANY NAME</p>
-      <p>POSITION</p>
-      <p>DETAILS</p>
-      <p>STARTED / ENDED</p>
+      <div className="content">
+        <p>COMPANY NAME</p>
+        <p>POSITION</p>
+        <p>RESPONSIBILITY</p>
+        <p>STARTED / ENDED</p>
+      </div>
+      <p className="hint">(THIS IS AN EXAMPLE)</p>
     </div>
   );
 }
