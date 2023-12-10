@@ -79,6 +79,7 @@ function Form({ item, handleSubmit, handleItemChange }) {
             type="text"
             id="responsibility"
             name="responsibility"
+            rows={10}
             value={responsibility}
             onChange={handleChange}
           />

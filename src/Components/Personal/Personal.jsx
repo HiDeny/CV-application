@@ -49,6 +49,7 @@ function Form({ data, handleSubmit, handleChange }) {
             id="firstName"
             name="firstName"
             value={firstName}
+            placeholder=''
             onChange={handleOnChange}
             required
           />
@@ -61,6 +62,7 @@ function Form({ data, handleSubmit, handleChange }) {
             id="lastName"
             name="lastName"
             value={lastName}
+            placeholder=''
             onChange={handleOnChange}
             required
           />
@@ -73,6 +75,7 @@ function Form({ data, handleSubmit, handleChange }) {
             id="email"
             name="email"
             value={email}
+            placeholder=''
             onChange={handleOnChange}
             required
           />
@@ -85,6 +88,7 @@ function Form({ data, handleSubmit, handleChange }) {
             id="phone"
             name="phone"
             value={phone}
+            placeholder=''
             onChange={handleOnChange}
             required
           />

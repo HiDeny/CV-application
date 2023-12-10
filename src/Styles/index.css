@@ -30,10 +30,12 @@ button {
   background-color: #1a1a1a;
   color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, transform 0.25s;
 }
-button:hover {
+button:hover,
+button:focus-visible {
   border-color: #646cff;
+  transform: scale(1.1);
 }
 button:focus,
 button:focus-visible {
@@ -105,7 +107,13 @@ optgroup,
 select,
 textarea {
   border-radius: 0.2rem;
-  border: 1px solid #80808082;
+  border: 0.5px solid #80808082;
+  transition: transform 0.25s;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  transform: scale(1.05);
 }
 
 /** CARD */
@@ -144,12 +152,21 @@ textarea {
   min-width: 65vw;
   padding: 1.5rem;
   border-radius: 1rem;
+  border: 1px solid #cacaca7d;
 
   background-color: #f9701e40;
   backdrop-filter: blur(2rem);
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.date > label {
+  font-size: 0.8rem;
+}
+
+.date {
+  display: flex;
 }
 
 .view {
@@ -160,8 +177,10 @@ textarea {
 }
 
 .addBtn {
-  width: 10rem;
   justify-self: center;
+  align-self: center;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
 }
 
 .removeBtn {
@@ -229,6 +248,15 @@ textarea {
 
 /** EDUCATION */
 
+.card.education {
+  background: linear-gradient(
+    190deg,
+    rgba(255, 223, 243, 1) 0%,
+    rgba(254, 182, 226, 1) 45%,
+    rgba(255, 232, 246, 1) 100%
+  );
+}
+
 .education > form,
 .experience > form {
   display: grid;
@@ -240,25 +268,43 @@ textarea {
 }
 
 .education > form > .inputs {
-  display: grid;
-  grid-template-rows: 1fr 1fr 2fr;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  gap: 1.3rem;
+}
+
+.education > .addBtn {
+  background-color: #a45384;
+  color: white;
+}
+
+.education > form > button {
+  background: #a25282ed;
+  color: white;
 }
 
 /** EXPERIENCE */
 
+.card.experience {
+  background: radial-gradient(
+    circle,
+    rgba(204, 227, 255, 0.686046511627907) 0%,
+    rgba(175, 212, 255, 1) 50%,
+    rgba(204, 227, 255, 1) 100%
+  );
+}
+
 .experience > form > .inputs {
-  display: grid;
-  grid-template-rows: 1fr 1fr 2fr;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  overflow: scroll;
+  gap: 0.5rem;
 }
 
 #responsibility {
-  resize: vertical;
-  font-size: 0.9rem;
+  resize: none;
+  font-size: 0.8rem;
 }
 
 .responsibility {
@@ -267,9 +313,45 @@ textarea {
   overflow: scroll;
 }
 
+.experience > form > button {
+  background: #5a7399;
+  color: white;
+}
+
 .education > form > button,
 .experience > form > button,
 .view > button {
   align-self: flex-end;
   justify-self: center;
+}
+
+.education > form > button.removeBtn,
+.experience > form > button.removeBtn {
+  background: transparent;
+  border: none;
+  color: black;
+}
+
+.experience .addBtn {
+  background: #5a7399;
+  color: white;
+}
+
+/** CREATE */
+
+.category.create {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 253, 255, 1) 16%,
+    rgba(224, 212, 255, 1) 100%
+  );
+}
+
+.create > button {
+  background: #7a65ae;
+  color: white;
+}
+
+.experience > form > .inputs > label {
+  /* height: 83%; */
 }

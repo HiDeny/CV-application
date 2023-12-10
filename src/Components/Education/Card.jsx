@@ -56,6 +56,7 @@ function Form({ item, handleSubmit, handleChange }) {
             id="schoolName"
             name="name"
             value={name}
+            placeholder=''
             onChange={handleFieldChange}
             required
           />
@@ -68,6 +69,7 @@ function Form({ item, handleSubmit, handleChange }) {
             id="title"
             name="title"
             value={title}
+            placeholder=''
             onChange={handleFieldChange}
             required
           />
