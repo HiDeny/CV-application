@@ -41,7 +41,7 @@ function Form({ data, handleSubmit, handleChange }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} id="personalForm">
+      <form onSubmit={handleSubmit} id="personalForm" >
         <label htmlFor="firstName">
           First Name
           <input

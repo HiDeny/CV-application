@@ -7,6 +7,7 @@ import DisplayMode from './DisplayMode';
 
 function App() {
   const [editMode, setEditMode] = useState(true);
+  // const [disableCreate, setDisableCreate] = useState(true);
 
   const [personal, setPersonal] = useState({
     id: uuid(),
@@ -41,6 +42,12 @@ function App() {
     // },
   ]);
 
+  // function updateDisableCreate() {
+  //   const editing = document.querySelectorAll(`[data-edit="true"]`).length;
+  //   console.log(editing);
+  //   setDisableCreate(editMode && editing > 0);
+  // }
+
   function updatePersonal(newData) {
     setPersonal(newData);
   }
@@ -54,7 +61,11 @@ function App() {
   }
 
   function toggleEditMode() {
+    const element = document.querySelector(
+      editMode ? '.personal' : '.displayMode'
+    );
     setEditMode((prev) => !prev);
+    element.scrollIntoView();
   }
 
   return (

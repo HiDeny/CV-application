@@ -74,7 +74,6 @@ function Form({ item, handleSubmit, handleChange }) {
         </label>
 
         <div className="date">
-          <p>Date</p>
           <label htmlFor="start">
             Start
             <input

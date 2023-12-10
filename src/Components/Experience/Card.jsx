@@ -85,7 +85,6 @@ function Form({ item, handleSubmit, handleItemChange }) {
         </label>
 
         <div className="date">
-          <p>Date</p>
           <label htmlFor="start">
             Start
             <input
@@ -128,7 +127,7 @@ function View({ item, handleEditClick }) {
       <div>
         <p>{name}</p>
         <p>{position}</p>
-        <p>{responsibility}</p>
+        <p className="responsibility">{responsibility}</p>
         <p>
           {date.start} / {date.end ? date.end : 'Now'}
         </p>
