@@ -129,13 +129,22 @@ function View({ item, handleEditClick }) {
   const { name, responsibility, position, date } = item;
   return (
     <div className="view">
-      <div>
-        <p>{name}</p>
-        <p>{position}</p>
-        <p className="responsibility">{responsibility}</p>
-        <p>
-          {date.start} / {date.end ? date.end : 'Now'}
-        </p>
+      <div className="content">
+        <div className="text">
+          <p>{name}</p>
+          <p>{position}</p>
+          {responsibility && (
+            <div className="responsibility">
+              <p>{responsibility}</p>
+            </div>
+          )}
+        </div>
+
+        <div className="date">
+          <p>
+            {date.start} / {date.end ? date.end : 'Now'}
+          </p>
+        </div>
       </div>
 
       <button type="button" onClick={handleEditClick} className="editBtn">

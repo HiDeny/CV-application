@@ -53,31 +53,33 @@ function Form({ item, handleSubmit, handleChange }) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="inputs">
-        <label htmlFor="schoolName">
-          School Name
-          <input
-            type="text"
-            id="schoolName"
-            name="name"
-            value={name}
-            placeholder=""
-            onChange={handleFieldChange}
-            required
-          />
-        </label>
+        <div className="text">
+          <label htmlFor="schoolName">
+            School Name
+            <input
+              type="text"
+              id="schoolName"
+              name="name"
+              value={name}
+              placeholder=""
+              onChange={handleFieldChange}
+              required
+            />
+          </label>
 
-        <label htmlFor="title">
-          Title of study
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={title}
-            placeholder=""
-            onChange={handleFieldChange}
-            required
-          />
-        </label>
+          <label htmlFor="title">
+            Title of study
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={title}
+              placeholder=""
+              onChange={handleFieldChange}
+              required
+            />
+          </label>
+        </div>
 
         <div className="date">
           <label htmlFor="start">
@@ -120,11 +122,15 @@ function View({ item, handleEditClick }) {
   return (
     <div className="view">
       <div className="content">
-        <p>{name}</p>
-        <p>{title}</p>
-        <p>
-          {date.start} / {date.end ? date.end : 'Now'}
-        </p>
+        <div className="text">
+          <p>{name}</p>
+          <p>{title}</p>
+        </div>
+        <div className="date">
+          <p>
+            {date.start} / {date.end ? date.end : 'Now'}
+          </p>
+        </div>
       </div>
 
       <button type="button" onClick={handleEditClick}>
