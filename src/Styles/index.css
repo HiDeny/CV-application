@@ -266,6 +266,8 @@ form > button,
   flex-direction: column;
   justify-content: center;
   gap: 1.3rem;
+
+  max-width: 75vw;
 }
 
 .personal > .view > .content {
@@ -356,6 +358,80 @@ form > button,
   color: black;
 }
 
+/** SKILLS */
+
+.skills {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 5%,
+    rgba(255, 214, 164, 1) 35%,
+    rgba(255, 214, 164, 1) 70%,
+    rgba(255, 255, 255, 1) 95%
+  );
+}
+
+.skills > .list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  height: 100%;
+  min-width: 65vw;
+  padding: 0;
+}
+
+.skills > button {
+  background-color: #a46007;
+}
+
+.skillItem {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px salmon solid;
+  border-radius: 0.5rem;
+  padding: 0.6rem;
+  background-color: white;
+}
+
+.skillItem.edit {
+  flex-direction: column;
+}
+
+.skillItem > .buttons {
+  align-self: end;
+}
+
+.skillItem > p {
+  margin: 0;
+  padding: 3px;
+}
+
+.skillItem > input {
+  border: 2px solid #8080801a;
+}
+
+.skillItem > button,
+.skillItem > .buttons > button {
+  margin: 0;
+  padding: 3px;
+  background-color: transparent;
+}
+
+.skillItem > .buttons > .removeBtn {
+  position: initial;
+}
+
+.skillItem > button:disabled,
+.skillItem > .buttons > button:disabled {
+  opacity: 0.2;
+}
+
 /** CREATE */
 
 .category.create {
@@ -365,7 +441,7 @@ form > button,
   align-items: center;
   background: linear-gradient(
     180deg,
-    rgba(255, 253, 255, 1) 16%,
+    rgba(255, 255, 255, 1) 16%,
     rgba(224, 212, 255, 1) 100%
   );
 }

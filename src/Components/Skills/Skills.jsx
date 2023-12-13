@@ -38,45 +38,58 @@ export default function Skills({ data, updateData }) {
   return (
     <div className="category skills">
       <h2 className="category-title">Skills</h2>
-      <ul>{content}</ul>
-      <button type="button" onClick={handleClickAdd}>
-        Add
+      <ul className="list">{content}</ul>
+      <button type="button" onClick={handleClickAdd} className="addBtn">
+        +
       </button>
     </div>
   );
 }
 
 function Skill({ item, handleOnChange, handleItemRemove }) {
-  const [editMode, setEditMode] = useState(true);
   const { id, value } = item;
+  const initialEdit = value === '';
+  const [editMode, setEditMode] = useState(initialEdit);
 
   function toggleEditMode() {
     setEditMode(!editMode);
   }
 
+  const correctClass = `skillItem ${!editMode ? 'display' : 'edit'}`;
+
   return (
-    <li>
+    <li className={correctClass}>
       {editMode ? (
         <>
           <input
-            data-id={id}
             type="text"
-            id="skill"
+            data-id={id}
             value={value}
             onChange={handleOnChange}
           />
-          <button type="button" onClick={toggleEditMode}>
-            Save
-          </button>
-          <button type="button" onClick={() => handleItemRemove(id)}>
-            X
-          </button>
+          <div className="buttons">
+            <button
+              type="button"
+              className="saveBtn"
+              disabled={value === ''}
+              onClick={toggleEditMode}
+            >
+              ✔️
+            </button>
+            <button
+              type="button"
+              className="removeBtn"
+              onClick={() => handleItemRemove(id)}
+            >
+              ❌
+            </button>
+          </div>
         </>
       ) : (
         <>
           <p>{value}</p>
-          <button type="button" onClick={toggleEditMode}>
-            Edit
+          <button type="button" className="editBtn" onClick={toggleEditMode}>
+            ✏️
           </button>
         </>
       )}
