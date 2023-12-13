@@ -1,18 +1,30 @@
 import { useState } from 'react';
 
 export default function Skills({ data, updateData }) {
-  const content = data.map((skill, index) => (
-    <Skill index={index} value={skill} handleOnChange={handleOnChange} />
+  const content = data.map((skill) => (
+    <Skill
+      key={skill.id}
+      item={skill}
+      handleOnChange={handleOnChange}
+      handleItemRemove={handleItemRemove}
+    />
   ));
+
+  function handleItemRemove(toRemoveId) {
+    const nextData = data.filter((item) => item.id !== toRemoveId);
+    updateData(nextData);
+  }
 
   function handleOnChange(e) {
     const { value, dataset } = e.target;
-    const { index } = dataset;
+    const { id } = dataset;
 
-    const newData = [...data];
-    newData[index] = value;
+    const nextData = data.map((item) => {
+      if (item.id === id) item.value = value;
+      return item;
+    });
 
-    updateData(newData);
+    updateData(nextData);
   }
 
   return (
@@ -24,8 +36,9 @@ export default function Skills({ data, updateData }) {
   );
 }
 
-function Skill({ index, value, handleOnChange }) {
+function Skill({ item, handleOnChange, handleItemRemove }) {
   const [editMode, setEditMode] = useState(true);
+  const { id, value } = item;
 
   function toggleEditMode() {
     setEditMode(!editMode);
@@ -36,7 +49,7 @@ function Skill({ index, value, handleOnChange }) {
       {editMode ? (
         <>
           <input
-            data-index={index}
+            data-id={id}
             type="text"
             id="skill"
             value={value}
@@ -45,7 +58,9 @@ function Skill({ index, value, handleOnChange }) {
           <button type="button" onClick={toggleEditMode}>
             Save
           </button>
-          <button type="button">X</button>
+          <button type="button" onClick={() => handleItemRemove(id)}>
+            X
+          </button>
         </>
       ) : (
         <>

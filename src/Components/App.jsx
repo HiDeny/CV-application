@@ -43,7 +43,11 @@ function App() {
     // },
   ]);
 
-  const [skills, setSkills] = useState(['Talking', 'Thinking', 'Walking']);
+  const [skills, setSkills] = useState([
+    { id: uuid(), value: 'Talking' },
+    { id: uuid(), value: 'Thinking' },
+    { id: uuid(), value: 'Walking' },
+  ]);
 
   function updatePersonal(newData) {
     setPersonal(newData);
