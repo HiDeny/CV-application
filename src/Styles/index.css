@@ -393,10 +393,11 @@ form > button,
 
   box-sizing: border-box;
   width: 100%;
-  border: 1px salmon solid;
+  border: 1px #ffc681 solid;
   border-radius: 0.5rem;
   padding: 0.6rem;
-  background-color: white;
+
+  background-color: #fff8f0;
 }
 
 .skillItem.edit {
