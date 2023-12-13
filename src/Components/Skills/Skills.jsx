@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuid } from 'uuid';
 
 export default function Skills({ data, updateData }) {
   const content = data.map((skill) => (
@@ -9,6 +10,13 @@ export default function Skills({ data, updateData }) {
       handleItemRemove={handleItemRemove}
     />
   ));
+
+  function handleClickAdd() {
+    const nextData = [...data];
+    const newSkill = { id: uuid(), value: '' };
+    nextData.push(newSkill);
+    updateData(nextData);
+  }
 
   function handleItemRemove(toRemoveId) {
     const nextData = data.filter((item) => item.id !== toRemoveId);
@@ -31,7 +39,9 @@ export default function Skills({ data, updateData }) {
     <div className="category skills">
       <h2 className="category-title">Skills</h2>
       <ul>{content}</ul>
-      <button type="button">Add</button>
+      <button type="button" onClick={handleClickAdd}>
+        Add
+      </button>
     </div>
   );
 }
