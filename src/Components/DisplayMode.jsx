@@ -1,5 +1,16 @@
-export default function DisplayMode({ personal, education, experience }) {
+export default function DisplayMode({
+  personal,
+  education,
+  experience,
+  skills,
+}) {
   const fullName = `${personal.firstName} ${personal.lastName}`;
+
+  const skillsList = skills.map((item) => (
+    <li>
+      <p className="skill">{item.value}</p>
+    </li>
+  ));
 
   const schoolList = education.map((item) => (
     <li>
@@ -29,28 +40,43 @@ export default function DisplayMode({ personal, education, experience }) {
 
   return (
     <div className="displayMode">
-      <h1>{fullName}</h1>
-      <img className="profile-picture" src={personal.picture} alt={fullName} />
+      <div className="preview">
+        <h1 className="title">{fullName}</h1>
+        <div className="profile-picture">
+          <img src={personal.picture} alt={fullName} />
+        </div>
 
-      <section className="contact">
-        <h2>Contact</h2>
-        <p>{personal.email}</p>
-        <p>{personal.phone}</p>
-      </section>
-
-      {education.length > 0 && (
-        <section className="education">
-          <h2>Education</h2>
-          <ul>{schoolList}</ul>
+        <section className="contact">
+          <h2>Contact</h2>
+          <p>{personal.email}</p>
+          <p>{personal.phone}</p>
         </section>
-      )}
 
-      {experience.length > 0 && (
-        <section className="experience">
-          <h2>Experience</h2>
-          <ul>{experiencesList}</ul>
-        </section>
-      )}
+        {skills.length > 0 && (
+          <section className="skills">
+            <h2>Skills</h2>
+            <ul>{skillsList}</ul>
+          </section>
+        )}
+
+        {education.length > 0 && (
+          <section className="education">
+            <h2>Education</h2>
+            <ul>{schoolList}</ul>
+          </section>
+        )}
+
+        {experience.length > 0 && (
+          <section className="experience">
+            <h2>Experience</h2>
+            <ul>{experiencesList}</ul>
+          </section>
+        )}
+      </div>
     </div>
   );
 }
+
+// Header - name, pic
+// Sidebar - contact, skills(6), schools(3)
+// Main - About me, Experiences(3)

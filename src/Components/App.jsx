@@ -18,36 +18,9 @@ function App() {
     picture: '',
   });
 
-  const [education, setEducation] = useState([
-    // {
-    //   id: uuid(),
-    //   name: 'Test School',
-    //   title: 'Nest',
-    //   date: { start: '', end: '' },
-    // },
-    // {
-    //   id: uuid(),
-    //   name: 'Test School',
-    //   title: 'Nest',
-    //   date: { start: '', end: '' },
-    // },
-  ]);
-
-  const [experience, setExperience] = useState([
-    // {
-    //   id: uuid(),
-    //   name: 'Company Name',
-    //   position: 'Position',
-    //   responsibility: '',
-    //   date: { start: '', end: '' },
-    // },
-  ]);
-
-  const [skills, setSkills] = useState([
-    { id: uuid(), value: 'Talking' },
-    { id: uuid(), value: 'Thinking' },
-    { id: uuid(), value: 'Walking' },
-  ]);
+  const [education, setEducation] = useState([]);
+  const [experience, setExperience] = useState([]);
+  const [skills, setSkills] = useState([]);
 
   function updatePersonal(newData) {
     setPersonal(newData);
@@ -65,6 +38,49 @@ function App() {
     setSkills(newData);
   }
 
+  function setFakeData() {
+    updatePersonal({
+      id: uuid(),
+      firstName: 'First',
+      lastName: 'Last',
+      email: 'email@address.com',
+      phone: '123 456 789',
+      picture: '',
+    });
+
+    updateEducation([
+      {
+        id: uuid(),
+        name: 'Test School',
+        title: 'Nest',
+        date: { start: '', end: '' },
+      },
+      {
+        id: uuid(),
+        name: 'Test School',
+        title: 'Nest',
+        date: { start: '', end: '' },
+      },
+    ]);
+
+    updateExperience([
+      {
+        id: uuid(),
+        name: 'Company Name',
+        position: 'Position',
+        responsibility:
+          'Enim cillum excepteur eiusmod dolor cillum minim irure ad id velit est reprehenderit voluptate cupidatat consequat. Eu pariatur sint consequat incididunt dolor ullamco incididunt aliquip. Cupidatat laboris laborum non sunt occaecat sint. Nostrud deserunt ut cupidatat. Esse eu aute mollit culpa enim ut aute.',
+        date: { start: '', end: '' },
+      },
+    ]);
+
+    updateSkills([
+      { id: uuid(), value: 'Talking' },
+      { id: uuid(), value: 'Thinking' },
+      { id: uuid(), value: 'Walking' },
+    ]);
+  }
+
   function toggleEditMode() {
     const element = document.querySelector(
       editMode ? '.personal' : '.displayMode'
@@ -75,6 +91,9 @@ function App() {
 
   return (
     <>
+      <button type="button" className="fakeButton" onClick={setFakeData}>
+        FAKE
+      </button>
       {editMode ? (
         <>
           <Personal data={personal} updateData={updatePersonal} />
@@ -87,6 +106,7 @@ function App() {
           personal={personal}
           education={education}
           experience={experience}
+          skills={skills}
         />
       )}
 
