@@ -62,10 +62,16 @@ button:disabled {
 /** DISPLAY MODE */
 
 .displayMode {
+  display: grid;
   scroll-snap-align: start;
 
-  width: 100vw;
+  padding: 1rem;
   padding-bottom: 15rem;
+}
+
+.displayMode > section {
+  border-bottom: 1px solid lightgray;
+  padding: 2rem 0;
 }
 
 /** CATEGORY */
@@ -136,7 +142,7 @@ form > button,
 .inputs > .date {
   display: flex;
   justify-content: space-between;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 /** CARD */
@@ -183,6 +189,10 @@ form > button,
   animation: swipe-in 0.7s ease;
 }
 
+.content > .text {
+  text-align: center;
+}
+
 .removeBtn {
   position: absolute;
   top: 0.5rem;
@@ -206,11 +216,22 @@ form > button,
   background-color: whitesmoke;
   color: #6e6e6e;
   text-align: center;
+
+  animation: example-in 0.7s ease;
+  transition: transform 0.7s ease;
+}
+
+.example > .content {
+  justify-content: center;
 }
 
 .hint {
   margin: 0;
   font-size: 0.6rem;
+}
+
+.example.remove {
+  transform: translateY(150%);
 }
 
 /** VIEW */
@@ -314,6 +335,7 @@ form > button,
   background-color: rgba(255, 255, 255, 0.503);
 
   font-size: 0.8rem;
+  text-align: initial;
 }
 
 .content > .text > .responsibility > p {
@@ -376,19 +398,18 @@ form > button,
 
 @keyframes example-out {
   0% {
-    transform: translateY(-150%);
+    transform: translateY(0%);
   }
   100% {
-    transform: translateY(0%);
+    transform: translateY(150%);
   }
 }
 
 @keyframes example-in {
   0% {
-    transform: translateY(0%);
+    transform: translateY(150%);
   }
   100% {
-    transform: translateY(-150%);
-    display: none;
+    transform: translateY(0%);
   }
 }

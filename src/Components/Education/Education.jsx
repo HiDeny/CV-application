@@ -24,6 +24,8 @@ export default function Education({ data, updateData }) {
   }
 
   function handleClickAdd() {
+    const container = document.querySelector('.education');
+    const exampleCard = container.querySelector('.card.example');
     const newItem = {
       id: uuid(),
       name: '',
@@ -31,6 +33,14 @@ export default function Education({ data, updateData }) {
       date: { start: '', end: '' },
     };
 
+    if (exampleCard) {
+      exampleCard.classList.add('remove');
+
+      setTimeout(() => {
+        updateData([...data, newItem]);
+      }, 340);
+      return;
+    }
     updateData([...data, newItem]);
   }
 
@@ -38,7 +48,7 @@ export default function Education({ data, updateData }) {
     <div className="category education">
       <h2 className="category-title">Education</h2>
       <div className="cards education">
-        {content.length > 0 ? content : exampleCard()}
+        {content.length > 0 ? content : <ExampleCard />}
       </div>
       <button type="button" className="addBtn" onClick={handleClickAdd}>
         +
@@ -47,7 +57,7 @@ export default function Education({ data, updateData }) {
   );
 }
 
-function exampleCard() {
+function ExampleCard() {
   return (
     <div className="card education example">
       <div className="content">
@@ -55,7 +65,7 @@ function exampleCard() {
         <p>TITLE</p>
         <p>STARTED / ENDED</p>
       </div>
-      <p className='hint'>(THIS IS AN EXAMPLE)</p>
+      <p className="hint">(THIS IS AN EXAMPLE)</p>
     </div>
   );
 }

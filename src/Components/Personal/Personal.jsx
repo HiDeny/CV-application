@@ -36,12 +36,19 @@ function Form({ data, handleSubmit, handleChange }) {
 
   function handleOnChange(e) {
     const { name, value } = e.target;
+
+    if (name === 'picture') {
+      const newPicture = URL.createObjectURL(e.target.files[0]) || '';
+      handleChange({ ...data, [name]: newPicture });
+      return;
+    }
+
     handleChange({ ...data, [name]: value });
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit} id="personalForm" >
+      <form onSubmit={handleSubmit} id="personalForm">
         <label htmlFor="firstName">
           First Name
           <input
@@ -49,7 +56,7 @@ function Form({ data, handleSubmit, handleChange }) {
             id="firstName"
             name="firstName"
             value={firstName}
-            placeholder=''
+            placeholder=""
             onChange={handleOnChange}
             required
           />
@@ -62,7 +69,7 @@ function Form({ data, handleSubmit, handleChange }) {
             id="lastName"
             name="lastName"
             value={lastName}
-            placeholder=''
+            placeholder=""
             onChange={handleOnChange}
             required
           />
@@ -75,7 +82,7 @@ function Form({ data, handleSubmit, handleChange }) {
             id="email"
             name="email"
             value={email}
-            placeholder=''
+            placeholder=""
             onChange={handleOnChange}
             required
           />
@@ -88,9 +95,20 @@ function Form({ data, handleSubmit, handleChange }) {
             id="phone"
             name="phone"
             value={phone}
-            placeholder=''
+            placeholder=""
             onChange={handleOnChange}
             required
+          />
+        </label>
+
+        <label htmlFor="picture">
+          Picture
+          <input
+            type="file"
+            accept="image/*"
+            id="picture"
+            name="picture"
+            onChange={handleOnChange}
           />
         </label>
       </form>
@@ -102,7 +120,7 @@ function Form({ data, handleSubmit, handleChange }) {
 }
 
 function View({ data, handleEditClick }) {
-  const { firstName, lastName, email, phone } = data;
+  const { firstName, lastName, email, phone, picture } = data;
   return (
     <>
       <div className="view">
@@ -112,6 +130,7 @@ function View({ data, handleEditClick }) {
           </p>
           <p>✉️ {email}</p>
           <p>📞 {phone}</p>
+          {{ picture } && <p>✔️ Picture</p>}
         </div>
       </div>
       <button type="button" onClick={handleEditClick}>

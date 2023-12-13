@@ -4,10 +4,10 @@ import Personal from './Personal/Personal';
 import Education from './Education/Education';
 import Experience from './Experience/Experience';
 import DisplayMode from './DisplayMode';
+import Skills from './Skills/Skills';
 
 function App() {
   const [editMode, setEditMode] = useState(true);
-  // const [disableCreate, setDisableCreate] = useState(true);
 
   const [personal, setPersonal] = useState({
     id: uuid(),
@@ -15,6 +15,7 @@ function App() {
     lastName: '',
     email: '',
     phone: '',
+    picture: '',
   });
 
   const [education, setEducation] = useState([
@@ -42,11 +43,7 @@ function App() {
     // },
   ]);
 
-  // function updateDisableCreate() {
-  //   const editing = document.querySelectorAll(`[data-edit="true"]`).length;
-  //   console.log(editing);
-  //   setDisableCreate(editMode && editing > 0);
-  // }
+  const [skills, setSkills] = useState(['Talking', 'Thinking', 'Walking']);
 
   function updatePersonal(newData) {
     setPersonal(newData);
@@ -58,6 +55,10 @@ function App() {
 
   function updateExperience(newData) {
     setExperience(newData);
+  }
+
+  function updateSkills(newData) {
+    setSkills(newData);
   }
 
   function toggleEditMode() {
@@ -75,6 +76,7 @@ function App() {
           <Personal data={personal} updateData={updatePersonal} />
           <Education data={education} updateData={updateEducation} />
           <Experience data={experience} updateData={updateExperience} />
+          <Skills data={skills} updateData={updateSkills} />
         </>
       ) : (
         <DisplayMode

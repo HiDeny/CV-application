@@ -32,6 +32,16 @@ export default function Experience({ data, updateData }) {
       date: { start: '', end: '' },
     };
 
+    const container = document.querySelector('.experience');
+    const exampleCard = container.querySelector('.card.example');
+    if (exampleCard) {
+      exampleCard.classList.add('remove');
+
+      setTimeout(() => {
+        updateData([...data, newItem]);
+      }, 340);
+      return;
+    }
     updateData([...data, newItem]);
   }
 
@@ -39,7 +49,7 @@ export default function Experience({ data, updateData }) {
     <div className="category experience">
       <h2 className="category-title">Experience</h2>
       <div className="cards experience">
-        {content.length > 0 ? content : exampleCard()}
+        {content.length > 0 ? content : <ExampleCard />}
       </div>
       <button type="button" className="addBtn" onClick={handleClickAdd}>
         +
@@ -48,7 +58,7 @@ export default function Experience({ data, updateData }) {
   );
 }
 
-function exampleCard() {
+function ExampleCard() {
   return (
     <div className="card experience example">
       <div className="content">
