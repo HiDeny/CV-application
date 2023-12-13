@@ -32,7 +32,7 @@ export default function Personal({ data, updateData }) {
 }
 
 function Form({ data, handleSubmit, handleChange }) {
-  const { firstName, lastName, email, phone } = data;
+  const { firstName, lastName, email, phone, picture } = data;
 
   function handleOnChange(e) {
     const { name, value } = e.target;
@@ -110,6 +110,9 @@ function Form({ data, handleSubmit, handleChange }) {
             name="picture"
             onChange={handleOnChange}
           />
+          {/* <button type="button" className="removeBtn">
+            Ｘ
+          </button> */}
         </label>
       </form>
       <button type="submit" form="personalForm">
@@ -130,7 +133,7 @@ function View({ data, handleEditClick }) {
           </p>
           <p>✉️ {email}</p>
           <p>📞 {phone}</p>
-          {{ picture } && <p>✔️ Picture</p>}
+          {picture !== '' && <p>✔️ Picture</p>}
         </div>
       </div>
       <button type="button" onClick={handleEditClick}>

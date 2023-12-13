@@ -2,27 +2,19 @@ import { v4 as uuid } from 'uuid';
 import Card from './Card';
 
 export default function Experience({ data, updateData }) {
-  const content = data.map((item) => (
-    <Card key={item.id} item={item} handleItemChange={handleItemChange} />
-  ));
-
-  function handleItemChange(updatedItem, remove = false) {
-    let nextData;
-
-    if (remove) {
-      updateData((prevData) =>
-        prevData.filter((item) => item.id !== updatedItem.id)
-      );
-    } else {
-      nextData = data.map((item) => {
+  function handleChange(updatedItem) {
+    updateData((prevData) =>
+      prevData.map((item) => {
         if (item.id === updatedItem.id) {
           return updatedItem;
         }
         return item;
-      });
-    }
+      })
+    );
+  }
 
-    updateData(nextData);
+  function handleRemove(idToRemove) {
+    updateData((prevData) => prevData.filter((item) => item.id !== idToRemove));
   }
 
   function handleClickAdd() {
@@ -51,7 +43,15 @@ export default function Experience({ data, updateData }) {
     <div className="category experience">
       <h2 className="category-title">Experience</h2>
       <div className="cards experience">
-        {content.length > 0 ? content : <ExampleCard />}
+        {data.length < 1 && <ExampleCard />}
+        {data.map((item) => (
+          <Card
+            key={item.id}
+            item={item}
+            handleChange={handleChange}
+            handleRemove={handleRemove}
+          />
+        ))}
       </div>
       <button type="button" className="addBtn" onClick={handleClickAdd}>
         +

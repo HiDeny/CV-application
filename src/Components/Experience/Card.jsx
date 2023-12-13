@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Card({ item, handleItemChange, handleSubmit }) {
+export default function Card({ item, handleChange, handleRemove }) {
   const [editMode, setEditMode] = useState(true);
 
   function handleSubmit(e) {
@@ -14,7 +14,8 @@ export default function Card({ item, handleItemChange, handleSubmit }) {
         <Form
           key={item.id}
           item={item}
-          handleItemChange={handleItemChange}
+          handleChange={handleChange}
+          handleRemove={handleRemove}
           handleSubmit={handleSubmit}
         />
       ) : (
@@ -28,25 +29,27 @@ export default function Card({ item, handleItemChange, handleSubmit }) {
   );
 }
 
-function Form({ item, handleSubmit, handleItemChange }) {
+function Form({ item, handleSubmit, handleChange, handleRemove }) {
   const { name, position, responsibility, date } = item;
 
-  function handleChange(e) {
+  function handleItemChange(e) {
     const { value, name } = e.target;
+    const newItem = { ...item };
 
     if (name === 'start' || name === 'end') {
-      handleItemChange({ ...item, date: { ...item.date, [name]: value } });
-      return;
+      newItem.date = { ...newItem.date, [name]: value };
+    } else {
+      newItem[name] = value;
     }
 
-    handleItemChange({ ...item, [name]: value });
+    handleChange(newItem);
   }
 
   function handleClickRemove(e) {
     const container = e.target.parentElement.parentElement;
     container.classList.add('cardRemove');
     setTimeout(() => {
-      handleItemChange(item, true);
+      handleRemove(item.id);
     }, 500);
   }
 
@@ -60,7 +63,7 @@ function Form({ item, handleSubmit, handleItemChange }) {
             id="companyName"
             name="name"
             value={name}
-            onChange={handleChange}
+            onChange={handleItemChange}
             required
           />
         </label>
@@ -72,7 +75,7 @@ function Form({ item, handleSubmit, handleItemChange }) {
             id="position"
             name="position"
             value={position}
-            onChange={handleChange}
+            onChange={handleItemChange}
             required
           />
         </label>
@@ -85,7 +88,7 @@ function Form({ item, handleSubmit, handleItemChange }) {
             name="responsibility"
             rows={10}
             value={responsibility}
-            onChange={handleChange}
+            onChange={handleItemChange}
           />
         </label>
 
@@ -98,7 +101,7 @@ function Form({ item, handleSubmit, handleItemChange }) {
               name="start"
               value={date.start}
               max={date.end}
-              onChange={handleChange}
+              onChange={handleItemChange}
               required
             />
           </label>
@@ -111,7 +114,7 @@ function Form({ item, handleSubmit, handleItemChange }) {
               name="end"
               value={date.end}
               min={date.start}
-              onChange={handleChange}
+              onChange={handleItemChange}
             />
           </label>
         </div>
