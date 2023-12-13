@@ -10,7 +10,9 @@ export default function Experience({ data, updateData }) {
     let nextData;
 
     if (remove) {
-      nextData = data.filter((item) => item.id !== updatedItem.id);
+      updateData((prevData) =>
+        prevData.filter((item) => item.id !== updatedItem.id)
+      );
     } else {
       nextData = data.map((item) => {
         if (item.id === updatedItem.id) {
@@ -38,11 +40,11 @@ export default function Experience({ data, updateData }) {
       exampleCard.classList.add('remove');
 
       setTimeout(() => {
-        updateData([...data, newItem]);
+        updateData((prevData) => [...prevData, newItem]);
       }, 340);
       return;
     }
-    updateData([...data, newItem]);
+    updateData((prevData) => [...prevData, newItem]);
   }
 
   return (

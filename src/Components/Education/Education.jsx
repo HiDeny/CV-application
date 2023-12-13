@@ -37,11 +37,11 @@ export default function Education({ data, updateData }) {
       exampleCard.classList.add('remove');
 
       setTimeout(() => {
-        updateData([...data, newItem]);
+        updateData((prevData) => [...prevData, newItem]);
       }, 340);
       return;
     }
-    updateData([...data, newItem]);
+    updateData((prevData) => [...prevData, newItem]);
   }
 
   return (
