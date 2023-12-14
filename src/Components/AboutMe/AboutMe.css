@@ -1,28 +1,53 @@
 .aboutMe {
-  max-width: 75vw;
-  min-width: 65vw;
-  margin: auto;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(200, 217, 199, 1) 15%,
+    rgba(200, 217, 199, 1) 38%,
+    rgba(255, 255, 255, 1) 75%
+  );
+}
+
+.aboutMe > button {
+  background-color: #586157;
 }
 
 .category.aboutMe {
   justify-content: normal;
 }
 
-#aboutMeForm {
-  resize: none;
-  display: block;
-}
-
-#aboutMeForm > textarea,
-.aboutMe > .view {
-  min-height: 100%;
+.aboutMeForm {
+  display: flex;
+  align-items: center;
   width: 100%;
-  padding: 1rem;
+}
+
+.aboutMeForm > textarea,
+.aboutMe > .view {
   box-sizing: border-box;
+
+  width: clamp(65vw, 80%, 75vw);
+  height: 100%;
+
+  margin: auto;
+  padding: 0.8rem;
+  background-color: white;
+  border: 1px solid #c8d9c7;
+  border-radius: 1rem;
+
+  resize: none;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .aboutMe > .view {
   display: block;
+  height: auto;
+
+  background-color: #ffffffbd;
+  border: 1px solid #c8d9c7;
+  backdrop-filter: blur(2rem) saturate(180%);
 }
 
 .aboutMe > .view > pre {

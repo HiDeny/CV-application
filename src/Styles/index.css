@@ -99,6 +99,12 @@ pre {
   font-size: 1.2rem;
 }
 
+.category > button {
+  max-width: 8rem;
+  align-self: center;
+  justify-self: center;
+}
+
 /** FORM */
 
 form {
@@ -166,24 +172,25 @@ form > button,
   display: none;
 }
 
-.card:first-child {
+.cards > .card:first-child {
   margin-left: 10vw;
 }
 
-.card:last-child {
+.cards > .card:last-child {
   margin-right: 10vw;
+}
+
+.cards > .card {
+  min-width: 65vw;
 }
 
 .card {
   position: relative;
   scroll-snap-align: center;
 
-  min-width: 65vw;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 1rem;
   border: 1px solid #cacaca7d;
-
-  background-color: #f9701e40;
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -489,5 +496,11 @@ form > button,
   }
   100% {
     transform: translateY(0%);
+  }
+}
+
+@media print {
+  @page wide {
+    size: a4 landscape;
   }
 }

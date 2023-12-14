@@ -40,7 +40,7 @@ function Form({ data, handleSubmit, handleChange }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} id="aboutMeForm">
+      <form onSubmit={handleSubmit} id="aboutMeForm" className="aboutMeForm">
         <textarea
           id="aboutMeForm"
           name="aboutMe"
