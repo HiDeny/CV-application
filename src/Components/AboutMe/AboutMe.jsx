@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './AboutMe.css';
 
 export default function AboutMe({ data, updateData }) {
   const [editMode, setEditMode] = useState(true);
@@ -41,7 +42,7 @@ function Form({ data, handleSubmit, handleChange }) {
     <>
       <form onSubmit={handleSubmit} id="aboutMeForm">
         <textarea
-          id="aboutMe"
+          id="aboutMeForm"
           name="aboutMe"
           value={data}
           placeholder="Something about you..."
@@ -60,9 +61,7 @@ function View({ data, handleEditClick }) {
   return (
     <>
       <div className="view">
-        <div className="content">
-          <p>{data}</p>
-        </div>
+        <pre>{data}</pre>
       </div>
       <button type="button" onClick={handleEditClick}>
         EDIT

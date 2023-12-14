@@ -3,7 +3,7 @@ export default function Main({ aboutMe, experience }) {
     <div className="mainContent">
       <section className="aboutMe">
         <h2>About Me</h2>
-        <p>{aboutMe}</p>
+        <pre>{aboutMe}</pre>
       </section>
 
       {experience.length > 0 && (

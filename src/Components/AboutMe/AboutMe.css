@@ -1,0 +1,30 @@
+.aboutMe {
+  max-width: 75vw;
+  min-width: 65vw;
+  margin: auto;
+}
+
+.category.aboutMe {
+  justify-content: normal;
+}
+
+#aboutMeForm {
+  resize: none;
+  display: block;
+}
+
+#aboutMeForm > textarea,
+.aboutMe > .view {
+  min-height: 100%;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.aboutMe > .view {
+  display: block;
+}
+
+.aboutMe > .view > pre {
+  overflow: scroll;
+}

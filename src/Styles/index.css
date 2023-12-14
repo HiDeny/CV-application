@@ -46,6 +46,16 @@ button:disabled {
   background-color: #75757581;
 }
 
+pre {
+  white-space: pre-wrap;
+
+  margin: 0;
+  height: 100%;
+
+  font-family: inherit;
+  font-size: 1rem;
+}
+
 /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
