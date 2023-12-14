@@ -1,0 +1,82 @@
+/** DISPLAY MODE */
+
+.displayMode {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+.displayMode > section {
+  border-bottom: 1px solid lightgray;
+  padding: 2rem 0;
+}
+
+/** PREVIEW */
+.preview {
+  border: 1px solid;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(4, 1fr);
+
+  width: 210mm;
+  height: 297mm;
+  transform-origin: top;
+  transform: scale(0.8);
+}
+
+/** HEADER */
+
+.header {
+  grid-row: 1;
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  background-color: lightblue;
+}
+
+.profile-picture {
+  grid-row: 1;
+  grid-column: 1;
+
+  align-self: center;
+  justify-self: center;
+
+  border-radius: 50%;
+  width: 80%;
+  aspect-ratio: 1;
+
+  overflow: hidden;
+}
+
+.profile-picture > img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/** SIDEBAR */
+
+.sidebar {
+  grid-row: 2/5;
+  grid-column: 1;
+  display: flex;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+/** MAIN */
+
+.mainContent {
+  grid-row: 2/5;
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.aboutMe {
+  grid: ;
+  grid-row: 1/2;
+}
+
+.mainContent > .experience {
+  grid-row: 2/4;
+}
