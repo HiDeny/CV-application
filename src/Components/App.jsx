@@ -16,6 +16,7 @@ function App() {
     lastName: '',
     email: '',
     phone: '',
+    website: '',
     picture: '',
   });
 
@@ -24,12 +25,21 @@ function App() {
   const [experience, setExperience] = useState([]);
   const [skills, setSkills] = useState([]);
 
-  function updatePersonal(newData) {
-    setPersonal(newData);
+  function updatePersonal(e) {
+    const { name, value } = e.target;
+
+    if (name === 'picture') {
+      const newPicture = !value ? '' : URL.createObjectURL(e.target.files[0]);
+      setPersonal({ ...personal, [name]: newPicture });
+      return;
+    }
+
+    setPersonal({ ...personal, [name]: value });
   }
 
-  function updateAboutMe(newData) {
-    setAboutMe(newData);
+  function updateAboutMe(e) {
+    const { value } = e.target;
+    setAboutMe(value);
   }
 
   function updateEducation(newData) {
@@ -45,7 +55,7 @@ function App() {
   }
 
   function setFakeData() {
-    updatePersonal({
+    setPersonal({
       id: uuid(),
       firstName: 'First',
       lastName: 'Last',

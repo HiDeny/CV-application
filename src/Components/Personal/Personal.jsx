@@ -2,11 +2,9 @@ import { useState } from 'react';
 
 export default function Personal({ data, updateData }) {
   const [editMode, setEditMode] = useState(true);
-  const [newData, setNewData] = useState(data);
 
   function handleSubmit(e) {
     e.preventDefault();
-    updateData(newData);
     setEditMode(false);
   }
 
@@ -16,8 +14,8 @@ export default function Personal({ data, updateData }) {
       {editMode ? (
         <Form
           key={data.id}
-          data={newData}
-          handleChange={setNewData}
+          data={data}
+          handleChange={updateData}
           handleSubmit={handleSubmit}
         />
       ) : (
@@ -32,19 +30,7 @@ export default function Personal({ data, updateData }) {
 }
 
 function Form({ data, handleSubmit, handleChange }) {
-  const { firstName, lastName, email, phone, picture } = data;
-
-  function handleOnChange(e) {
-    const { name, value } = e.target;
-
-    if (name === 'picture') {
-      const newPicture = URL.createObjectURL(e.target.files[0]) || '';
-      handleChange({ ...data, [name]: newPicture });
-      return;
-    }
-
-    handleChange({ ...data, [name]: value });
-  }
+  const { firstName, lastName, email, phone, website } = data;
 
   return (
     <>
@@ -57,7 +43,7 @@ function Form({ data, handleSubmit, handleChange }) {
             name="firstName"
             value={firstName}
             placeholder=""
-            onChange={handleOnChange}
+            onChange={handleChange}
             required
           />
         </label>
@@ -70,7 +56,7 @@ function Form({ data, handleSubmit, handleChange }) {
             name="lastName"
             value={lastName}
             placeholder=""
-            onChange={handleOnChange}
+            onChange={handleChange}
             required
           />
         </label>
@@ -83,7 +69,7 @@ function Form({ data, handleSubmit, handleChange }) {
             name="email"
             value={email}
             placeholder=""
-            onChange={handleOnChange}
+            onChange={handleChange}
             required
           />
         </label>
@@ -96,8 +82,19 @@ function Form({ data, handleSubmit, handleChange }) {
             name="phone"
             value={phone}
             placeholder=""
-            onChange={handleOnChange}
+            onChange={handleChange}
             required
+          />
+        </label>
+
+        <label htmlFor="website">
+          Website (social)
+          <input
+            type="url"
+            id="website"
+            name="website"
+            value={website}
+            onChange={handleChange}
           />
         </label>
 
@@ -108,11 +105,8 @@ function Form({ data, handleSubmit, handleChange }) {
             accept="image/*"
             id="picture"
             name="picture"
-            onChange={handleOnChange}
+            onChange={handleChange}
           />
-          {/* <button type="button" className="removeBtn">
-            Ｘ
-          </button> */}
         </label>
       </form>
       <button type="submit" form="personalForm">
@@ -123,7 +117,7 @@ function Form({ data, handleSubmit, handleChange }) {
 }
 
 function View({ data, handleEditClick }) {
-  const { firstName, lastName, email, phone, picture } = data;
+  const { firstName, lastName, email, phone, picture, website } = data;
   return (
     <>
       <div className="view">
@@ -133,6 +127,9 @@ function View({ data, handleEditClick }) {
           </p>
           <p>✉️ {email}</p>
           <p>📞 {phone}</p>
+          {website && (
+            <a href={website}> 📇{website.replace(/^https?:\/\//, '')}</a>
+          )}
           {picture !== '' && <p>✔️ Picture</p>}
         </div>
       </div>

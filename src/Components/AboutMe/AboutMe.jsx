@@ -3,11 +3,9 @@ import './AboutMe.css';
 
 export default function AboutMe({ data, updateData }) {
   const [editMode, setEditMode] = useState(true);
-  const [newData, setNewData] = useState(data);
 
   function handleSubmit(e) {
     e.preventDefault();
-    updateData(newData);
     toggleEditMode();
   }
 
@@ -20,8 +18,8 @@ export default function AboutMe({ data, updateData }) {
       <h2 className="category-title">About Me</h2>
       {editMode ? (
         <Form
-          data={newData}
-          handleChange={setNewData}
+          data={data}
+          handleChange={updateData}
           handleSubmit={handleSubmit}
         />
       ) : (
@@ -32,12 +30,6 @@ export default function AboutMe({ data, updateData }) {
 }
 
 function Form({ data, handleSubmit, handleChange }) {
-  function handleOnChange(e) {
-    const { value } = e.target;
-
-    handleChange(value);
-  }
-
   return (
     <>
       <form onSubmit={handleSubmit} id="aboutMeForm" className="aboutMeForm">
@@ -46,7 +38,7 @@ function Form({ data, handleSubmit, handleChange }) {
           name="aboutMe"
           value={data}
           placeholder="Something about you..."
-          onChange={handleOnChange}
+          onChange={handleChange}
           required
         />
       </form>
