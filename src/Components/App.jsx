@@ -3,8 +3,9 @@ import { v4 as uuid } from 'uuid';
 import Personal from './Personal/Personal';
 import Education from './Education/Education';
 import Experience from './Experience/Experience';
-import DisplayMode from './DisplayMode';
+import DisplayMode from './Display/DisplayMode';
 import Skills from './Skills/Skills';
+import AboutMe from './AboutMe/AboutMe';
 
 function App() {
   const [editMode, setEditMode] = useState(true);
@@ -18,12 +19,17 @@ function App() {
     picture: '',
   });
 
+  const [aboutMe, setAboutMe] = useState('');
   const [education, setEducation] = useState([]);
   const [experience, setExperience] = useState([]);
   const [skills, setSkills] = useState([]);
 
   function updatePersonal(newData) {
     setPersonal(newData);
+  }
+
+  function updateAboutMe(newData) {
+    setAboutMe(newData);
   }
 
   function updateEducation(newData) {
@@ -53,13 +59,13 @@ function App() {
         id: uuid(),
         name: 'Test School',
         title: 'Nest',
-        date: { start: '', end: '' },
+        date: { start: new Date('2/1/22'), end: '' },
       },
       {
         id: uuid(),
         name: 'Test School',
         title: 'Nest',
-        date: { start: '', end: '' },
+        date: { start: new Date('2/1/22'), end: '' },
       },
     ]);
 
@@ -70,7 +76,7 @@ function App() {
         position: 'Position',
         responsibility:
           'Enim cillum excepteur eiusmod dolor cillum minim irure ad id velit est reprehenderit voluptate cupidatat consequat. Eu pariatur sint consequat incididunt dolor ullamco incididunt aliquip. Cupidatat laboris laborum non sunt occaecat sint. Nostrud deserunt ut cupidatat. Esse eu aute mollit culpa enim ut aute.',
-        date: { start: '', end: '' },
+        date: { start: new Date('2/1/22'), end: '' },
       },
     ]);
 
@@ -97,6 +103,7 @@ function App() {
       {editMode ? (
         <>
           <Personal data={personal} updateData={updatePersonal} />
+          <AboutMe data={aboutMe} updateData={updateAboutMe} />
           <Education data={education} updateData={updateEducation} />
           <Experience data={experience} updateData={updateExperience} />
           <Skills data={skills} updateData={updateSkills} />
@@ -104,6 +111,7 @@ function App() {
       ) : (
         <DisplayMode
           personal={personal}
+          aboutMe={aboutMe}
           education={education}
           experience={experience}
           skills={skills}
