@@ -23,7 +23,11 @@ function App() {
   const [aboutMe, setAboutMe] = useState('');
   const [education, setEducation] = useState([]);
   const [experience, setExperience] = useState([]);
-  const [skills, setSkills] = useState([]);
+  const [skills, setSkills] = useState([
+    { id: uuid(), value: '' },
+    { id: uuid(), value: '' },
+    { id: uuid(), value: '' },
+  ]);
 
   function updatePersonal(e) {
     const { name, value } = e.target;

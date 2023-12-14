@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-export default function Card({ item, handleChange, handleSubmit }) {
+export default function Card({
+  item,
+  handleChange,
+  handleRemove,
+  handleSubmit,
+}) {
   const [editMode, setEditMode] = useState(true);
 
   function handleSubmit(e) {
@@ -15,6 +20,7 @@ export default function Card({ item, handleChange, handleSubmit }) {
           key={item.id}
           item={item}
           handleChange={handleChange}
+          handleRemove={handleRemove}
           handleSubmit={handleSubmit}
         />
       ) : (
@@ -28,7 +34,7 @@ export default function Card({ item, handleChange, handleSubmit }) {
   );
 }
 
-function Form({ item, handleSubmit, handleChange }) {
+function Form({ item, handleSubmit, handleChange, handleRemove }) {
   const { name, title, date } = item;
 
   function handleFieldChange(e) {
@@ -46,7 +52,7 @@ function Form({ item, handleSubmit, handleChange }) {
     const container = e.target.parentElement.parentElement;
     container.classList.add('cardRemove');
     setTimeout(() => {
-      handleChange(item, true);
+      handleRemove(item);
     }, 500);
   }
 

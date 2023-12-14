@@ -30,7 +30,7 @@ button {
   background-color: #1a1a1a;
   color: white;
   cursor: pointer;
-  transition: border-color 0.25s, transform 0.25s;
+  transition: border-color 0.25s, transform 0.25s, opacity 0.5s;
 }
 button:hover,
 button:focus-visible {
@@ -44,6 +44,7 @@ button:focus-visible {
 
 button:disabled {
   background-color: #75757581;
+  opacity: 0.3;
 }
 
 pre {

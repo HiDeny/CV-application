@@ -3,23 +3,27 @@ import Card from './Card';
 
 export default function Education({ data, updateData }) {
   const content = data.map((item) => (
-    <Card key={item.id} item={item} handleChange={handleChange} />
+    <Card
+      key={item.id}
+      item={item}
+      handleChange={handleChange}
+      handleRemove={handleRemove}
+    />
   ));
 
-  function handleChange(updatedItem, remove = false) {
-    let nextData;
+  function handleChange(updatedItem) {
+    const nextData = data.map((item) => {
+      if (item.id === updatedItem.id) {
+        return updatedItem;
+      }
+      return item;
+    });
 
-    if (remove) {
-      nextData = data.filter((item) => item.id !== updatedItem.id);
-    } else {
-      nextData = data.map((item) => {
-        if (item.id === updatedItem.id) {
-          return updatedItem;
-        }
-        return item;
-      });
-    }
+    updateData(nextData);
+  }
 
+  function handleRemove(updatedItem) {
+    const nextData = data.filter((item) => item.id !== updatedItem.id);
     updateData(nextData);
   }
 
@@ -48,9 +52,14 @@ export default function Education({ data, updateData }) {
     <div className="category education">
       <h2 className="category-title">Education</h2>
       <div className="cards education">
-        {content.length > 0 ? content : <ExampleCard />}
+        {data.length > 0 ? content : <ExampleCard />}
       </div>
-      <button type="button" className="addBtn" onClick={handleClickAdd}>
+      <button
+        type="button"
+        className="addBtn"
+        onClick={handleClickAdd}
+        disabled={data.length > 3}
+      >
         +
       </button>
     </div>

@@ -37,7 +37,12 @@ export default function Skills({ data, updateData }) {
           />
         ))}
       </ul>
-      <button type="button" onClick={handleClickAdd} className="addBtn">
+      <button
+        type="button"
+        onClick={handleClickAdd}
+        className="addBtn"
+        disabled={data.length > 5}
+      >
         +
       </button>
     </div>

@@ -26,7 +26,3 @@ export default function DisplayMode({
     </div>
   );
 }
-
-// Header - name, pic
-// Sidebar - contact, skills(6), schools(3)
-// Main - About me, Experiences(3)

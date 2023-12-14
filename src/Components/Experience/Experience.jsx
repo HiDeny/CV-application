@@ -53,7 +53,12 @@ export default function Experience({ data, updateData }) {
           />
         ))}
       </div>
-      <button type="button" className="addBtn" onClick={handleClickAdd}>
+      <button
+        type="button"
+        className="addBtn"
+        onClick={handleClickAdd}
+        disabled={data.length > 3}
+      >
         +
       </button>
     </div>
