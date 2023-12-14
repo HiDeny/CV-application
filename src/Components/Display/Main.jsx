@@ -2,13 +2,13 @@ export default function Main({ aboutMe, experience }) {
   return (
     <div className="mainContent">
       <section className="aboutMe">
-        <h2>About Me</h2>
+        <h2 className="preview-title">ABOUT ME</h2>
         <pre>{aboutMe}</pre>
       </section>
 
       {experience.length > 0 && (
         <section className="experience">
-          <h2>Experience</h2>
+          <h2 className="preview-title">EXPERIENCE</h2>
           <ul>
             {experience.map((item) => (
               <ExperienceItem key={item.id} item={item} />
@@ -30,10 +30,9 @@ function ExperienceItem({ item }) {
         {date.start}-{date.end ? date.end : 'Present'}
       </p>
       {responsibility && (
-        <>
-          <h4>Responsibility: </h4>
+        <div className="preview-responsibility">
           <p>{responsibility}</p>
-        </>
+        </div>
       )}
     </li>
   );

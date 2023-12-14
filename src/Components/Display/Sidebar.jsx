@@ -4,14 +4,20 @@ export default function Sidebar({ personal, skills, education }) {
   return (
     <section className="sidebar">
       <section className="contact">
-        <h2>Contact</h2>
-        <p>{email}</p>
-        <p>{phone}</p>
+        <h2 className="preview-title">CONTACT</h2>
+        <ul>
+          <li>
+            <p>{email}</p>
+          </li>
+          <li>
+            <p>{phone}</p>
+          </li>
+        </ul>
       </section>
 
       {skills.length > 0 && (
         <section className="skills">
-          <h2>Skills</h2>
+          <h2 className="preview-title">SKILLS</h2>
           <ul>
             {skills.map((item) => (
               <SkillItem key={item.id} item={item} />
@@ -22,7 +28,7 @@ export default function Sidebar({ personal, skills, education }) {
 
       {education.length > 0 && (
         <section className="education">
-          <h2>Education</h2>
+          <h2 className="preview-title">EDUCATION</h2>
           <ul>
             {education.map((item) => (
               <SchoolItem key={item.id} item={item} />

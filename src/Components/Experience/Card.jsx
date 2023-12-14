@@ -88,6 +88,7 @@ function Form({ item, handleSubmit, handleChange, handleRemove }) {
             name="responsibility"
             rows={10}
             value={responsibility}
+            maxLength="200"
             onChange={handleItemChange}
           />
         </label>

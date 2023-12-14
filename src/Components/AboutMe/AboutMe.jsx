@@ -39,6 +39,7 @@ function Form({ data, handleSubmit, handleChange }) {
           value={data}
           placeholder="Something about you..."
           onChange={handleChange}
+          maxLength='250'
           required
         />
       </form>
