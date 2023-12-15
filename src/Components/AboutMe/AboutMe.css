@@ -8,22 +8,11 @@
   );
 }
 
-.aboutMe > button {
-  background-color: #586157;
+.aboutMe .fields .hint-required {
+  align-self: center;
 }
 
-.category.aboutMe {
-  justify-content: normal;
-}
-
-.aboutMeForm {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.aboutMeForm > textarea,
-.aboutMe > .view {
+.aboutMe .fields textarea {
   box-sizing: border-box;
 
   width: clamp(65vw, 80%, 75vw);
@@ -39,17 +28,4 @@
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
-.aboutMe > .view {
-  display: block;
-  height: auto;
-
-  background-color: #ffffffbd;
-  border: 1px solid #c8d9c7;
-  backdrop-filter: blur(2rem) saturate(180%);
-}
-
-.aboutMe > .view > pre {
-  overflow: scroll;
 }

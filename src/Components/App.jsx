@@ -109,19 +109,27 @@ function App() {
     element.scrollIntoView();
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    toggleEditMode();
+  }
+
   return (
     <>
       <button type="button" className="fakeButton" onClick={setFakeData}>
         FAKE
       </button>
       {editMode ? (
-        <>
+        <form onSubmit={handleSubmit}>
           <Personal data={personal} updateData={updatePersonal} />
           <AboutMe data={aboutMe} updateData={updateAboutMe} />
-          <Education data={education} updateData={updateEducation} />
-          <Experience data={experience} updateData={updateExperience} />
-          <Skills data={skills} updateData={updateSkills} />
-        </>
+          {/* <Education data={education} updateData={updateEducation} /> */}
+          {/* <Experience data={experience} updateData={updateExperience} /> */}
+          {/* <Skills data={skills} updateData={updateSkills} /> */}
+          <div className="category create">
+            <button type="submit">Create</button>
+          </div>
+        </form>
       ) : (
         <DisplayMode
           personal={personal}
@@ -132,11 +140,11 @@ function App() {
         />
       )}
 
-      <div className="category create">
+      {/* <div className="category create">
         <button type="button" onClick={toggleEditMode}>
           {editMode ? 'Create' : 'Edit'}
         </button>
-      </div>
+      </div> */}
     </>
   );
 }

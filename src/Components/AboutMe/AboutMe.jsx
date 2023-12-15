@@ -1,64 +1,21 @@
-import { useState } from 'react';
 import './AboutMe.css';
 
 export default function AboutMe({ data, updateData }) {
-  const [editMode, setEditMode] = useState(true);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    toggleEditMode();
-  }
-
-  function toggleEditMode() {
-    setEditMode(!editMode);
-  }
-
   return (
-    <div className="category aboutMe">
+    <fieldset className="category aboutMe">
       <h2 className="category-title">About Me</h2>
-      {editMode ? (
-        <Form
-          data={data}
-          handleChange={updateData}
-          handleSubmit={handleSubmit}
-        />
-      ) : (
-        <View data={data} handleEditClick={toggleEditMode} />
-      )}
-    </div>
-  );
-}
 
-function Form({ data, handleSubmit, handleChange }) {
-  return (
-    <>
-      <form onSubmit={handleSubmit} id="aboutMeForm" className="aboutMeForm">
+      <div className="fields">
+        <p className="hint-required">(Required)</p>
         <textarea
-          id="aboutMeForm"
           name="aboutMe"
           value={data}
           placeholder="Something about you..."
-          onChange={handleChange}
-          maxLength='250'
+          onChange={updateData}
+          maxLength="250"
           required
         />
-      </form>
-      <button type="submit" form="aboutMeForm">
-        SAVE
-      </button>
-    </>
-  );
-}
-
-function View({ data, handleEditClick }) {
-  return (
-    <>
-      <div className="view">
-        <pre>{data}</pre>
       </div>
-      <button type="button" onClick={handleEditClick}>
-        EDIT
-      </button>
-    </>
+    </fieldset>
   );
 }

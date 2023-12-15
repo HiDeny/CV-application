@@ -1,12 +1,13 @@
 /** PERSONAL */
 
-#personalForm {
+.personal > .fields {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1.3rem;
 
-  max-width: 75vw;
+  width: clamp(65vw, 80%, 75vw);
+  margin: auto;
 }
 
 .personal > .view > .content {
