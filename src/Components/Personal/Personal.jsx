@@ -1,101 +1,83 @@
-import { useState } from 'react';
 import './Personal.css';
 
 export default function Personal({ data, updateData }) {
-  const [editMode, setEditMode] = useState(true);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setEditMode(false);
-  }
-
-  return (
-    <div className="category personal">
-      <h2 className="category-title">Personal Information</h2>
-      {editMode ? (
-        <Form
-          key={data.id}
-          data={data}
-          handleChange={updateData}
-          handleSubmit={handleSubmit}
-        />
-      ) : (
-        <View
-          key={data.id}
-          data={data}
-          handleEditClick={() => setEditMode(true)}
-        />
-      )}
-    </div>
-  );
-}
-
-function Form({ data, handleSubmit, handleChange }) {
   const { firstName, lastName, email, phone, website } = data;
 
   return (
-    <>
-      <form onSubmit={handleSubmit} id="personalForm">
+    <fieldset className="category personal">
+      <h2 className="category-title">Personal Information</h2>
+
+      <div className="fields">
         <label htmlFor="firstName">
-          First Name
+          <p>
+            First Name <span className="hint-required">(Required)</span>
+          </p>
           <input
             type="text"
             id="firstName"
             name="firstName"
             value={firstName}
             placeholder=""
-            onChange={handleChange}
+            onChange={updateData}
             required
           />
         </label>
 
         <label htmlFor="lastName">
-          Last Name
+          <p>
+            Last Name <span className="hint-required">(Required)</span>
+          </p>
           <input
             type="text"
             id="lastName"
             name="lastName"
             value={lastName}
             placeholder=""
-            onChange={handleChange}
+            onChange={updateData}
             required
           />
         </label>
 
         <label htmlFor="email">
-          E-mail
+          <p>
+            E-mail <span className="hint-required">(Required)</span>
+          </p>
           <input
             type="email"
             id="email"
             name="email"
             value={email}
             placeholder=""
-            onChange={handleChange}
+            onChange={updateData}
             required
           />
         </label>
 
         <label htmlFor="phone">
-          Phone
+          <p>
+            Phone <span className="hint-required">(Required)</span>
+          </p>
           <input
             type="tel"
             id="phone"
             name="phone"
             value={phone}
             placeholder=""
-            onChange={handleChange}
+            onChange={updateData}
             required
           />
         </label>
 
         <label htmlFor="website">
-          Website (social)
+          <p>
+            Website <span className="hint-required">(Social)</span>
+          </p>
           <input
             type="url"
             id="website"
             name="website"
             value={website}
-            onChange={handleChange}
+            onChange={updateData}
           />
         </label>
 
@@ -106,37 +88,10 @@ function Form({ data, handleSubmit, handleChange }) {
             accept="image/*"
             id="picture"
             name="picture"
-            onChange={handleChange}
+            onChange={updateData}
           />
         </label>
-      </form>
-      <button type="submit" form="personalForm">
-        SAVE
-      </button>
-    </>
-  );
-}
-
-function View({ data, handleEditClick }) {
-  const { firstName, lastName, email, phone, picture, website } = data;
-  return (
-    <>
-      <div className="view">
-        <div className="content">
-          <p>
-            👤 {firstName} {lastName}
-          </p>
-          <p>✉️ {email}</p>
-          <p>📞 {phone}</p>
-          {website && (
-            <a href={website}> 📇{website.replace(/^https?:\/\//, '')}</a>
-          )}
-          {picture !== '' && <p>✔️ Picture</p>}
-        </div>
       </div>
-      <button type="button" onClick={handleEditClick}>
-        EDIT
-      </button>
-    </>
+    </fieldset>
   );
 }
