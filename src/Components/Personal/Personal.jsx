@@ -74,7 +74,7 @@ export default function Personal({ data, updateData }) {
             Website <span className="hint-required">(Social)</span>
           </p>
           <input
-            type="url"
+            type="text"
             id="website"
             name="website"
             value={website}

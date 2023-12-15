@@ -65,36 +65,49 @@ function App() {
       lastName: 'Last',
       email: 'email@address.com',
       phone: '123 456 789',
+      website: 'example.com',
       picture: '',
     });
 
-    updateEducation([
+    setAboutMe(
+      'Nostrud dolore laboris ea elit laborum minim nostrud elit anim. In do qui in elit proident proident excepteur tempor pariatur ullamco. Non culpa voluptate pariatur minim anim sunt. Cillum velit cupidatat irure qui dolor reprehenderit nulla eungiaigc.'
+    );
+
+    setEducation([
       {
         id: uuid(),
-        name: 'Test School',
-        title: 'Nest',
-        date: { start: new Date('2/1/22'), end: '' },
+        name: 'School Name',
+        title: 'Title Of Education',
+        date: { start: '2000-01-01', end: '2010-01-01' },
       },
       {
         id: uuid(),
-        name: 'Test School',
-        title: 'Nest',
-        date: { start: new Date('2/1/22'), end: '' },
+        name: 'School Name 2',
+        title: 'Title Of Education 2',
+        date: { start: '2000-01-01', end: '2010-01-01' },
       },
     ]);
 
-    updateExperience([
+    setExperience([
       {
         id: uuid(),
         name: 'Company Name',
         position: 'Position',
         responsibility:
-          'Enim cillum excepteur eiusmod dolor cillum minim irure ad id velit est reprehenderit voluptate cupidatat consequat. Eu pariatur sint consequat incididunt dolor ullamco incididunt aliquip. Cupidatat laboris laborum non sunt occaecat sint. Nostrud deserunt ut cupidatat. Esse eu aute mollit culpa enim ut aute.',
-        date: { start: new Date('2/1/22'), end: '' },
+          'Nostrud dolore laboris ea elit laborum minim nostrud elit anim. In do qui in elit proident proident excepteur tempor pariatur ullamco. Non culpa voluptate pariatur minim anim sunt. Non culpa voluptate',
+        date: { start: '2000-01-01', end: '2010-01-01' },
+      },
+      {
+        id: uuid(),
+        name: 'Company Nam 2',
+        position: 'Position 2',
+        responsibility:
+          'Nostrud dolore laboris ea elit laborum minim nostrud elit anim. In do qui in elit proident proident excepteur tempor pariatur ullamco. Non culpa voluptate pariatur minim anim sunt. Non culpa voluptate',
+        date: { start: '2000-01-01', end: '2010-01-01' },
       },
     ]);
 
-    updateSkills([
+    setSkills([
       { id: uuid(), value: 'Talking' },
       { id: uuid(), value: 'Thinking' },
       { id: uuid(), value: 'Walking' },
@@ -137,14 +150,9 @@ function App() {
           education={education}
           experience={experience}
           skills={skills}
+          handleEditClick={toggleEditMode}
         />
       )}
-
-      {/* <div className="category create">
-        <button type="button" onClick={toggleEditMode}>
-          {editMode ? 'Create' : 'Edit'}
-        </button>
-      </div> */}
     </>
   );
 }
