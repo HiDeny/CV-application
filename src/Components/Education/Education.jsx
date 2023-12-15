@@ -1,25 +1,13 @@
 import { v4 as uuid } from 'uuid';
-import Card from './Card';
+import EducationCard from './EducationCard';
 import './Education.css';
 
 export default function Education({ data, updateData }) {
-  const content = data.map((item) => (
-    <Card
-      key={item.id}
-      item={item}
-      handleChange={handleChange}
-      handleRemove={handleRemove}
-    />
-  ));
-
   function handleChange(updatedItem) {
     const nextData = data.map((item) => {
-      if (item.id === updatedItem.id) {
-        return updatedItem;
-      }
+      if (item.id === updatedItem.id) return updatedItem;
       return item;
     });
-
     updateData(nextData);
   }
 
@@ -46,24 +34,35 @@ export default function Education({ data, updateData }) {
       }, 340);
       return;
     }
+
     updateData((prevData) => [...prevData, newItem]);
   }
 
+  const content = data.map((item) => (
+    <EducationCard
+      key={item.id}
+      item={item}
+      handleChange={handleChange}
+      handleRemove={handleRemove}
+    />
+  ));
+
   return (
-    <div className="category education">
+    <fieldset className="category education">
       <h2 className="category-title">Education</h2>
       <div className="cards education">
-        {data.length > 0 ? content : <ExampleCard />}
+        {data.length < 1 && <ExampleCard />}
+        {content}
       </div>
       <button
         type="button"
         className="addBtn"
         onClick={handleClickAdd}
-        disabled={data.length > 3}
+        disabled={data.length >= 4}
       >
         +
       </button>
-    </div>
+    </fieldset>
   );
 }
 
@@ -75,7 +74,7 @@ function ExampleCard() {
         <p>TITLE</p>
         <p>STARTED / ENDED</p>
       </div>
-      <p className="hint">(THIS IS AN EXAMPLE)</p>
+      <p className="hint-example">(THIS IS AN EXAMPLE)</p>
     </div>
   );
 }
