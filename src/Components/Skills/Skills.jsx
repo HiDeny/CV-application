@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import Card from './Card';
+import SkillCard from './SkillCard';
 import './Skills.css';
 
 export default function Skills({ data, updateData }) {
@@ -25,27 +25,27 @@ export default function Skills({ data, updateData }) {
     updateData((prevSkills) => [...prevSkills, { id: uuid(), value: '' }]);
   }
 
+  const content = data.map((skill) => (
+    <SkillCard
+      key={skill.id}
+      item={skill}
+      handleOnChange={handleOnChange}
+      handleItemRemove={handleItemRemove}
+    />
+  ));
+
   return (
-    <div className="category skills">
+    <fieldset className="category skills">
       <h2 className="category-title">Skills</h2>
-      <ul className="list">
-        {data.map((skill) => (
-          <Card
-            key={skill.id}
-            item={skill}
-            handleOnChange={handleOnChange}
-            handleItemRemove={handleItemRemove}
-          />
-        ))}
-      </ul>
+      <ul className="fields">{content}</ul>
       <button
         type="button"
         onClick={handleClickAdd}
         className="addBtn"
-        disabled={data.length > 5}
+        disabled={data.length >= 6}
       >
         +
       </button>
-    </div>
+    </fieldset>
   );
 }

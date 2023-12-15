@@ -10,29 +10,28 @@
   );
 }
 
-.category.skills > .list {
-  list-style: none;
+.skills .fields {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 1rem;
 
-  height: 100%;
-  min-width: 65vw;
+  list-style: none;
+  height: max-content;
   padding: 0;
 }
 
-.category.skills > button {
+.skills .addBtn {
   background-color: #a46007;
 }
 
 .skillItem {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   box-sizing: border-box;
-  width: 100%;
+
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+
+  max-width: max-content;
   border: 1px #ffc681 solid;
   border-radius: 0.5rem;
   padding: 0.6rem;
@@ -40,35 +39,12 @@
   background-color: #fff8f0;
 }
 
-.skillItem.edit {
-  flex-direction: column;
-}
-
-.skillItem > .buttons {
-  align-self: end;
-}
-
-.skillItem > p {
-  margin: 0;
-  padding: 3px;
-}
-
-.skillItem > input {
+.skillItem input {
   border: 2px solid #8080801a;
 }
 
-.skillItem > button,
-.skillItem > .buttons > button {
+.skillItem .removeBtn {
   margin: 0;
   padding: 3px;
   background-color: transparent;
-}
-
-.skillItem > .buttons > .removeBtn {
-  position: initial;
-}
-
-.skillItem > button:disabled,
-.skillItem > .buttons > button:disabled {
-  opacity: 0.2;
 }

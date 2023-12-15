@@ -125,7 +125,7 @@ function App() {
           <AboutMe data={aboutMe} updateData={updateAboutMe} />
           <Education data={education} updateData={updateEducation} />
           <Experience data={experience} updateData={updateExperience} />
-          {/* <Skills data={skills} updateData={updateSkills} /> */}
+          <Skills data={skills} updateData={updateSkills} />
           <div className="category create">
             <button type="submit">Create</button>
           </div>

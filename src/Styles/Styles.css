@@ -191,7 +191,7 @@ textarea:focus-visible {
   text-align: center;
 }
 
-.removeBtn {
+.card .removeBtn {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
