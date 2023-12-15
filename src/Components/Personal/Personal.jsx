@@ -5,6 +5,7 @@ export default function Personal({ data, updateData }) {
 
   return (
     <fieldset className="category personal">
+      <legend>1/5</legend>
       <h2 className="category-title">Personal Information</h2>
 
       <div className="fields">

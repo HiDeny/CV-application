@@ -35,8 +35,9 @@
   border: 1px #ffc681 solid;
   border-radius: 0.5rem;
   padding: 0.6rem;
-
   background-color: #fff8f0;
+
+  animation: swipe-in 0.7s ease;
 }
 
 .skillItem input {

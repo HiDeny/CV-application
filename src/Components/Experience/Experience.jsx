@@ -50,6 +50,7 @@ export default function Experience({ data, updateData }) {
 
   return (
     <fieldset className="category experience">
+      <legend>4/5</legend>
       <h2 className="category-title">Experience</h2>
       <div className="cards experience">
         {data.length < 1 && <ExampleCard />}
@@ -70,7 +71,7 @@ export default function Experience({ data, updateData }) {
 function ExampleCard() {
   return (
     <div className="card experience example">
-      <div className="content">
+      <div className="fields">
         <p>COMPANY NAME</p>
         <p>POSITION</p>
         <p>RESPONSIBILITY</p>

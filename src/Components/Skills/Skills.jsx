@@ -36,6 +36,7 @@ export default function Skills({ data, updateData }) {
 
   return (
     <fieldset className="category skills">
+      <legend>5/5</legend>
       <h2 className="category-title">Skills</h2>
       <ul className="fields">{content}</ul>
       <button

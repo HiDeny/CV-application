@@ -3,6 +3,7 @@ import './AboutMe.css';
 export default function AboutMe({ data, updateData }) {
   return (
     <fieldset className="category aboutMe">
+      <legend>2/5</legend>
       <h2 className="category-title">About Me</h2>
 
       <div className="fields">

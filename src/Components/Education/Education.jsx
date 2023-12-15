@@ -48,6 +48,7 @@ export default function Education({ data, updateData }) {
 
   return (
     <fieldset className="category education">
+      <legend>3/5</legend>
       <h2 className="category-title">Education</h2>
       <div className="cards education">
         {data.length < 1 && <ExampleCard />}
@@ -68,7 +69,7 @@ export default function Education({ data, updateData }) {
 function ExampleCard() {
   return (
     <div className="card education example">
-      <div className="content">
+      <div className="fields">
         <p>SCHOOL NAME</p>
         <p>TITLE</p>
         <p>STARTED / ENDED</p>

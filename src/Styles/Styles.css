@@ -5,7 +5,6 @@
 
   /* color-scheme: light dark; */
   color: black;
-  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -57,29 +56,18 @@ pre {
   font-size: 1rem;
 }
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
 .fakeButton {
   position: absolute;
   top: 0;
   transform: scale(0.6);
+  z-index: 10;
 }
 
 /** CATEGORY */
 
 .category {
   scroll-snap-align: start;
+  position: relative;
 
   display: grid;
   grid-template-rows: 15vh 70vh 15vh;
@@ -91,6 +79,7 @@ pre {
   margin: 0;
 }
 
+/* Add background image */
 .addBtn {
   justify-self: center;
   align-self: center;
@@ -98,13 +87,25 @@ pre {
   font-size: 1.2rem;
 }
 
-.category > button {
-  max-width: 8rem;
-  align-self: center;
-  justify-self: center;
+/** FORM */
+
+legend {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
-/** FORM */
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+legend {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
 
 label {
   display: flex;
@@ -113,6 +114,14 @@ label {
 
 label > p {
   margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hint-required {
+  font-size: 0.7rem;
+  color: rgb(85, 85, 85);
 }
 
 input,
@@ -121,25 +130,13 @@ select,
 textarea {
   border-radius: 0.2rem;
   border: 0.5px solid #80808082;
-  padding: 3px;
+  padding: 3px 5px;
   transition: transform 0.25s;
 }
 
 input:focus-visible,
 textarea:focus-visible {
   transform: scale(1.05);
-}
-
-.inputs > .text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.inputs > .date {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
 }
 
 /** CARD */
@@ -154,6 +151,7 @@ textarea:focus-visible {
 
   overflow: scroll;
   scroll-snap-type: x mandatory;
+
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -162,41 +160,45 @@ textarea:focus-visible {
   display: none;
 }
 
-.cards > .card:first-child {
-  margin-left: 10vw;
+.card:first-child {
+  margin-left: 12vw;
 }
 
-.cards > .card:last-child {
-  margin-right: 10vw;
-}
-
-.cards > .card {
-  min-width: 65vw;
+.card:last-child {
+  margin-right: 12vw;
 }
 
 .card {
   position: relative;
   scroll-snap-align: center;
 
-  padding: 1rem;
+  min-width: 65vw;
+  padding: 0.5rem 1rem;
   border-radius: 1rem;
   border: 1px solid #cacaca7d;
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
   animation: swipe-in 0.7s ease;
 }
 
-.content > .text {
-  text-align: center;
+.fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  height: 100%;
+  width: 100%;
 }
 
-.card .removeBtn {
+.card button.removeBtn {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: -0.3rem;
+  right: -0.5rem;
 
   background: transparent;
+  border: none;
   color: black;
 }
 
@@ -209,9 +211,9 @@ textarea:focus-visible {
 .card.example {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   border: 1px gray dashed;
-  background-color: whitesmoke;
+
   color: #6e6e6e;
   text-align: center;
 
@@ -219,8 +221,8 @@ textarea:focus-visible {
   transition: transform 0.7s ease;
 }
 
-.example > .content {
-  justify-content: center;
+.example .fields {
+  height: max-content;
 }
 
 .hint-example {
@@ -232,30 +234,15 @@ textarea:focus-visible {
   transform: translateY(150%);
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
-  margin: auto;
-  height: 100%;
-}
-
-.content > .date {
-  text-align: center;
-}
-
-.date > p {
-  margin: 0;
-}
-
 /** CREATE */
 
 .category.create {
   display: flex;
-  height: 100vh;
   justify-content: center;
   align-items: center;
+
+  height: 100vh;
+
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 1) 16%,
@@ -263,7 +250,7 @@ textarea:focus-visible {
   );
 }
 
-.create > button {
+.create button {
   background: #7a65ae;
   color: white;
 }
@@ -313,19 +300,17 @@ textarea:focus-visible {
   }
 }
 
-/* Inline #8 | http://localhost:5173/ */
+/* @media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
 
-.fields {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-
-  height: 100%;
-  width: 100%;
-}
-
-.card button.removeBtn {
-  background: transparent;
-  border: none;
-  color: black;
-}
+  background-color: #242424;
+} */
