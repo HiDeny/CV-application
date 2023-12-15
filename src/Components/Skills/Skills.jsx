@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import Card from './Card';
+import './Skills.css';
 
 export default function Skills({ data, updateData }) {
   function handleOnChange(e) {

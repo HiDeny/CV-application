@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export default function Sidebar({ personal, skills, education }) {
   const { email, phone } = personal;
 
@@ -54,9 +56,12 @@ function SchoolItem({ item }) {
     <li>
       <h3 className="title">{title}</h3>
       <p className="schoolName">{name}</p>
-      <p>
-        {date.start} to {date.end ? date.end : 'Present'}
-      </p>
+      <div className="date">
+        <p>
+          {format(new Date(date.start), 'dd. MM. yyyy')} /{' '}
+          {date.end ? format(new Date(date.end), 'dd. MM. yyyy') : 'Present'}
+        </p>
+      </div>
     </li>
   );
 }

@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import Card from './Card';
+import './Education.css';
 
 export default function Education({ data, updateData }) {
   const content = data.map((item) => (

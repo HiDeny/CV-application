@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import Card from './Card';
+import './Experience.css';
 
 export default function Experience({ data, updateData }) {
   function handleChange(updatedItem) {

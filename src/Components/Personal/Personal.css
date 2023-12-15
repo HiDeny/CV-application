@@ -1,0 +1,14 @@
+/** PERSONAL */
+
+#personalForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.3rem;
+
+  max-width: 75vw;
+}
+
+.personal > .view > .content {
+  justify-content: center;
+}

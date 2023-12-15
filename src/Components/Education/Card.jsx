@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { useState } from 'react';
 
 export default function Card({
@@ -125,6 +126,7 @@ function Form({ item, handleSubmit, handleChange, handleRemove }) {
 
 function View({ item, handleEditClick }) {
   const { name, title, date } = item;
+
   return (
     <div className="view">
       <div className="content">
@@ -134,7 +136,8 @@ function View({ item, handleEditClick }) {
         </div>
         <div className="date">
           <p>
-            {date.start} / {date.end ? date.end : 'Now'}
+            {format(new Date(date.start), 'dd. MM. yyyy')} /{' '}
+            {date.end ? format(new Date(date.end), 'dd. MM. yyyy') : 'Present'}
           </p>
         </div>
       </div>

@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export default function Main({ aboutMe, experience }) {
   return (
     <div className="mainContent">
@@ -26,9 +28,12 @@ function ExperienceItem({ item }) {
     <li>
       <h3 className="">{position}</h3>
       <p>{name}</p>
-      <p>
-        {date.start}-{date.end ? date.end : 'Present'}
-      </p>
+      <div className="date">
+        <p>
+          {format(new Date(date.start), 'dd. MM. yyyy')} /{' '}
+          {date.end ? format(new Date(date.end), 'dd. MM. yyyy') : 'Present'}
+        </p>
+      </div>
       {responsibility && (
         <div className="preview-responsibility">
           <p>{responsibility}</p>
