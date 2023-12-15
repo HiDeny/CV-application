@@ -9,48 +9,13 @@
   );
 }
 
+#responsibility {
+  resize: none;
+  max-height: 7.5rem;
+  font-size: 0.9rem;
+}
+
 .experience .addBtn {
   background: #5a7399;
   color: white;
-}
-
-.experience > form > .inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-#responsibility {
-  resize: none;
-  font-size: 0.8rem;
-}
-
-.content > .text > .responsibility {
-  max-height: 10rem;
-  overflow: scroll;
-
-  border: 1px solid white;
-  border-radius: 0.25rem;
-  background-color: rgba(255, 255, 255, 0.503);
-
-  font-size: 0.8rem;
-  text-align: initial;
-}
-
-.content > .text > .responsibility > p {
-  margin: 0;
-  padding: 4px;
-}
-
-.experience > form > button,
-.experience > .view > button {
-  background: #5a7399;
-  color: white;
-}
-
-.education > form > button.removeBtn,
-.experience > form > button.removeBtn {
-  background: transparent;
-  border: none;
-  color: black;
 }

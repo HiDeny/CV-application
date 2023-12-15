@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import Personal from './Personal/Personal';
+import AboutMe from './AboutMe/AboutMe';
 import Education from './Education/Education';
 import Experience from './Experience/Experience';
-import DisplayMode from './Display/DisplayMode';
 import Skills from './Skills/Skills';
-import AboutMe from './AboutMe/AboutMe';
+import DisplayMode from './Display/DisplayMode';
 
 function App() {
   const [editMode, setEditMode] = useState(true);
@@ -123,8 +123,8 @@ function App() {
         <form onSubmit={handleSubmit}>
           <Personal data={personal} updateData={updatePersonal} />
           <AboutMe data={aboutMe} updateData={updateAboutMe} />
-          {/* <Education data={education} updateData={updateEducation} /> */}
-          {/* <Experience data={experience} updateData={updateExperience} /> */}
+          <Education data={education} updateData={updateEducation} />
+          <Experience data={experience} updateData={updateExperience} />
           {/* <Skills data={skills} updateData={updateSkills} /> */}
           <div className="category create">
             <button type="submit">Create</button>

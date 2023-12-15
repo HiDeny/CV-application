@@ -13,14 +13,3 @@
   background-color: #a45384;
   color: white;
 }
-
-.education > form > .inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.education > * > button {
-  background: #a25282ed;
-  color: white;
-}

@@ -15,6 +15,7 @@ export default function AboutMe({ data, updateData }) {
           maxLength="250"
           required
         />
+        <p className="hint-required">{data.length}/250</p>
       </div>
     </fieldset>
   );

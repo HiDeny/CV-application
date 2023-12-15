@@ -111,6 +111,10 @@ label {
   flex-direction: column;
 }
 
+label > p {
+  margin: 0;
+}
+
 input,
 optgroup,
 select,
@@ -124,12 +128,6 @@ textarea {
 input:focus-visible,
 textarea:focus-visible {
   transform: scale(1.05);
-}
-
-form > button,
-.view > button {
-  align-self: flex-end;
-  justify-self: center;
 }
 
 .inputs > .text {
@@ -225,21 +223,13 @@ form > button,
   justify-content: center;
 }
 
-.hint {
+.hint-example {
   margin: 0;
   font-size: 0.6rem;
 }
 
 .example.remove {
   transform: translateY(150%);
-}
-
-/** VIEW */
-
-.view {
-  display: grid;
-  grid-template-rows: calc(100% - 4rem) 4rem;
-  height: 100%;
 }
 
 .content {
@@ -328,8 +318,14 @@ form > button,
 .fields {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
 
   height: 100%;
   width: 100%;
+}
+
+.card button.removeBtn {
+  background: transparent;
+  border: none;
+  color: black;
 }

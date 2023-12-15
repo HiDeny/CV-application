@@ -11,9 +11,8 @@ export default function Education({ data, updateData }) {
     updateData(nextData);
   }
 
-  function handleRemove(updatedItem) {
-    const nextData = data.filter((item) => item.id !== updatedItem.id);
-    updateData(nextData);
+  function handleRemove(idToRemove) {
+    updateData((prevData) => prevData.filter((item) => item.id !== idToRemove));
   }
 
   function handleClickAdd() {

@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import Card from './Card';
+import ExperienceCard from './ExperienceCard';
 import './Experience.css';
 
 export default function Experience({ data, updateData }) {
@@ -19,6 +19,8 @@ export default function Experience({ data, updateData }) {
   }
 
   function handleClickAdd() {
+    const container = document.querySelector('.experience');
+    const exampleCard = container.querySelector('.card.example');
     const newItem = {
       id: uuid(),
       name: '',
@@ -27,8 +29,6 @@ export default function Experience({ data, updateData }) {
       date: { start: '', end: '' },
     };
 
-    const container = document.querySelector('.experience');
-    const exampleCard = container.querySelector('.card.example');
     if (exampleCard) {
       exampleCard.classList.add('remove');
 
@@ -39,30 +39,31 @@ export default function Experience({ data, updateData }) {
     }
     updateData((prevData) => [...prevData, newItem]);
   }
+  const content = data.map((item) => (
+    <ExperienceCard
+      key={item.id}
+      item={item}
+      handleChange={handleChange}
+      handleRemove={handleRemove}
+    />
+  ));
 
   return (
-    <div className="category experience">
+    <fieldset className="category experience">
       <h2 className="category-title">Experience</h2>
       <div className="cards experience">
         {data.length < 1 && <ExampleCard />}
-        {data.map((item) => (
-          <Card
-            key={item.id}
-            item={item}
-            handleChange={handleChange}
-            handleRemove={handleRemove}
-          />
-        ))}
+        {content}
       </div>
       <button
         type="button"
         className="addBtn"
         onClick={handleClickAdd}
-        disabled={data.length > 3}
+        disabled={data.length >= 4}
       >
         +
       </button>
-    </div>
+    </fieldset>
   );
 }
 
@@ -75,7 +76,7 @@ function ExampleCard() {
         <p>RESPONSIBILITY</p>
         <p>STARTED / ENDED</p>
       </div>
-      <p className="hint">(THIS IS AN EXAMPLE)</p>
+      <p className="hint-example">(THIS IS AN EXAMPLE)</p>
     </div>
   );
 }

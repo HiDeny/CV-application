@@ -1,5 +1,5 @@
 export default function EducationCard({ item, handleChange, handleRemove }) {
-  const { name, title, date } = item;
+  const { title, date } = item;
 
   function handleFieldChange(e) {
     const { value, name } = e.target;
@@ -16,7 +16,7 @@ export default function EducationCard({ item, handleChange, handleRemove }) {
     const container = e.target.parentElement;
     container.classList.add('cardRemove');
     setTimeout(() => {
-      handleRemove(item);
+      handleRemove(item.id);
     }, 500);
   }
 
@@ -31,7 +31,7 @@ export default function EducationCard({ item, handleChange, handleRemove }) {
             type="text"
             id="schoolName"
             name="name"
-            value={name}
+            value={item.name}
             placeholder=""
             onChange={handleFieldChange}
             required
