@@ -1,17 +1,19 @@
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
 export default function Main({ aboutMe, experience }) {
   return (
     <div className="mainContent">
-      <section className="aboutMe">
-        <h2 className="preview-title">ABOUT ME</h2>
-        <pre>{aboutMe}</pre>
+      <section className="aboutMe preview-category">
+        <h2 className="preview-category-title">ABOUT ME</h2>
+        <div className="decoration-line" />
+        <pre className="aboutme-content">{aboutMe}</pre>
       </section>
 
       {experience.length > 0 && (
-        <section className="experience">
-          <h2 className="preview-title">EXPERIENCE</h2>
-          <ul>
+        <section className="experience preview-category">
+          <h2 className="preview-category-title">EXPERIENCE</h2>
+          <div className="decoration-line" />
+          <ul className="preview-category-list">
             {experience.map((item) => (
               <ExperienceItem key={item.id} item={item} />
             ))}
@@ -25,18 +27,18 @@ export default function Main({ aboutMe, experience }) {
 function ExperienceItem({ item }) {
   const { position, name, date, responsibility } = item;
   return (
-    <li>
-      <h3 className="">{position}</h3>
-      <p>{name}</p>
-      <div className="date">
+    <li className="preview-category-item">
+      <h3 className="item-title">{position}</h3>
+      <p className="item-name">{name}</p>
+      <div className="item-date">
         <p>
-          {format(new Date(date.start), 'dd. MM. yyyy')} /{' '}
+          {format(new Date(date.start), 'dd. MM. yyyy')} -{' '}
           {date.end ? format(new Date(date.end), 'dd. MM. yyyy') : 'Present'}
         </p>
       </div>
       {responsibility && (
-        <div className="preview-responsibility">
-          <p>{responsibility}</p>
+        <div className="item-responsibility">
+          <pre>{responsibility}</pre>
         </div>
       )}
     </li>

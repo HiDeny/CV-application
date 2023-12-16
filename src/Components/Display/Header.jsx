@@ -4,8 +4,8 @@ export default function Header({ personal }) {
 
   return (
     <section className="header">
-      <h1 className="title preview-title">{fullName}</h1>
-      <div className="profile-picture">
+      <h1 className="preview-title">{fullName}</h1>
+      <div className="preview-picture">
         <img src={picture} alt={fullName} />
       </div>
     </section>

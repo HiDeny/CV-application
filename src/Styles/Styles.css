@@ -46,16 +46,6 @@ button:disabled {
   opacity: 0.3;
 }
 
-pre {
-  white-space: pre-wrap;
-
-  margin: 0;
-  height: 100%;
-
-  font-family: inherit;
-  font-size: 1rem;
-}
-
 .fakeButton {
   position: absolute;
   top: 0;
@@ -142,6 +132,7 @@ textarea:focus-visible {
 /** CARD */
 
 .cards {
+  grid-row: 2;
   box-sizing: border-box;
   display: flex;
   gap: 1.5rem;
@@ -155,6 +146,8 @@ textarea:focus-visible {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+
 
 .cards::-webkit-scrollbar {
   display: none;
@@ -291,12 +284,6 @@ textarea:focus-visible {
   }
   100% {
     transform: translateY(0%);
-  }
-}
-
-@media print {
-  @page wide {
-    size: a4 landscape;
   }
 }
 

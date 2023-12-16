@@ -1,26 +1,31 @@
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
 export default function Sidebar({ personal, skills, education }) {
-  const { email, phone } = personal;
+  const { email, phone, website } = personal;
 
   return (
     <section className="sidebar">
-      <section className="contact">
-        <h2 className="preview-title">CONTACT</h2>
-        <ul>
-          <li>
+      <section className="contact preview-category">
+        <h2 className="preview-category-title">CONTACT</h2>
+        <div className="decoration-line" />
+        <ul className="preview-category-list">
+          <li className="preview-category-item">
             <p>{email}</p>
           </li>
-          <li>
+          <li className="preview-preview-category-item">
             <p>{phone}</p>
+          </li>
+          <li className="preview-category-item">
+            <p>{website}</p>
           </li>
         </ul>
       </section>
 
       {skills.length > 0 && (
-        <section className="skills">
-          <h2 className="preview-title">SKILLS</h2>
-          <ul>
+        <section className="skills preview-category">
+          <h2 className="preview-category-title">SKILLS</h2>
+          <div className="decoration-line" />
+          <ul className="preview-category-list">
             {skills.map((item) => (
               <SkillItem key={item.id} item={item} />
             ))}
@@ -29,9 +34,10 @@ export default function Sidebar({ personal, skills, education }) {
       )}
 
       {education.length > 0 && (
-        <section className="education">
-          <h2 className="preview-title">EDUCATION</h2>
-          <ul>
+        <section className="education preview-category">
+          <h2 className="preview-category-title">EDUCATION</h2>
+          <div className="decoration-line" />
+          <ul className="preview-category-list">
             {education.map((item) => (
               <SchoolItem key={item.id} item={item} />
             ))}
@@ -44,8 +50,8 @@ export default function Sidebar({ personal, skills, education }) {
 
 function SkillItem({ item }) {
   return (
-    <li>
-      <p className="skill">{item.value}</p>
+    <li className="preview-category-item">
+      <p className="item-title">{item.value}</p>
     </li>
   );
 }
@@ -53,10 +59,10 @@ function SkillItem({ item }) {
 function SchoolItem({ item }) {
   const { title, name, date } = item;
   return (
-    <li>
-      <h3 className="title">{title}</h3>
-      <p className="schoolName">{name}</p>
-      <div className="date">
+    <li className="preview-category-item">
+      <h3 className="item-title">{title}</h3>
+      <p className="item-name">{name}</p>
+      <div className="item-date">
         <p>
           {format(new Date(date.start), 'dd. MM. yyyy')} /{' '}
           {date.end ? format(new Date(date.end), 'dd. MM. yyyy') : 'Present'}

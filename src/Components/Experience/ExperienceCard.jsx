@@ -61,10 +61,10 @@ export default function ExperienceCard({ item, handleChange, handleRemove }) {
             name="responsibility"
             rows={10}
             value={responsibility}
-            maxLength="200"
+            maxLength="100"
             onChange={handleItemChange}
           />
-          <p className="hint-required">{responsibility.length}/200</p>
+          <p className="hint-required">{responsibility.length}/100</p>
         </label>
 
         <div className="date">

@@ -58,7 +58,7 @@ export default function Education({ data, updateData }) {
         type="button"
         className="addBtn"
         onClick={handleClickAdd}
-        disabled={data.length >= 4}
+        disabled={data.length >= 3}
       >
         +
       </button>
