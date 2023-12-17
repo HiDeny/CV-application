@@ -6,7 +6,7 @@ export default function Header({ personal }) {
     <section className="header">
       <h1 className="preview-title">{fullName}</h1>
       <div className="preview-picture">
-        <img alt={fullName} />
+        <img src={picture} alt={fullName} />
       </div>
     </section>
   );
