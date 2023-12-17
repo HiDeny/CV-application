@@ -51,6 +51,44 @@
   justify-content: space-evenly;
 }
 
+.contact .preview-category-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.contact .preview-category-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 1.1rem;
+}
+
+.contact .preview-category-item::before {
+  display: flex;
+
+  content: '';
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color-primary);
+
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.email::before {
+  background-image: url('../../assets/Letter.png');
+}
+.phone::before {
+  background-image: url('../../assets/Phone.png');
+}
+.contact .website::before {
+  background-image: url('../../assets/G.png');
+  background-size: 70%;
+}
+
 .preview-category-item p {
   margin: 0;
 }

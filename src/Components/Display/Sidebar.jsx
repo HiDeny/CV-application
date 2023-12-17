@@ -9,13 +9,13 @@ export default function Sidebar({ personal, skills, education }) {
         <h2 className="preview-category-title">CONTACT</h2>
         <div className="decoration-line" />
         <ul className="preview-category-list">
-          <li className="preview-category-item">
-            <p>{email}</p>
-          </li>
-          <li className="preview-preview-category-item">
+          <li className="preview-category-item phone">
             <p>{phone}</p>
           </li>
-          <li className="preview-category-item">
+          <li className="preview-category-item email">
+            <p>{email}</p>
+          </li>
+          <li className="preview-category-item website">
             <p>{website}</p>
           </li>
         </ul>
