@@ -86,11 +86,7 @@ function App() {
   }
 
   function toggleEditMode() {
-    const element = document.querySelector(
-      editMode ? '.personal' : '.displayMode'
-    );
     setEditMode((prev) => !prev);
-    element.scrollIntoView();
   }
 
   function handleSubmit(e) {
@@ -99,7 +95,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div id="main-container">
       {editMode ? (
         <>
           <Example
