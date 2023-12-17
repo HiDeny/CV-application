@@ -1,5 +1,7 @@
 /** DISPLAY MODE */
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 .displayMode {
   display: flex;
   flex-direction: column;
@@ -36,8 +38,10 @@
 
 .preview-category-title {
   color: var(--color-primary);
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.1rem;
   margin: 0.5rem 0;
+
+  font-family: 'Playfair Display', serif;
 }
 
 .preview-category-list {
@@ -134,6 +138,8 @@
   font-size: 4rem;
   color: var(--color-primary);
   line-height: 1.2;
+
+  font-family: 'Playfair Display', serif;
 }
 
 .preview-title h1 {
@@ -168,6 +174,8 @@
 
   max-width: 100%;
   min-height: 100%;
+
+  text-align: center;
 }
 
 /** SIDEBAR */
