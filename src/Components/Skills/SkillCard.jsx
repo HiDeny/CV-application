@@ -7,7 +7,7 @@ export default function SkillCard({ item, handleOnChange, handleItemRemove }) {
         type="text"
         data-id={id}
         value={value}
-        maxLength={25}
+        maxLength={30}
         onChange={handleOnChange}
       />
       <button

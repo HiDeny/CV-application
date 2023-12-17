@@ -13,3 +13,7 @@
 .personal > .view > .content {
   justify-content: center;
 }
+
+.personal #picture {
+  font-size: 0.9rem;
+}

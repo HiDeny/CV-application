@@ -14,6 +14,7 @@ export default function AboutMe({ data, updateData }) {
           placeholder="Something about you..."
           onChange={updateData}
           maxLength="250"
+          rows={8}
           required
         />
         <p className="hint-required">{data.length}/250</p>

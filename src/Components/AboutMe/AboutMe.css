@@ -8,16 +8,17 @@
   );
 }
 
-.aboutMe .fields .hint-required {
-  align-self: center;
+.aboutMe .fields {
+  justify-content: center;
+  align-items: center;
 }
 
 .aboutMe .fields textarea {
   box-sizing: border-box;
   resize: none;
 
-  width: clamp(65vw, 80%, 75vw);
-  height: 12rem;
+  width: clamp(10rem, 15rem, 20rem);
+  height: 11rem;
 
   margin: 0 auto;
   padding: 0.8rem;
@@ -26,6 +27,7 @@
   border-radius: 1rem;
 
   font-size: 0.9rem;
+  overflow: hidden;
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;

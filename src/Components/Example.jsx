@@ -54,19 +54,16 @@ const exampleData = {
 export default function Example({ setExampleData, clearExampleData }) {
   return (
     <section className="example-section">
-      <div className="example-buttons">
-        <button
-          type="button"
-          className="exampleBtn"
-          onClick={() => setExampleData(exampleData)}
-        >
-          Example
-        </button>
-        <button type="button" className="exampleBtn" onClick={clearExampleData}>
-          Clear
-        </button>
-      </div>
-      <p className="hint-example-section">Swipe up for example</p>
+      <button
+        type="button"
+        className="exampleBtn"
+        onClick={() => setExampleData(exampleData)}
+      >
+        Example
+      </button>
+      <button type="button" className="exampleBtn" onClick={clearExampleData}>
+        Clear
+      </button>
     </section>
   );
 }

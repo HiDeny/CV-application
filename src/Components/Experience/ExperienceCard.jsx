@@ -35,6 +35,7 @@ export default function ExperienceCard({ item, handleChange, handleRemove }) {
             name="name"
             value={item.name}
             onChange={handleItemChange}
+            maxLength={30}
             required
           />
         </label>
@@ -49,6 +50,7 @@ export default function ExperienceCard({ item, handleChange, handleRemove }) {
             name="position"
             value={position}
             onChange={handleItemChange}
+            maxLength={30}
             required
           />
         </label>
@@ -61,7 +63,7 @@ export default function ExperienceCard({ item, handleChange, handleRemove }) {
             name="responsibility"
             rows={10}
             value={responsibility}
-            maxLength="100"
+            maxLength={100}
             onChange={handleItemChange}
           />
           <p className="hint-required">{responsibility.length}/100</p>

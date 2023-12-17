@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Sidebar from './Sidebar';
-import './display.css';
+import './Preview.css';
 
 export default function DisplayMode({
   personal,
@@ -18,7 +18,7 @@ export default function DisplayMode({
     const hex = e.target.value;
     const { h } = hexToHSL(hex);
 
-    const container = document.querySelector('.preview');
+    const container = document.querySelector('.displayMode');
     let primary = `hsl(${h},70%,30%)`;
     let secondary = `hsl(${h},50%,80%)`;
     let tertiary = `hsl(${h},30%,90%)`;
@@ -43,8 +43,18 @@ export default function DisplayMode({
         <Sidebar personal={personal} skills={skills} education={education} />
         <Main aboutMe={aboutMe} experience={experience} />
       </section>
+
       <div className="display-options">
-        <input type="color" value={previewColor} onChange={handleColorChange} />
+        <label htmlFor="color-picker">
+          Pick color
+          <input
+            type="color"
+            id="color-picker"
+            value={previewColor}
+            onChange={handleColorChange}
+          />
+        </label>
+
         <button type="button" onClick={() => print()}>
           Print
         </button>

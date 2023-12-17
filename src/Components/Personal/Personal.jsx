@@ -18,6 +18,7 @@ export default function Personal({ data, updateData }) {
             id="firstName"
             name="firstName"
             value={firstName}
+            maxLength={20}
             placeholder=""
             onChange={updateData}
             required
@@ -32,6 +33,7 @@ export default function Personal({ data, updateData }) {
             type="text"
             id="lastName"
             name="lastName"
+            maxLength={20}
             value={lastName}
             placeholder=""
             onChange={updateData}
@@ -47,6 +49,7 @@ export default function Personal({ data, updateData }) {
             type="email"
             id="email"
             name="email"
+            maxLength={25}
             value={email}
             placeholder=""
             onChange={updateData}
@@ -63,6 +66,7 @@ export default function Personal({ data, updateData }) {
             id="phone"
             name="phone"
             value={phone}
+            maxLength={20}
             placeholder=""
             onChange={updateData}
             required
@@ -77,6 +81,7 @@ export default function Personal({ data, updateData }) {
             type="text"
             id="website"
             name="website"
+            maxLength={25}
             value={website}
             onChange={updateData}
           />

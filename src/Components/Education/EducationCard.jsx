@@ -32,6 +32,7 @@ export default function EducationCard({ item, handleChange, handleRemove }) {
             id="schoolName"
             name="name"
             value={item.name}
+            maxLength={30}
             placeholder=""
             onChange={handleFieldChange}
             required
@@ -48,6 +49,7 @@ export default function EducationCard({ item, handleChange, handleRemove }) {
             name="title"
             value={title}
             placeholder=""
+            maxLength={30}
             onChange={handleFieldChange}
             required
           />
