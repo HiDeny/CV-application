@@ -12,8 +12,11 @@ export default function DisplayMode({
   skills,
   handleEditClick,
 }) {
+  const [previewColor, setPreviewColor] = useState('#213d62');
+
   function handleColorChange(e) {
-    const { h } = hexToHSL(e.target.value);
+    const hex = e.target.value;
+    const { h } = hexToHSL(hex);
 
     const container = document.querySelector('.preview');
     let primary = `hsl(${h},70%,30%)`;
@@ -29,6 +32,8 @@ export default function DisplayMode({
     container.style.setProperty('--color-primary', primary);
     container.style.setProperty('--color-secondary', secondary);
     container.style.setProperty('--color-tertiary', tertiary);
+
+    setPreviewColor(hex);
   }
 
   return (
@@ -39,7 +44,7 @@ export default function DisplayMode({
         <Main aboutMe={aboutMe} experience={experience} />
       </section>
       <div className="display-options">
-        <input type="color" value="#213d62" onChange={handleColorChange} />
+        <input type="color" value={previewColor} onChange={handleColorChange} />
         <button type="button" onClick={() => print()}>
           Print
         </button>

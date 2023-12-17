@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import Example from './Example';
 import Personal from './Personal/Personal';
 import AboutMe from './AboutMe/AboutMe';
 import Education from './Education/Education';
@@ -9,7 +10,6 @@ import DisplayMode from './Display/DisplayMode';
 
 function App() {
   const [editMode, setEditMode] = useState(true);
-
   const [personal, setPersonal] = useState({
     id: uuid(),
     firstName: '',
@@ -19,7 +19,6 @@ function App() {
     website: '',
     picture: '',
   });
-
   const [aboutMe, setAboutMe] = useState('');
   const [education, setEducation] = useState([]);
   const [experience, setExperience] = useState([]);
@@ -58,59 +57,31 @@ function App() {
     setSkills(newData);
   }
 
-  function setFakeData() {
+  function setExampleData(exampleData) {
+    setPersonal(exampleData.personal);
+    setAboutMe(exampleData.aboutMe);
+    setEducation(exampleData.education);
+    setExperience(exampleData.experience);
+    setSkills(exampleData.skills);
+  }
+
+  function clearExampleData() {
     setPersonal({
       id: uuid(),
-      firstName: 'First',
-      lastName: 'Last',
-      email: 'email@address.com',
-      phone: '123 456 789',
-      website: 'example.com',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      website: '',
       picture: '',
     });
-
-    setAboutMe(
-      'Nostrud dolore laboris ea elit laborum minim nostrud elit anim. In do qui in elit proident proident excepteur tempor pariatur ullamco. Non culpa voluptate pariatur minim anim sunt. Cillum velit cupidatat irure qui dolor reprehenderit nulla eungiaigc.'
-    );
-
-    setEducation([
-      {
-        id: uuid(),
-        name: 'School Name',
-        title: 'Title Of Education',
-        date: { start: '2000-01-01', end: '2010-01-01' },
-      },
-      {
-        id: uuid(),
-        name: 'School Name 2',
-        title: 'Title Of Education 2',
-        date: { start: '2000-01-01', end: '2010-01-01' },
-      },
-    ]);
-
-    setExperience([
-      {
-        id: uuid(),
-        name: 'Company Name',
-        position: 'Position',
-        responsibility:
-          'Nostrud dolore laboris ea elit laborum minim nostrud elit anim. In do qui in elit proident proident excepteur tempor pariatur ullamco. Non culpa voluptate pariatur minim anim sunt. Non culpa voluptate',
-        date: { start: '2000-01-01', end: '2010-01-01' },
-      },
-      {
-        id: uuid(),
-        name: 'Company Nam 2',
-        position: 'Position 2',
-        responsibility:
-          'Nostrud dolore laboris ea elit laborum minim nostrud elit anim. In do qui in elit proident proident excepteur tempor pariatur ullamco. Non culpa voluptate pariatur minim anim sunt. Non culpa voluptate',
-        date: { start: '2000-01-01', end: '2010-01-01' },
-      },
-    ]);
-
+    setAboutMe('');
+    setEducation([]);
+    setExperience([]);
     setSkills([
-      { id: uuid(), value: 'Talking' },
-      { id: uuid(), value: 'Thinking' },
-      { id: uuid(), value: 'Walking' },
+      { id: uuid(), value: '' },
+      { id: uuid(), value: '' },
+      { id: uuid(), value: '' },
     ]);
   }
 
@@ -128,21 +99,25 @@ function App() {
   }
 
   return (
-    <>
-      <button type="button" className="fakeButton" onClick={setFakeData}>
-        FAKE
-      </button>
+    <div>
       {editMode ? (
-        <form onSubmit={handleSubmit}>
-          <Personal data={personal} updateData={updatePersonal} />
-          <AboutMe data={aboutMe} updateData={updateAboutMe} />
-          <Education data={education} updateData={updateEducation} />
-          <Experience data={experience} updateData={updateExperience} />
-          <Skills data={skills} updateData={updateSkills} />
-          <div className="category create">
-            <button type="submit">Create</button>
-          </div>
-        </form>
+        <>
+          <Example
+            setExampleData={setExampleData}
+            clearExampleData={clearExampleData}
+          />
+
+          <form onSubmit={handleSubmit}>
+            <Personal data={personal} updateData={updatePersonal} />
+            <AboutMe data={aboutMe} updateData={updateAboutMe} />
+            <Education data={education} updateData={updateEducation} />
+            <Experience data={experience} updateData={updateExperience} />
+            <Skills data={skills} updateData={updateSkills} />
+            <div className="category create">
+              <button type="submit">Create</button>
+            </div>
+          </form>
+        </>
       ) : (
         <DisplayMode
           personal={personal}
@@ -153,7 +128,7 @@ function App() {
           handleEditClick={toggleEditMode}
         />
       )}
-    </>
+    </div>
   );
 }
 
