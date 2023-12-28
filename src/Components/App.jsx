@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Example from './Example';
 import Personal from './Personal/Personal';
 import AboutMe from './AboutMe/AboutMe';
@@ -96,6 +97,7 @@ function App() {
 
   return (
     <div id="main-container">
+      <SpeedInsights />
       {editMode ? (
         <>
           <Example
