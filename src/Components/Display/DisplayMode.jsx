@@ -15,10 +15,10 @@ export default function DisplayMode({
   const [previewColor, setPreviewColor] = useState('#213d62');
 
   function handleColorChange(e) {
+    const container = document.querySelector('.displayMode');
     const hex = e.target.value;
     const { h } = hexToHSL(hex);
 
-    const container = document.querySelector('.displayMode');
     let primary = `hsl(${h},70%,30%)`;
     let secondary = `hsl(${h},50%,80%)`;
     let tertiary = `hsl(${h},30%,90%)`;

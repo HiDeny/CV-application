@@ -4,11 +4,14 @@ import './Education.css';
 
 export default function Education({ data, updateData }) {
   function handleChange(updatedItem) {
-    const nextData = data.map((item) => {
-      if (item.id === updatedItem.id) return updatedItem;
-      return item;
-    });
-    updateData(nextData);
+    updateData((prevData) =>
+      prevData.map((item) => {
+        if (item.id === updatedItem.id) {
+          return updatedItem;
+        }
+        return item;
+      })
+    );
   }
 
   function handleRemove(idToRemove) {
