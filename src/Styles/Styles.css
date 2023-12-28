@@ -52,7 +52,8 @@ button:disabled {
   position: relative;
 
   display: grid;
-  grid-template-rows: 15vh 70vh 15vh;
+  grid-template-rows: 5vh 70vh 5vh;
+  padding: 10vh 0;
   align-items: center;
 }
 
@@ -209,6 +210,7 @@ textarea:focus-visible {
   max-width: 25rem;
   padding: 2rem 0;
   margin: auto;
+  margin-bottom: 3rem;
   background-color: #d4d4de;
   border-radius: 0 0 1rem 1rem;
 
