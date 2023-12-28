@@ -1,11 +1,87 @@
-# React + Vite
+# JobReadyCV
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
+- [JobReadyCV](#jobreadycv)
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Screenshots](#screenshots)
+  - [Features](#features)
+    - [Live Demo](#live-demo)
+  - [Technologies Used](#technologies-used)
+  - [Credits](#credits)
+  - [Contributing](#contributing)
+  - [License](#license)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Description
+JobReadyCV is a simple and intuitive CV (Curriculum Vitae) generator.
 
-# CV-application
-Project: CV application (The Odin Project)
+Based on [Project: CV Application](https://www.theodinproject.com/lessons/node-path-react-new-cv-application) from [The Odin Project](https://www.theodinproject.com/) cubiculum.
+
+Play around and let me know your opinions! 
+
+
+## Screenshots
+
+![JobReadyCV](./src/assets/examples/CVapp1.jpeg)
+![JobReadyCV](./src/assets/examples/CVapp2.jpeg)
+![JobReadyCV](./src/assets/examples/CVapp3.jpeg)
+
+## Features
+- **User-friendly Interface:** Easily fill out essential sections such as personal information, about me, education, and experience using a straightforward form.
+
+- **Effortless CV Creation:** After completing the form, click the "Create" button to instantly generate a CV.
+
+### Live Demo
+<!-- 👉🏻 [Live Demo](https://hideny.github.io/Battleship/) ! -->
+ 
+## Technologies Used
+
+- React + Vite
+- Date-fns
+- Eslint
+- uuid
+- Normalize.css
+
+
+## Credits
+- [Icons8](https://icons8.com) for icons.
+- [Unsplash](https://unsplash.com/) for background images.
+
+
+## Contributing
+
+Contributions are welcome! If you have any ideas for improvement, feel free to open an issue or submit a pull request.
+
+## License
+
+JobReadyCV is open-source software licensed under the [MIT License](LICENSE). 
+Feel free to use, modify, and distribute it as per the terms of the license.
+
+
+
+<!-- ## Getting Started
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/JobReadyCV.git
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   cd JobReadyCV
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   This will launch the app in your default browser.
+
+4. Open your browser and navigate to [http://localhost:3000](http://localhost:3000). -->
+
