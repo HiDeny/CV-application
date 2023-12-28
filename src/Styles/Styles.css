@@ -269,6 +269,38 @@ textarea:focus-visible {
   color: white;
 }
 
+/* RESPONSIVENESS */
+
+@media (min-width: 799px) {
+  legend {
+    top: 3rem;
+    right: 5rem;
+  }
+
+  .aboutMe .fields textarea {
+    font-size: 1.1rem;
+    margin: 0;
+    width: 20rem;
+    height: 12rem;
+  }
+
+  .cards {
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card:last-child,
+  .card:first-child {
+    margin: 0;
+  }
+
+  .preview {
+    transform: scale(0.7);
+    margin: -6.5rem;
+  }
+}
+
 /* ANIMATIONS */
 
 @keyframes swipe-in {
