@@ -33,7 +33,7 @@ Play around and let me know your opinions!
 - **Effortless CV Creation:** After completing the form, click the "Create" button to instantly generate a CV.
 
 ### Live Demo
-<!-- 👉🏻 [Live Demo](https://hideny.github.io/Battleship/) ! -->
+👉🏻 [Live Demo](https://cv-application-liard-rho.vercel.app/)!
  
 ## Technologies Used
 
@@ -57,31 +57,3 @@ Contributions are welcome! If you have any ideas for improvement, feel free to o
 
 JobReadyCV is open-source software licensed under the [MIT License](LICENSE). 
 Feel free to use, modify, and distribute it as per the terms of the license.
-
-
-
-<!-- ## Getting Started
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/JobReadyCV.git
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   cd JobReadyCV
-   npm install
-   ```
-
-3. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-   This will launch the app in your default browser.
-
-4. Open your browser and navigate to [http://localhost:3000](http://localhost:3000). -->
-
